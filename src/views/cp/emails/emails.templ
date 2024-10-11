@@ -1,0 +1,119 @@
+package emails
+
+import (
+  "net/http"
+
+	"github.com/vladanan/prosto/src/views"
+)
+
+var t = views.T
+
+templ EmailHead() {
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style>
+      .link {
+        background-color: lightskyblue;
+        color: darkblue;
+        font-size: x-small;
+      }
+      p {
+        font-size: medium;
+      }
+    </style>
+  </head>
+}
+templ EmailHeader(hello, userName string) {
+  <h3 style="color: darkblue">{hello} {userName}!</h3>
+}
+templ EmailFooter(footer string) {
+  <p style="font-size:small">{footer}</p>
+}
+templ Button(url, text string) {
+  <a href={templ.URL(url)}>
+    <button type="button" style="color: darkgreen; font-size: medium; font-weight: bold">
+      {text}
+    </button>
+  </a>
+}
+
+templ Email(r *http.Request, userName string) {
+  <html lang="en-US">
+  @EmailHead()
+  <body style="background-color: rgb(88, 146, 146);">
+  @EmailHeader(t("Header_hello"), userName)
+  { children... }
+  @EmailFooter(t("Footer"))
+  </body>
+  </html>
+}
+
+templ VerifyEmailForRegister(r *http.Request, userName, urlVerify string ) {
+  @Email(r, userName) {
+    <p>{t("Verify_mail_link")}</p>
+    // <p class="link" style="font-size: small;">{urlVerify}</p>
+    <p class="link">{urlVerify}</p>
+    <p>{t("Button_note")}</p>
+    @Button(urlVerify, t("Verify_button_text"))
+  }
+}
+templ VerifyForgottenPasswordRequest(r *http.Request, userName, urlVerify string ) {
+  @Email(r, userName) {
+    <p>{t("Forgotten_password_link")}</p>
+    <p class="link">{urlVerify}</p>
+    <p>{t("Button_note")} {t("Link_time_limit")}</p>
+    @Button(urlVerify, t("FP_verify_button_text"))
+    <p>{t("FP_verify_note")}</p>
+  }
+}
+templ FPSendNewPassword(r *http.Request, userName, newPassword, urlSignIn string ) {
+  @Email(r, userName) {
+    <p>{t("FP_new")} {newPassword}</p>
+    <p class="link">{urlSignIn}</p>
+    <p>{t("FP_new_link")} {t("Button_note")}</p>
+    @Button(urlSignIn, t("FP_new_button_text"))
+    <p>{t("FP_new_note")}</p>
+  }
+}
+templ DeleteUserRequest(r *http.Request, userName, urlVerify string ) {
+  @Email(r, userName) {
+    <p>{t("Delete_user_link")}</p>
+    <p class="link">{urlVerify}</p>
+    <p>{t("Button_note")} {t("Link_time_limit")}</p>
+    @Button(urlVerify, t("Delete_user"))
+  }
+}
+templ DeletedUser(r *http.Request, userName string ) {
+  @Email(r, userName) {
+    <p>{t("Deleted_user")}</p>
+  }
+}
+templ ChangeEmailRequest(r *http.Request, userName, oldEmail, newEmail, urlVerify string ) {
+  @Email(r, userName) {
+    <p>{t("Change_email_1")} {oldEmail} {t("Change_email_2")} {newEmail} {t("Change_email_3")}</p>
+    <p class="link">{urlVerify}</p>
+    <p>{t("Button_note")} {t("Link_time_limit")}</p>
+    @Button(urlVerify, t("Change_email"))
+  }
+}
+templ ChangedEmail(r *http.Request, userName string ) {
+  @Email(r, userName) {
+    <p>{t("Changed_email")}</p>
+  }
+}
+templ ChangeNameRequest(r *http.Request, userName, newUserName, urlVerify string ) {
+  @Email(r, userName) {
+    <p>{t("Change_name_1")} {userName} {t("Change_name_2")} {newUserName} {t("Change_name_3")}</p>
+    <p class="link">{urlVerify}</p>
+    <p>{t("Button_note")} {t("Link_time_limit")}</p>
+    @Button(urlVerify, t("Change_name"))
+  }
+}
+templ ChangePasswordRequest(r *http.Request, userName, urlVerify string ) {
+  @Email(r, userName) {
+    <p>{t("Change_password_link")}</p>
+    <p class="link">{urlVerify}</p>
+    <p>{t("Button_note")} {t("Link_time_limit")}</p>
+    @Button(urlVerify, t("Change_password"))
+  }
+}

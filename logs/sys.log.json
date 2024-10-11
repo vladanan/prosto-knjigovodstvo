@@ -1,0 +1,7 @@
+[
+	{
+		"Date":"2024/10/10","Time":"11:25:00","File":"v.go:170:",
+		"Error":"ERROR: syntax error at or near \"FROM777\" (SQLSTATE 42601)",
+		"Path":"/api/t"
+	}
+]

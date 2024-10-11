@@ -1,0 +1,30 @@
+Home = "Inicio"
+Login = "Acceso"
+Logout = "Cerrar sesión"
+
+Questions1 = "¡Escribe las preguntas y el cerebro ya habrá memorizado alrededor del 30% de la lección!"
+GetFromDb = "Recibe preguntas de db"
+
+
+Questions1-text = "Todos sabemos que la repetición es la madre del aprendizaje. Este sitio utiliza esa misma sabiduría y está implementado de una manera que guía su experiencia de aprendizaje a través de unos sencillos pasos. Prepara tus notas y teclado y vámonos...."
+
+Questions2 = "¡Pasa la prueba aleatoria y ganarás casi un 30% más!"
+
+UserPortal = "Si desea enviar un mensaje al editor del sitio o descargar plantillas para preguntas y exámenes, ¡haga clic aquí!"
+
+Welcome = "¡Has iniciado sesión!"
+UnWelcome = "¡No has iniciado sesión!"
+
+
+
+[MyUnreadEmails]
+description = "The number of unread emails I have"
+hash = "sha1-6a65d17f53981a3657db1897630e9cb069053ea8"
+one = "Tengo {{.PluralCount}} correo electrónico sin leer"
+other = "Tengo {{.PluralCount}} correos electrónicos no leídos"
+
+[PersonUnreadEmails]
+description = "The number of unread emails a person has"
+hash = "sha1-3a672fa89c5c8564bb233c907638004983792464"
+one = "{{.Name}} tiene {{.UnreadEmailCount}} correo electrónico no leído"
+other = "{{.Name}} tiene {{.UnreadEmailCount}} correos electrónicos no leídos"

@@ -1,0 +1,170 @@
+package cp
+
+import "github.com/vladanan/prosto/src/controllers/utils" 
+
+templ AuthForm() {
+  <div id="auth-form" class="w-64 m-auto">
+    { children... }
+  </div>
+}
+
+
+templ FormTitle(title string) {
+	<p class="text-2xl w-64 text-center">{title}</p>
+  <br>
+}
+
+templ P(text string) {
+  <p class="text-sm w-64">
+  {text}&nbsp;
+  { children... }
+  </p>
+}
+
+templ Email1(label, value, errMessage string) {
+  @P(label)
+  <input type="email" id="user_email1" name="user_email1" required autofocus oninput="resetWait(event)"
+    placeholder="" value={value}
+    class={ "input", templ.KV("border-[3px] border-red-400", hasError(errMessage, "mail"))}
+  />
+}
+
+templ Email2(label, value, errMessage string) {
+  @P(label)
+  <input type="email" id="user_email2" name="user_email2" required oninput="resetWait(event)"
+    placeholder="" value={value}
+    class={ "input", templ.KV("border-[3px] border-red-400", hasError(errMessage, "mail"))}
+  />
+}
+
+templ NewEmail1(label, value, errMessage string) {
+  @P(label)
+  <input type="email" id="new_user_email1" name="new_user_email1" required autofocus oninput="resetWait(event)"
+    placeholder="" value={value}
+    class={ "input", templ.KV("border-[3px] border-red-400", hasError(errMessage, "mail"))}
+  />
+}
+
+templ NewEmail2(label, value, errMessage string) {
+  @P(label)
+  <input type="email" id="new_user_email2" name="new_user_email2" required oninput="resetWait(event)"
+    placeholder="" value={value}
+    class={ "input", templ.KV("border-[3px] border-red-400", hasError(errMessage, "mail"))}
+  />
+}
+
+templ UserName(label, value, errMessage string) {
+  <div class="relative">
+    @P(label)
+    <span 
+      name="check" id="check" onclick="checkCheckError(event)"
+      hx-get="/auth/check_name/"
+      hx-include="[name='name']"
+      hx-trigger="click"
+      hx-target-error="#error_messages"
+      hx-target="#check"
+      hx-swap="innerHTML"
+      class="absolute right-0 bottom-8 text-xl text-blue-900 dark:text-sky-400 cursor-pointer"
+    > &#8635;
+    </span>
+    <input type="text" id="name" name="name" required oninput="resetCheck(event)"
+      placeholder="min 8, max 32, a-z A-Z 0-9 @.-_" value={value}
+      class={ "input", templ.KV("border-[3px] border-red-400", hasError(errMessage, "ser_name"))}
+    />
+  </div>
+}
+
+templ Password0(label, value, errMessage string) {
+  <div class="relative">
+    @P(label)
+    <span 
+      id="show-hide-pass0"
+      state="hide"
+      onclick="showHidePassword0(event)"
+      class="absolute right-0 bottom-8 text-xl text-blue-900 dark:text-sky-400 cursor-pointer"
+    > &#9673;
+    </span>
+    <input type="password" id="password0" name="password0" required oninput="resetWait(event)"
+    placeholder="min 8, max 32, a-z A-Z 0-9 @.-_" value={value}
+    class={ "input", templ.KV("border-[3px] border-red-400", hasError(errMessage, "assword"))}
+    />
+  </div>
+}
+
+templ Password1(label, value, errMessage string) {
+  <div class="relative">
+    @P(label)
+    <span 
+      id="show-hide-pass"
+      state="hide"
+      onclick="showHidePassword(event)"
+      class="absolute right-0 bottom-8 text-xl text-blue-900 dark:text-sky-400 cursor-pointer"
+    > &#9673;
+    </span>
+    <input type="password" id="password1" name="password1" required oninput="resetWait(event)"
+    placeholder="min 8, max 32, a-z A-Z 0-9 @.-_" value={value}
+    class={ "input", templ.KV("border-[3px] border-red-400", hasError(errMessage, "assword"))}
+    />
+  </div>
+}
+
+templ Password2(label, value, errMessage string) {
+  @P(label)
+  <input type="password" id="password2" name="password2" required oninput="resetWait(event)"
+  placeholder="min 8, max 32, a-z A-Z 0-9 @.-_" value={value}
+  class={ "input", templ.KV("border-[3px] border-red-400", hasError(errMessage, "assword"))}
+  />
+}
+
+templ PIN(label, value, errMessage string) {
+  @P(label)
+  <input type="number" id="pin" name="pin" required oninput="resetWait(event)"
+  placeholder="000000" value={value}
+  min="100000" max="999999"
+  class={ "input text-xl w-24", templ.KV("border-[3px] border-red-400", hasError(errMessage, "pin"))}
+  />
+  <br>
+}
+
+templ Confirm(label string) {
+  <label for="confirm" form="sign_up_form" class="text-sm">{label}</label>
+  <input type="checkbox" id="confirm" name="confirm" required onchange="confirmData(event)"
+    hx-post="/auth/confirm/"
+    hx-trigger="click"
+    hx-target-error="#error_messages"
+    hx-target="#bk_dEs3cWLZlL3nAvoH2FSt61XLngJF0hhv1I15njK3WOi7MUcr2_TsG"
+    hx-swap="outerHTML" 
+  />
+}
+
+templ SubmitGroup(label string) {
+  <button type="submit" name="submit" id="submit"
+    onclick="waitResponse(event)"
+    class="submit "
+  >
+    {label}
+  </button>
+  <button type="button" name="wait" id="wait" disabled hidden 
+    class="submit "
+  >
+    <svg class="animate-spin absolute h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+      </circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+        </path>
+    </svg>
+    {label}
+  </button>
+}
+
+templ ErrorsHidden(label string) {
+  <p id="error_messages" name="error_messages" class="text-sm w-64 font-bold text-red-700  dark:text-red-400 mt-2">{label}</p>
+  
+  <input required="true" value={utils.Get64UrlKey("", 10)} hidden
+  id="bk_dEs3cWLZlL3nAvoH2FSt61XLngJF0hhv1I15njK3WOi7MUcr2_TsG" name="bk_" class="text-xs w-28 text-black" />
+
+  <input required="true" value="fk_0x0c7cd79e"
+  id="fk_KjUkYoWMqzciQIhk5i4lYeqS2ewYAbpaBae3078ytRTtxvm8h_fJi" name="fk_" class="text-xs w-28 text-black fk_0x0c7cd79e" />
+}
+
+

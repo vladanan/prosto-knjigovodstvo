@@ -1,0 +1,76 @@
+package site
+
+import (
+  "net/http"
+  "github.com/vladanan/prosto/src/views"
+  // "encoding/json"
+  // "fmt"
+
+  "github.com/vladanan/prosto/src/models"
+)
+
+// type Note struct {
+// 	B_id        int    `db:"b_id"`
+// 	Ime_tag     string `db:"ime_tag"`
+// 	Mejl        string `db:"mejl"`
+// 	Tema        string `db:"tema"`
+// 	Poruka      string `db:"poruka"`
+// 	User_id     string `db:"user_id"`
+// 	User_mail   string `db:"user_mail"`
+// 	From_url    string `db:"from_url"`
+// 	Datum_upisa any    `db:"datum_upisa"`
+// }
+
+// func to_struct (notes []byte) []Note {
+//   var p []Note
+// 	err := json.Unmarshal(notes, &p)
+//   if err != nil {
+//     fmt.Printf("Json error: %v", err)
+//   }
+//   return p
+// }
+
+func reverser (notes []models.Note) []models.Note {
+	var structLength int
+  var newNotes []models.Note
+  for i := range notes { structLength = i}
+  for j := structLength; j > -1; j-- {
+    newNotes = append(newNotes, notes[j])
+  }
+	return newNotes
+}
+
+templ UserPortal(r *http.Request, notes []models.Note) {
+  @views.Layout(r) {
+    <p class="m-5 text-blue-700 font-bold text-3xl">
+        Notes, FAQ, contact 
+    </p>
+    if views.GetUserMode(r) == "admin" {
+      // <ul class="">
+      //   for _, item := range reverser(notes) {
+      //     <li class="m-5 px-2 border-slate-500 border text-xl rounded-m">{ fmt.Sprint(item.B_id) } { fmt.Sprint(item.Datum_upisa) } { item.Ime_tag }, { item.Tema }, { item.Poruka }</li>
+      //   }
+      // </ul>
+    }
+
+    <div class="m-5 text-slate-500">
+      
+    
+
+      <p class="text-xl">
+          Najčešće postavljana pitanja</p>
+    <br></br>
+     
+      <br></br>
+      <p>
+      Za sva pitanja pišite na: y.emailbox-vezbamo@yahoo.com    
+      </p>
+      <p>
+          
+      </p>
+
+    </div>
+
+    
+  }
+}

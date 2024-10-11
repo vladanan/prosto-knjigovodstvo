@@ -1,0 +1,24 @@
+package dashboard
+
+import (
+  "net/http"
+  "github.com/vladanan/prosto/src/models"
+)
+
+// napraviti tabelu koja prikazuje neaktivne korisnike tako što proverava last_log_in polje i omogućava da se oni automatski obrišu pogotovo ako je last_sign_in isti kao created_at jer će to polje automatski da se upisuje tako da se razlikuju nalozi koji su napravljeni samo radi bombardovanja lažnim nalozima
+
+// notes 123
+
+templ Admin(r *http.Request, user models.User) {
+    
+  <p class="m-5 text-sm text-yellow-500">{t("Welcome")} :: ADMINISTRATOR: {user.User_name}</p>
+
+  // <iframe src="ext/verify_email_register.html" title="very" height="350" width="1000"></iframe>
+
+  // <div class="bg-slate-500 px-5">
+  //   @templ.Raw("<h1>proba za h1 raw html tekst</h1>")
+  // </div>
+  
+  <br></br>
+
+}

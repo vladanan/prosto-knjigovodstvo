@@ -1,0 +1,23 @@
+package dashboard
+
+import (
+  "net/http"
+  "github.com/vladanan/prosto/src/views"
+  "github.com/vladanan/prosto/src/views/cp"
+  "github.com/vladanan/prosto/src/models"
+)
+
+templ Sign_up(r *http.Request) {
+  @views.Layout(r) {
+    <script src="static/htmx.min.js"></script>
+    // https://github.com/bigskysoftware/htmx-extensions/blob/main/src/response-targets/README.md
+    // <script src="https://unpkg.com/htmx-ext-response-targets@2.0.0/response-targets.js"></script>
+    <script src="static/htmx_response-targets.js"></script>
+    if signedin(r) == "true" {
+      // ovo se verovatno nikada neće otvoriti jer sign_up baca na index ako je već prijavljen
+      <p class="text-white">{t("Welcome")}</p>
+    } else {
+      @cp.Sign_up(r, models.SignUpFormData{}, "")
+    }
+  }
+}

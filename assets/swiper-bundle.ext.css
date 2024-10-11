@@ -1,0 +1,58 @@
+/**
+ * Swiper 11.1.9
+ * Most modern mobile touch slider and framework with hardware accelerated transitions
+ * https://swiperjs.com
+ *
+ * Copyright 2014-2024 Vladimir Kharlampidi
+ *
+ * Released under the MIT License
+ *
+ * Released on: July 31, 2024
+ */
+
+.swiper {
+  width: 100%;
+  height: 550px;
+
+}
+.swiper-slide {
+  font-size: 18px;
+  color: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 40px 60px;
+}
+
+.parallax-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 130%;
+  height: 100%;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.swiper-slide .title {
+  font-size: 41px;
+  font-weight: 300;
+}
+
+.swiper-slide .subtitle {
+  padding: 0.5rem;
+  font-size: 21px;
+  max-width: 400px;
+  line-height: 1.1;
+}
+
+.swiper-slide .text {
+  padding: 0.5rem;
+  margin-top: 10px;
+  
+  max-width: 400px;
+  line-height: 1.5;
+}
+.fk_0x0c7cd79e {
+  visibility: hidden;
+}

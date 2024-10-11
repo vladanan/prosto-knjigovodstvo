@@ -1,0 +1,59 @@
+package site
+
+import (
+  "net/http"
+  "github.com/vladanan/prosto/src/views"
+  "fmt"
+  "log"
+	"github.com/vladanan/prosto/src/views/cp"
+	"github.com/vladanan/prosto/src/models"
+	"github.com/vladanan/prosto/src/controllers/i18n"
+	
+)
+
+func signedin(r *http.Request) string {
+  key := i18n.SessionKey("session")
+	session, err := i18n.GetSessionFromContext(r.Context(), key)
+	if err != nil {
+		// http.Error(w, err.Error(), http.StatusInternalServerError)
+		// return
+		log.Println("dokumentacija: Error on get store:", err)
+	}
+
+  auth := session.Values["authenticated"]
+	
+	return fmt.Sprint(auth)
+}
+
+func getMail(r *http.Request) string {
+  key := i18n.SessionKey("session")
+	session, err := i18n.GetSessionFromContext(r.Context(), key)
+	if err != nil {
+		// http.Error(w, err.Error(), http.StatusInternalServerError)
+		// return
+		log.Println("dokumentacija: Error on get store:", err)
+	}
+
+  email := session.Values["user_email"]
+	
+	return fmt.Sprint(email)
+}
+
+templ Pausal(r *http.Request) {
+  @views.Layout(r) {
+    if signedin(r) == "true" && getMail(r) != "y.emailbox-proba@yahoo.com" {
+        <div class="m-5 text-sm">
+          <p class="text-lg font-bold">Formulari za pausal su u izradi....</p>
+          <br>
+          <p class="text-blue-700">Izrada fakture</p>
+          <p class="text-blue-700">Pregled KPO</p>
+          <p class="text-blue-700">Zurnal</p>
+          <p class="text-green-700">Parametri testa samostalnosti</p>
+          <p class="text-blue-700">Podešavanje obavestenja</p>
+          <p class="text-violet-700"><a href="/dashboard" >Podešavanja korisničkog naloga</a></p>
+        </div>
+    } else {
+      @cp.Sign_in(r, models.SignInFormData{}, "")
+     }
+  }
+}

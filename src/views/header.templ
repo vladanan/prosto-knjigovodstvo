@@ -1,0 +1,108 @@
+package views
+
+import (
+  "net/http"
+  "strings"
+	"log"
+	"github.com/vladanan/prosto/src/controllers/i18n"
+	
+)
+
+var key = i18n.SessionKey("session")
+
+func getLang(r *http.Request) []string {
+	// session, err := store.Get(r, "vezbamo.onrender.com-users")
+	session, err := i18n.GetSessionFromContext(r.Context(), key)
+	if err != nil {
+		// http.Error(w, err.Error(), http.StatusInternalServerError)
+		// return
+		log.Println("header: getLang: Error on get session:", err)
+	}
+	langMap := session.Values["language"]
+	accept := r.Header.Get("Accept-Language")
+	language := ""
+	
+	if langMap != nil {
+		language = langMap.(string)
+	}
+	if language == "" {
+		language = strings.Split(accept, ",")[0]
+	}
+	// var languageNames = map[string]string {
+	// 	"ar": "Arabic    - العربية: ar",
+	// 	"zh": "Chinese - 中文 (汉语): zh",
+	// 	"en": "English  : en",
+	// 	"sh": "Exyu      &nbsp;srpskohrvatski: sh",
+	// 	"fr": "French   - français: fr",
+	// 	"de": "German - Deutch: de",
+	// 	"hi": "Hindi      - हिन्दी: hi",
+	// 	"it": "Italian    ;- italiano: it",
+	// 	"ru": "Russian  - русский: ru",
+	// 	"sr": "Serbian  - српски: sr",
+	// 	"es": "Spanish  - español: es",
+	// }
+	// fmt.Println("lang:", language, "accept:", accept, "0:", strings.Split(accept, ",")[0])
+	// return []string{language, languageNames[language]}
+
+	return []string{language, language}
+}
+
+var f i18n.F
+var t = f.T // sluzi za lokalnu upotrebu za views paket
+var T = f.T // sluzi za import za ostale pakete
+func initt(r *http.Request) string {
+	f.R = r
+	return ""
+}
+
+templ Header(r *http.Request) {
+	<p>{initt(r)}</p> 
+	<div class="relative top-0 left-2 w-6">
+		<a href="/" class="">
+			<img
+				src="static/site/prosto.png"
+				height="25"
+				width="25"
+				alt="Vezbamo"
+			/>
+		</a>
+	</div> 
+	<a href="/" class="absolute top-1 left-10 text-sm">{t("Home")}</a>
+	
+	<div class="absolute top-0 right-2">
+		<select onchange="sendLang(event)" name="lang" id="lang" class="dark:bg-black dark:border dark:border-slate-300 dark:px-1 w-12 text-sm ">
+			<option class="font-bold " value={getLang(r)[0]}>{getLang(r)[1]}</option>
+			<option value="en">en &nbsp;- English</option>
+			<option value="sh">sh &nbsp;&nbsp;- Srpskohrvatski - Ex-yu</option>
+			<option disabled value="ar">ar &nbsp;- Arabic - العربية</option>
+			<option disabled value="zh">zh &nbsp;- Chinese - 中文 (汉语)</option>
+			<option disabled value="fr">fr &nbsp;- French - français</option>
+			<option disabled value="de">de &nbsp;- German - Deutch</option>
+			<option disabled value="hi">hi &nbsp;- Hindi - हिन्दी</option>
+			<option disabled value="it">it &nbsp;- Italian - italiano</option>
+			<option disabled value="ru">ru &nbsp;- Russian - русский</option>
+			<option disabled value="sr">sr &nbsp;- Serbian - српски</option>
+			<option disabled value="es">es &nbsp;- Spanish - español</option>
+		</select>
+
+		if session, err := i18n.GetSessionFromContext(r.Context(), key); err == nil {
+			if auth, _ := session.Values["authenticated"].(bool); !auth {
+				<button class="text-sm ml-1 px-1" type="button">
+					<a href="/sign_in">{t("Sign_in")}</a>
+				</button>
+				<button class="text-sm ml-1 px-1" type="button">
+					<a href="/sign_up">{t("Sign_up_b")}</a>
+				</button>
+			} else {
+				<button class="text-sm ml-1 px-1" type="button">
+					<a href="/sign_out">{t("Sign_out")}</a>
+				</button>
+				<button class="text-sm ml-1 px-1 dark:text-black bg-gradient-to-r from-blue-400 to-blue-200 rounded-sm" type="button">
+					<a href="/dashboard">&#64;</a>
+				</button>
+			}
+		}
+
+	</div>
+	
+}

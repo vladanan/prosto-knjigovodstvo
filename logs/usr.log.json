@@ -1,0 +1,12 @@
+[
+	{
+		"Date":"2024/10/10","Time":"11:25:32","File":"front.go:668:",
+		"Error":"API erorr: 406, Email_or_password_wrong",
+		"Path":"/at"
+	},
+	{
+		"Date":"2024/10/09","Time":"20:59:56","File":"front.go:1268:",
+		"Error":"web: cm",
+		"Path":"/a"
+	}
+]

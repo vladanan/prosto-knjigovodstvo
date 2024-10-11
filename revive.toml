@@ -1,0 +1,12 @@
+
+ignoreGeneratedHeader = false
+severity = "warning"
+confidence = 0.8
+errorCode = 0
+warningCode = 0
+
+# Enable all available rules
+enableAllRules = true
+
+[rule.line-length-limit]
+    Disabled = true

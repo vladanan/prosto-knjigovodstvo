@@ -1,0 +1,154 @@
+Home = "Početna"
+Demo = "Probni nalog"
+
+Sign_in = "Prijava"
+Sign_out = "Odjava"
+Sign_up_link = "Nemate nalog na našem sajtu? Registracija je besplatna i brza uz dodatne pogodnosti."
+
+Sign_up_title = "Izrada novog naloga"
+Email1 = "Mejl *"
+Email2 = "Potvrdite mejl *"
+User_name = "Korisničko ime *"
+Password0 = "Stara lozinka *"
+Password1 = "Lozinka *"
+Password2 = "Potvrdite lozinku *"
+Pin = "Verifikacioni broj *"
+Confirm_data_entered = "Potvrdite unete podatke: *"
+Sign_up_b = "Novi nalog"
+Already_registered = "Već imate nalog?"
+
+Welcome = "Prijavljeni ste na sistem."
+UnWelcome = "Niste prijavljeni na sistem. Prijavite se vašim mejlom i lozinkom."
+Demo_notice = "Ovo je probni nalog na sajtu i u ovom režimu možete da proučavate neke funkcionalnosti sajta u ograničenom režimu. Za pun režim je potrebno da obavite besplatnu registraciju."
+
+Internal_server_error = "Greška na serveru, pokušajte kasnije ili kontaktirajte tehničku podršku."
+Internal_server_error_1 = "Greška na serveru, pokušajte kasnije ili kontaktirajte tehničku podršku."
+Internal_server_error_2 = "Greška na serveru, pokušajte kasnije ili kontaktirajte tehničku podršku."
+Insert-update-delete_operation_failed = "Komanda za ubacivanje, izmenu ili brisanje podataka nije uspela, pokušajte kasnije ili kontaktirajte tehničku podršku."
+
+Email_not_same = "Email adresa nije dvostruko potvrđena."
+Password_not_same = "Lozinka nije dvostruko potvrđena."
+Form_error = "Neka polja nisu popunjena ili su neispravna."
+Session_expired = "Vreme za unos podataka je isteklo. Vratite se na prethodnu stranu i probajte ponovo."
+Malformed_user_name = "Unešeno korisničko ime je neispravno. Potrebno je da bude ne kraće od 8 slova i ne duže od 32, može da sadrži slova engleske abecede, brojeve i znakove: @.-_"
+Malformed_password = "Unešena lozinka je neispravna. Potrebno je da bude ne kraća od 8 slova i ne duža od 32, može da sadrži slova engleske abecede, brojeve i znakove: @.-_"
+Path_elements_missing = "Neki delovi api poziva nedostaju."
+Malformed_data_type = "Unešeno ime za vrstu podataka je netačno."
+Malformed_field_name = "Unešeno ime polja je neispravno."
+Malformed_id = "Unešen id je neispravan."
+Malformed_email_address = "Unešena mail adresa je neispravna. Potrebno je da bude ne kraća od 8 slova i ne duža od 32, može da sadrži slova engleske abecede, brojeve i znakove: @.-_"
+
+"" = ""
+Email_already_exists = "Već postoji korisnik sa odabranim mejlom."
+User_name_already_exists = "Već postoji korisnik sa odabranim imenom."
+
+Too_many_attempts = "Previše uzastopnih pokušaja. Probajte kasnije."
+Verify_email_not_sent = "Vaš nalog je kreiran ali mejl poruka za verifikaciju naloga nije poslata. Kontaktirajte tehničku podršku."
+# Tačka ide nakon uzvika zbog funkcije koja poruku deli na rečenice po '. ' i dodaje tačke na kraju osim ako rečenica sadrži uzvičnik
+User_registered = "Čestitamo!. Uspešno ste se registrovali na sajt. Proverite inbox svog mejla za link. Kada otvorite mejl kliknite na link za verifikaciju mejla i naloga."
+Email_not_verified = "Vaš mejl i nalog nisu verfikovani. Proverite mejl za poruku sa linkom za verifikaciju ili kontaktirajte tehničku podršku."
+
+Email_or_password_wrong = "Nema korisnika sa tim mejlom ili lozinkom!"
+Wrong_password = "Pogrešna lozinka."
+Sign_in_open = "Moguće je ponovo pokušati prijavu na sajt."
+
+Email_link_not_verified = "Mejl nije verifikovan. Proverite link iz mejla ili kontaktirajte tehničku podršku."
+Mail_verified = "Mejl je verifikovan! Možete da se prijavite na sistem sa vašom mejl adresom i lozinkom."
+
+Forgotten_password_text = "Zaboravili ste lozinku?" 
+Forgotten_password = "Zahtev za novu lozinku"
+Fp_verify_sent = "Na mejl vam je poslat link za verifikaciju zahteva za novu lozinku. Klikom na njega dobicete novu mejl poruku sa novom lozinkom."
+Bad_verify_link = "Link vašeg zahteva je vremenski istekao ili nije ispravan. Molimo probajte ponovo." 
+Fp_ok = "Zahtev za izdavanje nove lozinke je prihvacen od sistema! Dobićete novi mejl sa novom lozinkom kojom možete da se prijavite na vaš nalog. Novu lozinku je preporučljivo da što pre promenite na neku koja vam je lakša za pamćenje i korišćenje."
+
+Delete_user = "Brisanje naloga"
+DU_verify_sent = "Na imejl vam je poslat link za verifikaciju zahteva za brisanje vašeg naloga. Klikom na njega izbrisačete vaš nalog na ovom sajtu."
+DU_ok = "Vaš nalog na ovom sajtu je uspešno izbrisan. Potvrda će vam stići i na imejl."
+
+Change_email = "Promena imejla"
+Change_email_notice1 = "Upišite NOVU IMEJL ADRESU dva puta."
+Change_email_notice2 = "Na vaš stari imejl će vam stići poruka sa linkom za potvrdu. Nakon provere autentičnosti mejl će vam biti promenjen i na novi imejl ćete dobiti potvrdu. Nakon toga možete za prijavu na sajt da koristite novi imejl sa starom lozinkom."
+NewEmail1 = "NOVI imejl *"
+NewEmail2 = "Potvrdite NOVI imejl *"
+CM_verify_sent = "Na imejl vam je poslat link za verifikaciju zahteva za promenu vašeg imejla. Klikom na njega odobrićete promenu imejla na ovom sajtu."
+CM_ok = "Vaš imejl je promenjen. Proverite vaš novi mejl i klikite na verifikacioni link."
+
+Change_name = "Promena korisnickog imena"
+Change_name_notice1 = "U polje za korisničko ime upišite vaše NOVO KORISNIČKO IME."
+CN_verify_sent = "Na imejl vam je poslat link za verifikaciju zahteva za promenu vašeg korisničkog imena. Klikom na njega odobrićete promenu imena na ovom sajtu."
+CN_ok = "Vaše korisničko ime je promenjeno."
+
+Change_password = "Promena lozinke"
+CP_verify_sent = "Na imejl vam je poslat link za verifikaciju zahteva za promenu vaše lozinke. Klikom na njega odobrićete promenu lozinke na ovom sajtu."
+CP_ok = "Vaša lozinka je promenjena."
+
+# EMAILS
+Header_hello = "Zdravo"
+Footer = "Ako smatrate da ste dobili ovaj mejl greškom možete da ga ignorišete ili ako želite prijavite nam dobijanje ovog mejla na našu mail adresu: y.emailbox-vezbamo@yahoo.com ."
+
+Verify_mail_link = "Za verifikaciju email adrese za svoj nalog prekopirajte ovaj link u svoj brovser:"
+Button_note = "ili kliknite na donje dugme."
+Verify_button_text = "Verifikacija emaila"
+
+Forgotten_password_link = "Za verifikaciju vašeg zahteva za novu lozinku za svoj nalog prekopirajte ovaj link u svoj browser"
+Link_time_limit = "Linkovi u ovom mejlu su važeći nekoliko narednih minuta."
+FP_verify_button_text = "Nova lozinka"
+FP_verify_note = "Nakon što se obavi provera ovog zahteva dobićete novi mejl sa novom lozinkom kojom možete da se prijavite na vaš nalog. Novu lozinku je preporučljivo promeniti na neku koja vam je lakša za pamćenje i korišćenje."
+FP_new = "Vaša nova lozinka je:"
+FP_new_link = "Kako bi se prijavili na svoj nalog upisivanjem svog mejla i nove lozinke mozete da se vratite na naš sajt"
+FP_new_button_text = "Prijava na sajt"
+FP_new_note = "Novu lozinku je preporučljivo promeniti na neku koja vam je lakša za pamćenje i korišćenje."
+
+Delete_user_link = "Za verifikaciju vašeg zahteva za brisanje svog naloga na sajtu Vezbamo prekopirajte ovaj link u svoj browser"
+Deleted_user = "Vaš nalog na sajtu Vezbamo je uspesno izbrisan!"
+
+Change_email_1 = "Podneli ste zahtev za promenu imejl adrese sa:"
+Change_email_2 = "na:"
+Change_email_3 = " . Ako želite da se izvrši ova promena prekopirajte ovaj link u svoj brovser:"
+Changed_email = "Vaš imejl je promenjen. Proverite vaš novi mejl i klikite na verifikacioni link."
+
+Change_name_1 = "Podneli ste zahtev za promenu korisničkog imena sa:"
+Change_name_2 = "na:"
+Change_name_3 = ". Ako želite da se izvrši ova promena prekopirajte ovaj link u svoj brovser:"
+
+Change_password_link = "Podneli ste zahtev za promenu lozinke na vašem nalogu. Ako želite da se izvrši ova promena prekopirajte ovaj link u svoj brovser:"
+
+# USER
+Udata = "podatak"
+Ustatus = "status"
+Uaction = "akcija"
+Registered_at = "registracija:"
+Delete_account = "brisanje naloga"
+Uemail = "imejl:"
+Uchange = "izmena"
+Uname = "ime:"
+Upass = "lozinka:"
+Utype = "tip (basic, js, c):"
+Ulevel = "nivo:"
+
+
+
+Index_UP_title = "Korisnička strana"
+Index_UP_subtitle = "Poruke, kontakt, često postavljana pitanja"
+Index_UP_text = "Ovde možete da pošaljete poruku uredniku sajta, email ili pregledate često postavljana pitanja"
+
+
+Index_L_title = "Linkovi"
+Index_L_subtitle = "Navigacija za sajt"
+Index_L_text7 = "Istorija i detalji o projektima"
+Index_L_text8 = "Politika privatnosti"
+Index_L_text9 = "Pravila sajta"
+
+
+
+[MyUnreadEmails]
+description = "The number of unread emails I have"
+hash = "sha1-6a65d17f53981a3657db1897630e9cb069053ea8"
+one = "Tengo {{.PluralCount}} correo electrónico sin leer"
+other = "Tengo {{.PluralCount}} correos electrónicos no leídos"
+
+[PersonUnreadEmails]
+description = "The number of unread emails a person has"
+hash = "sha1-3a672fa89c5c8564bb233c907638004983792464"
+one = "{{.Name}} tiene {{.UnreadEmailCount}} correo electrónico no leído"
+other = "{{.Name}} tiene {{.UnreadEmailCount}} correos electrónicos no leídos"

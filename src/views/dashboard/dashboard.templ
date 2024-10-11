@@ -1,0 +1,55 @@
+package dashboard
+
+import (
+  "net/http"
+  "github.com/vladanan/prosto/src/views"
+  "fmt"
+  "github.com/vladanan/prosto/src/models"
+	"github.com/vladanan/prosto/src/controllers/i18n"
+
+  "log"
+)
+
+var t = views.T
+
+func signedin(r *http.Request) string {
+  key := i18n.SessionKey("session")
+	session, err := i18n.GetSessionFromContext(r.Context(), key)
+	if err != nil {
+		// http.Error(w, err.Error(), http.StatusInternalServerError)
+		// return
+		log.Println("dashboard: signedin: Error on get sesion:", err)
+	}
+
+  auth := session.Values["authenticated"]
+	
+	return fmt.Sprint(auth)
+}
+
+templ Dashboard(r *http.Request, user models.User) {
+
+  @views.Layout(r) {
+
+    if signedin(r) == "true" {
+
+      if user.Mode == "user" || user.Mode == "mod" || user.Mode == "admin" {
+        @User(r, user)
+      }
+      
+      if user.Mode == "mod" || user.Mode == "admin" {
+        @Moderator(r, user)
+      }
+
+      if user.Mode == "admin" {          
+        @Admin(r, user)
+      }
+
+
+    } else {
+
+      <p class="m-5 text-xl text-red-300">{t("UnWelcome")}</p>
+
+    }
+    
+  }
+}

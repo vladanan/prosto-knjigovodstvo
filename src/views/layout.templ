@@ -1,0 +1,63 @@
+package views
+
+import (
+	"net/http"
+  "os"
+ 	"github.com/vladanan/prosto/src/controllers/i18n"
+  "log"
+  "fmt"
+)
+
+func GetEnvProd() string {
+  if os.Getenv("PRODUCTION") == "FALSE" {
+    return "false"
+  } else {
+    return "true"
+  }
+}
+
+
+func GetUserMode(r *http.Request) string {
+  key := i18n.SessionKey("session")
+	session, err := i18n.GetSessionFromContext(r.Context(), key)
+	if err != nil {
+		// http.Error(w, err.Error(), http.StatusInternalServerError)
+		// return
+		log.Println("layout: Error on get sesion:", err)
+	}
+  mode := session.Values["mode"]
+	return fmt.Sprint(mode)
+}
+
+templ Layout(r *http.Request) {
+  <!DOCTYPE html>
+	<html lang="en-US">
+    <head>
+      <meta charset="UTF-8"></meta>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+			<!-- <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" /> --> 
+			<link rel="icon" href="static/site/prosto.png" />
+			<title>Vezbamo</title>
+			<link rel="stylesheet" href="static/output.css"></link>
+			<link rel="stylesheet" href="static/swiper-bundle.ext.css" />
+			<script src="static/swiper-bundle.ext.js"></script>			
+    </head>
+    <body id="body" class="relative m-auto max-w-7xl top-2 h-screen dark:bg-black dark:text-white">
+
+			<div id="heading" class="relative h-auto">
+        @Header(r)
+			</div>
+
+      <div id="wrapper" class="relative h-auto">
+        { children... }
+      </div>
+
+      <div id="footer" class="relative h-auto">
+        @Footer(GetEnvProd())
+      </div>
+
+    </body>
+		
+  </html>
+
+}

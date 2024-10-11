@@ -1,0 +1,152 @@
+Home = "Home"
+Demo = "Demo account"
+
+Sign_in = "Sign in"
+Sign_out = "Sign out"
+Sign_up_link = "Don't have an account on our site? Registration is free and fast with additional benefits."
+
+Sign_up_title = "Sign up"
+Email1 = "Email *"
+Email2 = "Confirm email *"
+User_name = "User name *"
+Password0 = "Old password *"
+Password1 = "Password *"
+Password2 = "Confirm password *"
+Pin = "Verification number *"
+Confirm_data_entered = "Confirm the entered data: *"
+Sign_up_b = "Sign up"
+Already_registered = "Already have an account?"
+
+Welcome = "You are signed in."
+UnWelcome = "You are not logged in to the system. Sign in with your email and password."
+Demo_notice = "This is a trial account on the site and in this mode you can study some functionalities of the site in a limited mode. For full mode, you need to register for free."
+
+Internal_server_error = "Internal server error, try again later or contact site support."
+Internal_server_error_1 = "Internal server error, try again later or contact site support."
+Internal_server_error_2 = "Internal server error, try again later or contact site support."
+Insert-update-delete_operation_failed = "The command to insert, modify or delete data failed, please try again later or contact technical support."
+
+Email_not_same = "Email not double confirmed."
+Password_not_same = "Password not double confirmed."
+Form_error = "Some fields are not filled in or are incorrect."
+Session_expired = "The time for data entry has expired. Return to the previous page and try again."
+Malformed_user_name = "The username entered is incorrect. It must be no shorter than 8 letters and no longer than 32, it can contain letters of the alphabet, numbers and characters: @.-_"
+Malformed_password = "The password entered is incorrect. It must be no shorter than 8 letters and no longer than 32, it can contain letters of the alphabet, numbers and characters: @.-_"
+Path_elements_missing = "Some of the api path elements are missing."
+Malformed_data_type = "The name entered for the data type is incorrect."
+Malformed_field_name = "The entered field name is malformed."
+Malformed_id = "The entered id is invalid."
+Malformed_email_address = "The email address entered is incorrect. It must be no shorter than 8 letters and no longer than 32, it can contain letters of the alphabet, numbers and characters: @.-_"
+
+"" = ""
+Email_already_exists = "There is already a user with the selected email."
+User_name_already_exists = "There is already a user with the selected name."
+
+Too_many_attempts = "Too many consecutive attempts. Try later."
+Verify_email_not_sent = "Your account has been created, but the account verification email has not been sent. Contact technical support."
+User_registered = "Congratulations!. You have successfully registered on the site. Check your email inbox for a link. When email is opened click on link to verify your email and account."
+Email_not_verified = "Your mail and account are not verified. Check your email for a message with a verification link or contact technical support."
+
+Email_or_password_wrong = "No user with such email or password!"
+Wrong_password = "Wrong password."
+Sign_in_open = "It is possible to try logging in to the site again."
+
+Email_link_not_verified = "Email not verified. Check the link in the email or contact technical support."
+Mail_verified = "Email has been verified! You can log in to the system with your email address and password."
+
+Forgotten_password_text = "Forgot password? "
+Forgotten_password = "Get new password"
+Fp_verify_sent = "A link to verify the request for a new password has been sent to your email. By clicking on it, you will receive a new email message with a new password."
+Bad_verify_link = "The request link has expired or is incorrect. Please try again."
+Fp_ok = "The request to issue a new password has been accepted by the system! You will receive a new email with a new password that you can use to log in to your account. It is recommended that you change the new password as soon as possible to one that is easier for you to remember and use."
+
+Delete_user = "Delete account"
+DU_verify_sent = "A link to verify the request to delete your account has been sent to your email. By clicking on it, you will delete your account on this site."
+DU_ok = "Your account on this site has been successfully deleted. A confirmation will also be sent to your email."
+
+Change_email = "Change email"
+Change_email_notice1 = "Type THE NEW EMAIL ADDRESS twice."
+Change_email_notice2 = "A message with a confirmation link will be sent to your old email. After verifying the authenticity, your email will be changed and you will receive a confirmation on the new email. After that, you can use a new email with the old password to log in to the site."
+NewEmail1 = "NEW email *"
+NewEmail2 = "Confirm NEW email *"
+CM_verify_sent = "A link to verify your email change request has been sent to your email. By clicking on it, you will approve the change of email on this site."
+CM_ok = "Your email has been changed. Check your new email and click on the verification link."
+
+Change_name = "User name change"
+Change_name_notice1 = "In the username field type your NEW USERNAME."
+CN_verify_sent = "A link to verify your username change request has been sent to your email. By clicking on it, you will approve the name change on this site."
+CN_ok = "You user name has been changed."
+
+Change_password = "Change password"
+CP_verify_sent = "A link to verify your password change request has been sent to your email. By clicking on it, you will approve the password change on this site."
+CP_ok = "Your password has been changed."
+
+# EMAILS
+Header_hello = "Hello"
+Footer = "If you believe that you received this email by mistake, you can ignore it or if you want to report receiving this email to our email address: y.emailbox-vezbamo@yahoo.com."
+
+Verify_mail_link = "To verify the email address for your account, copy this link into your browser:"
+Button_note = "or click the button below."
+Verify_button_text = "Email Verification"
+
+Forgotten_password_link = "To verify your request for a new password for your account, copy this link into your browser"
+Link_time_limit = "The links in this email are valid for the next few minutes."
+FP_verify_button_text = "New Password"
+FP_verify_note = "After this request is verified, you will receive a new email with a new password that you can use to log in to your account. It is recommended to change the new password to one that is easier for you to remember and use."
+FP_new = "Your new password is:"
+FP_new_link = "In order to log in to your account, you can return to our site by entering your email and new password"
+FP_new_button_text = "Login to the site"
+FP_new_note = "It is recommended to change the new password to one that is easier for you to remember and use."
+
+Delete_user_link = "To verify your request to delete your account on the Vezbamo website, copy this link into your browser"
+Deleted_user = "Your account on the Vezbamo site has been successfully deleted!"
+
+Change_email_1 = "You have requested to change your email address from:"
+Change_email_2 = "to:"
+Change_email_3 = " . If you want this change to be made copy this link into your browser:"
+Changed_email = "Your email has been changed. Check your new email and click on the verification link."
+
+Change_name_1 = "You have submitted a request to change your username from:"
+Change_name_2 = "to:"
+Change_name_3 = ". If you want this change to be made, copy this link into your browser:"
+
+Change_password_link = "You have submitted a request to change the password on your account. If you want this change to be made, copy this link into your browser:"
+
+# USER
+Udata = "datum"
+Ustatus = "status"
+Uaction = "action"
+Registered_at = "registration:"
+Delete_account = "delete account"
+Uemail = "email:"
+Uchange = "change"
+Uname = "name:"
+Upass = "password:"
+Utype = "type (basic, js, c):"
+Ulevel = "level:"
+
+
+Index_UP_title = "User portal"
+Index_UP_subtitle = "Messages, contact, FAQ"
+Index_UP_text = "Here you can send a message to the site editor, email or view frequently asked questions"
+
+
+Index_L_title = "Links"
+Index_L_subtitle = "Navigate through the site"
+Index_L_text7 = "Projects about and history"
+Index_L_text8 = "Privacy Policy"
+Index_L_text9 = "Terms of Use"
+
+
+
+
+
+[MyUnreadEmails]
+description = "The number of unread emails I have"
+one = "I have {{.PluralCount}} unread email."
+other = "I have {{.PluralCount}} unread emails."
+
+[PersonUnreadEmails]
+description = "The number of unread emails a person has"
+one = "{{.Name}} has {{.UnreadEmailCount}} unread email."
+other = "{{.Name}} has {{.UnreadEmailCount}} unread emails."

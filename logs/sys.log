@@ -1,0 +1,2 @@
+2024/10/10 11:25:00 v_db_crud.go:170:  ERROR: syntax error at or near "FROM777" (SQLSTATE 42601)  /t
+2024/10/09 20:53:50 i18n.go:89:  message "Password0" not found in language "sr-Latn"  /auth/change_password

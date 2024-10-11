@@ -1,0 +1,6 @@
+.env
+tmp/build-errors.log
+utils_dev/ex
+utils_dev/node_modules
+utils_dev/package-lock.json
+*_templ.txt

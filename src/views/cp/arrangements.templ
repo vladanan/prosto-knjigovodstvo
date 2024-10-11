@@ -1,0 +1,128 @@
+package cp
+
+// - vezbanje na kvadratima učenje absolute, relative itd.
+// static (default)= pozicija po redu kako su naređani html elementi, offseti se ne računaju ni za taj element a ni za decu
+// relative = offseti u odnosu na static poziciju tog elementa a deca u odnosu na njega
+// absolute = u odnosu na prvog roditelja koji nije static
+// fixed = pozicija u odnosu na prozor browsera šta god da je definisano za body itd.
+// skicky = komplikovano
+
+templ Arrangements() {
+  <!DOCTYPE html>
+	<html lang="en-US">
+    <head>
+      <meta charset="UTF-8"></meta>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+      <link href="static/output.css" rel="stylesheet"></link>
+      <title>Komponente</title>
+    </head>
+    <body class="relative max-w-md bg-gradient-to-br from-sky-300 to-gray-500">
+
+
+    <div class="relative left-10 w-96 h-60 bg-slate-500">
+
+      <a href="/" class="absolute bottom-7 right-7 w-28 bg-red-500">
+      <img class="static top-4 left-5" src="static/site/prosto.png" height="25" width="25" />
+      imageeeeeee4
+      </a>
+
+      <div class="static w-40 h-20 bg-blue-500">
+        blue parent
+        <div class="static w-30 h-10 bg-green-300">
+        green child</div>
+      </div>
+
+      <div class="absolute left-10 top-10 w-20 h-10 bg-green-900">
+        green parent too long for boxxxxx
+      </div>
+
+      <div class="fixed right-0 top-0 w-20 h-20 bg-green-500">
+        greeeeeen
+      </div>
+
+    </div>
+      
+
+    <div class="static top-10 right-9 w-md h-60 bg-lime-300">
+
+      <a href="/" class="static top-32 w-28 left-4 bg-red-500">
+      <img class="static top-4" src="static/site/prosto.png" height="25" width="25" />imaggggg</a>
+
+      <div class="static w-40 h-20 bg-blue-500">
+        rel blue parent
+        <div class="static w-30 h-10 bg-green-300">
+        rel green child</div>
+      </div>
+
+      <div class="static left-32 top-36 w-20 h-10 bg-green-900">
+        green parent too long going out
+      </div>
+
+    </div>
+      
+      
+    <!--
+
+    
+
+    -->
+ 
+    <!--    react tailwind css     -->
+
+    <div class="text-black text-xs ">
+
+      <p class="text-2xl mt-5 ml-2">1 react css mess</p>
+      <div class="mx-2 p-2 text-black max-w-sm border-2 border-sky-700 rounded-md bg-gradient-to-r from-blue-50 to-transparent">2</div>
+      <label class="relative p-1 border-2 border-black rounded-md bg-sky-400">3</label>
+      <label class="relative p-1 border-2 border-black rounded-md bg-gray-400">4</label>
+      <input class="relative ml-2 mt-2" />5
+      <label class="relative p-1 border-2 border-black rounded-md bg-gradient-to-br from-red-500 via-yellow-100 to-green-300">6</label>
+      <label class="relative p-1 border-2 border-black rounded-md bg-gray-400">7</label>
+      <input class="relative ml-2 mt-5" />8
+      <button class="ml-10 my-2 relative border-2 border-gray-500 rounded-md p-1 bg-lime-50 hover:bg-lime-200" >9</button>
+      <button class="ml-8 my-2 relative border-2 border-gray-500 rounded-md p-1 bg-blue-300 hover:bg-blue-400">10</button>
+      <button class="ml-10 my-2 relative border-2 border-gray-500 rounded-md p-1 bg-lime-50 hover:bg-lime-200" >11</button>
+      <button class="ml-8 my-2 relative border-2 border-gray-500 rounded-md p-1 bg-blue-300 hover:bg-blue-400">12</button>
+      // o2.jsx
+      <label class="text-2xl ml-2">13</label>
+        <input class="text-2xl w-16  bg-lime-300 px-1 border border-lime-700 rounded-md" />14
+        <span class="text-2xl ml-2 font-bold text-green-700 ">15</span>
+      <div class="p-1 border border-black rounded-md bg-gradient-to-t from-lime-100 via-white to-white shadow-xl">16</div>
+      <div class="p-1 h-fit border border-t-0 border-black rounded-md bg-lime-50 shadow-xl">17</div>
+      <label class="relative p-1 border-2 border-black rounded-md bg-gradient-to-r from-sky-400 via-lime-400 to-transparent">18</label>
+      <label class="relative p-1 border-2 border-black rounded-md bg-gray-400">19</label>
+      <label class="relative p-1 border-2 border-black rounded-md bg-gradient-to-br from-red-500 via-yellow-100 to-green-300">20</label>
+      <label class="relative p-1 border-2 border-black rounded-md bg-gray-400">21</label>
+      <label class="relative p-1 border-2 border-black rounded-md bg-gradient-to-r from-sky-400 via-lime-400 to-transparent">22</label>
+      <label class="relative p-1 border-2 border-black rounded-md bg-gray-400">23</label>
+      <button class="ml-10 my-2 relative border-2 border-gray-500 rounded-md p-1 bg-lime-50 hover:bg-lime-200">24</button>
+      <button class="ml-8 my-2 relative border-2 border-gray-500 rounded-md p-1 bg-blue-300 hover:bg-blue-400">25</button>
+      <div class='mt-6 grid grid-rows-6 gap-1'>26
+        <p class="p-1 border-2 border-black rounded-md bg-lime-100 hover:bg-violet-100">27</p>
+        <div class='grid grid-cols-10 gap-0'>28
+          <label class="w-6 text-center border-x border-t-2 border-black rounded-md bg-lime-300 hover:bg-violet-200">29</label>
+          <label class="w-6 text-center border-x border-t-2 border-black rounded-md bg-lime-100 hover:bg-violet-200">30</label>
+        </div>
+      </div>
+      <div class='ml-1 grid grid-cols-10 gap-1'>31
+        <input class="w-fit"/>32
+      </div>
+      <p class="p-1 border-2 border-black rounded-md bg-sky-100 hover:bg-violet-100">33</p>
+      <div class='grid grid-cols-10 gap-0'>34
+        <label class="w-6 text-center border-x border-t-2 border-black rounded-md bg-sky-300 hover:bg-violet-200">35</label>
+        <label class="w-6 text-center border-x border-t-2 border-black rounded-md bg-sky-100 hover:bg-violet-200">36</label>
+      </div>
+      <div class='ml-1 grid grid-cols-10 gap-1'>37</div>
+      // s1.jsx
+      // <td key={i} class="border border-black p-2">{c[i]}</td>
+      <p class="border border-black p-2">38</p>
+      <div class="mx-2 p-2 text-black max-w-sm border-2 border-sky-700 rounded-md bg-gradient-to-r from-blue-50 to-transparent">39
+        <p class="relative mt-2 p-1 border-2 border-black rounded-md bg-sky-400">40</p>
+        <button class="ml-8 my-2 relative border-2 border-gray-500 rounded-md p-1 bg-blue-300 hover:bg-blue-400">41</button>
+      </div>
+    </div>
+
+    </body>
+		
+  </html>
+}

@@ -1,0 +1,13 @@
+package dashboard
+
+import (
+  "net/http"
+  "github.com/vladanan/prosto/src/models"
+  //"fmt"
+)
+
+templ Moderator(r *http.Request, user models.User) {
+    
+  <p class="m-5 text-sm text-blue-500">{t("Welcome")} :: MODERATOR: {user.User_name}</p>
+
+}

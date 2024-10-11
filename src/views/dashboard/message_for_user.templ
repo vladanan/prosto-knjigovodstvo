@@ -1,0 +1,15 @@
+package dashboard
+
+import (
+  "net/http"
+  "github.com/vladanan/prosto/src/views"
+
+)
+
+templ MessageForUser(r *http.Request, msg string) {
+  @views.Layout(r) {
+    <p class="m-5 text-xl ">{t(msg)}</p>
+    // <p class="m-5 text-xl text-red-600">server message: {msg}</p>
+    <br></br><br></br><br></br><br></br><br></br><br></br>
+  }
+}

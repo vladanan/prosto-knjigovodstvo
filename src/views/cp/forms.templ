@@ -1,0 +1,235 @@
+package cp
+
+import (
+  "net/http"
+  "github.com/vladanan/prosto/src/views"
+	"strings"
+	"github.com/vladanan/prosto/src/models"
+	"github.com/vladanan/prosto/src/controllers/utils"
+)
+
+var t = views.T
+
+func ckErr(errorMsg string) string {
+  if errorMsg == "" {
+    return ""
+  } else {
+    return t(errorMsg)
+  }
+}
+
+func getHtmxUrl(key string) string {
+  htmxUrl := "/auth/confirm/"+key
+  return htmxUrl
+}
+
+// class="border border-black mt-1 mb-2 text-black text-sm pl-1 w-96
+
+func hasError(e, i string) bool {
+  if strings.Contains(e, i) {
+    return true
+  } else {
+    return false
+  }
+}
+
+// w-[290]
+templ Sign_up(r *http.Request, f models.SignUpFormData, errMessage string) {
+  @AuthForm() {
+    <form id="sign_up_form"
+      hx-post="/auth/sign_up_post"
+      hx-trigger="submit"
+      hx-target="#sign_up_form"
+      hx-swap="outerHTML"
+    >
+      <br>
+      @FormTitle(t("Sign_up_title"))
+      @Email1(t("Email1"), f.User_email1, errMessage)
+      @Email2(t("Email2"), f.User_email2, errMessage)
+      @UserName(t("User_name"), f.Name, errMessage)
+      @Password1(t("Password1"), f.Password1, errMessage)
+      @Password2(t("Password2"), f.Password2, errMessage)
+      @Confirm(t("Confirm_data_entered"))
+      @SubmitGroup(t("Sign_up_b"))
+      @ErrorsHidden(ckErr(errMessage))
+      @P(t("Already_registered")) {<a class="underline" href="/sign_in">{t("Sign_in")}</a>}
+      // <span class="absolute inline-flex h-1 w-1 rounded-full bg-red-500"></span>
+      // <span class="animate-ping absolute inline-flex h-1 w-1 rounded-full bg-sky-400 opacity-75"></span>
+      // @TestMessage(store, r, "User_registered")
+    </form>
+  }
+}
+
+// <div style="margin: auto; width: 355px;" hx-ext="response-targets"></div>
+templ Sign_in(r *http.Request, f models.SignInFormData, errMessage string) {
+  @AuthForm() {
+    <form id="sign_in_form"
+      hx-ext="response-targets"
+      hx-get="/auth/sign_in_post"
+      hx-trigger="submit"
+      hx-target-302="#body"
+      hx-target="#sign_in_form"
+      hx-swap="outerHTML"
+    >
+      <br>
+      @FormTitle(t("Sign_in"))
+      @Email1(t("Email1"), f.User_email1, errMessage)
+      @Password1(t("Password1"), f.Password1, errMessage)
+      @Confirm(t("Confirm_data_entered"))
+      @SubmitGroup(t("Sign_in"))
+      @ErrorsHidden(ckErr(errMessage))
+      @P(t("Forgotten_password_text")) {<a class="underline" href="/forgotten_password">{t("Forgotten_password")}</a>}
+      <br>
+      @P(t("Sign_up_link")) {<a class="underline" href="/sign_up">{t("Sign_up_b")}</a>}
+    </form>
+  }
+}
+
+
+templ Forgotten_password(r *http.Request, f models.ForgottenPasswordData, errMessage string) {
+  @AuthForm() {
+    <form id="forgotten_password_form"
+      hx-ext="response-targets"    
+      hx-post="/auth/forgotten_password_send_email"
+      hx-trigger="submit"
+      hx-target="#forgotten_password_form"
+      hx-swap="outerHTML"
+    >
+      <br>
+      @FormTitle(t("Forgotten_password"))
+      @Email1(t("Email1"), f.User_email1, errMessage)
+      @Email2(t("Email2"), f.User_email2, errMessage)
+      @Confirm(t("Confirm_data_entered"))
+      @SubmitGroup(t("Forgotten_password"))
+      @ErrorsHidden(ckErr(errMessage))
+    </form>
+  }
+}
+
+templ Delete_User(r *http.Request, f models.SignInFormData, errMessage string) {
+  @AuthForm() {
+    <form id="delete_user_form"
+      hx-ext="response-targets"
+      hx-get="/auth/delete_user_send_email"
+      hx-trigger="submit"
+      hx-target="#delete_user_form"
+      hx-swap="outerHTML"
+    >
+      <br>
+      @FormTitle(t("Delete_user"))
+      @Email1(t("Email1"), f.User_email1, errMessage)
+      @Password1(t("Password1"), f.Password1, errMessage)
+      @Confirm(t("Confirm_data_entered"))
+      @SubmitGroup(t("Delete_user"))
+      @ErrorsHidden(ckErr(errMessage))
+    </form>
+  }
+}
+
+templ Change_email(r *http.Request, f models.ChangeEmailData, errMessage string) {
+  @AuthForm() {
+    <form id="change_email_form"
+      hx-ext="response-targets"
+      hx-get="/auth/change_email_send_email"
+      hx-trigger="submit"
+      hx-target="#change_email_form"
+      hx-swap="outerHTML"
+    >
+      <br>
+      @FormTitle(t("Change_email"))
+      @P(t("Change_email_notice1"))
+      <br>
+      @P(t("Change_email_notice2"))
+      <br>
+      @Email1(t("Email1"), f.User_email1, errMessage)
+      @NewEmail1(t("NewEmail1"), f.NewUser_email1, errMessage)
+      @NewEmail2(t("NewEmail2"), f.NewUser_email2, errMessage)
+      @Password1(t("Password1"), f.Password1, errMessage)
+      @Confirm(t("Confirm_data_entered"))
+      @SubmitGroup(t("Change_email"))
+      @ErrorsHidden(ckErr(errMessage))
+    </form>
+  }
+}
+
+templ Change_name(r *http.Request, f models.ChangeNameData, errMessage string) {
+  @AuthForm() {
+    <form id="change_name_form"
+      hx-ext="response-targets"
+      hx-get="/auth/change_name_send_email"
+      hx-trigger="submit"
+      hx-target="#change_name_form"
+      hx-swap="outerHTML"
+    >
+      <br>
+      @FormTitle(t("Change_name"))
+      @P(t("Change_name_notice1"))
+      <br>
+      @Email1(t("Email1"), f.User_email1, errMessage)
+      @UserName(t("User_name"), f.Name, errMessage)
+      @Password1(t("Password1"), f.Password1, errMessage)
+      @Confirm(t("Confirm_data_entered"))
+    @SubmitGroup(t("Change_name"))
+      @ErrorsHidden(ckErr(errMessage))
+    </form>
+  }
+}
+
+  templ Change_password(r *http.Request, f models.ChangePasswordData, errMessage string) {
+  @AuthForm() {
+    <form id="change_password_form"
+      hx-ext="response-targets"
+      hx-get="/auth/change_password_send_email"
+      hx-trigger="submit"
+      hx-target="#change_password_form"
+      hx-swap="outerHTML"
+    >
+      <br>
+      @FormTitle(t("Change_password"))
+      @Email1(t("Email1"), f.User_email1, errMessage)
+      @Password0(t("Password0"), f.Password0, errMessage)
+      @Password1(t("Password1"), f.Password1, errMessage)
+      @Password2(t("Password2"), f.Password2, errMessage)
+      @Confirm(t("Confirm_data_entered"))
+      @SubmitGroup(t("Change_password"))
+      @ErrorsHidden(ckErr(errMessage))
+    </form>
+  }
+}
+
+// deli string na rečenice tako što ih odvaja po '. ' i stavlja tačku na kraju osim ako rečenica ima znak ! ili je zadnja u slice
+func splitMessageToSentences(m string) []string {
+  sts := strings.Split(m, ". ")
+  var stsd []string
+  for i := 0; i < len(sts); i++ {
+    if i == len(sts)-1 || strings.Contains(sts[i], "!") {
+      stsd = append(stsd, sts[i])
+    } else {
+      stsd = append(stsd, sts[i] + ".")
+    }
+  }
+  return stsd
+}
+
+
+templ TestMessage(r *http.Request, msg string) {
+  for _, st := range splitMessageToSentences(t(msg)) {
+    <p class="my-5 text-center text-sky-900 dark:text-sky-400 text-sm w-72">{st}</p>
+  }
+}
+
+templ MessageForUser(r *http.Request, msg string) {
+  for _, st := range splitMessageToSentences(t(msg)) {
+    <p class="my-5 text-center text-blue-900 dark:text-sky-400 text-sm w-72">{st}</p>
+  }
+}
+
+templ ErrorForUser(r *http.Request, msg string) {
+  <p id="error_messages2" name="server_error" class="my-5 text-red-700  dark:text-red-400 text-sm font-bold w-72">{t(msg)}</p>
+  // <p class="m-5 text-xl text-slate-500">Poruka: {msg}</p>
+}
+
+templ NewSecretInputField() {
+  <input required="true" value={utils.Get64UrlKey("", 1)} hidden
+  id="bk_dEs3cWLZlL3nAvoH2FSt61XLngJF0hhv1I15njK3WOi7MUcr2_TsG" name="bk_" class="text-black text-sm w-32" />
+}

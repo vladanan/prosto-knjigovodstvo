@@ -1,0 +1,39 @@
+package site
+
+import (
+  "net/http"
+  "github.com/vladanan/prosto/src/views"
+
+)
+
+templ Privacy(r *http.Request) {
+  @views.Layout(r) {
+
+    <div class="relative top-4 m-5">
+
+      <p class="text-2xl">Politika privatnosti</p>
+<br></br>
+			<p>
+				Sajt ne prikuplja nikakve lične podatke ni kolačiće (cookies) osim email adrese neophodne za registraciju na sajtu. Email adrese ne delimo ni sa kim.
+			</p>
+<br></br>
+
+			<p>
+				This site does not collect any personal data or cookies except for email address necessary to create account. Email addresses are not shared with anyone.
+			</p>
+<br></br>
+			<p>
+				Pogledati i
+				<a href="/terms" class="underline">
+					pravila upotrebe sajta / Terms of Use
+				</a>
+			</p>
+
+      // <p class="text-xl text-blue-300">{views.T(store, r, "UnWelcome")}</p>
+
+    </div>
+      
+
+    <br></br>
+  }
+}

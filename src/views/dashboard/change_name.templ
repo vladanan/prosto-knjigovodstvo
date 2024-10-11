@@ -1,0 +1,17 @@
+package dashboard
+
+import (
+  "net/http"
+  "github.com/vladanan/prosto/src/views"
+
+	"github.com/vladanan/prosto/src/models"
+	"github.com/vladanan/prosto/src/views/cp"
+)
+
+templ Change_name(r *http.Request) {
+  @views.Layout(r) {
+    <script src="static/htmx.min.js"></script>
+    <script src="static/htmx_response-targets.js"></script>
+    @cp.Change_name(r, models.ChangeNameData{}, "")
+  }
+}
