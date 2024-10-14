@@ -14,11 +14,13 @@ air:
 
 # 2) temp gnerate to watch templ files and to perform hot reload in browser
 devtg:
-	@templ generate --watch --proxy="http://0.0.0.0:10000" --cmd="go run ./src/main.go"
+	@templ generate --watch --proxy="http://0.0.0.0:10001" --cmd="go run ./src/main.go"
 
 # 2a) temp gnerate 2 plus stderr redirect /dev/pts/13
 devtg2:
-	@templ generate --watch --proxy="http://0.0.0.0:10000" --cmd="go run ./src/main.go" 2>/dev/pts/13
+	@templ generate --watch --proxy="http://0.0.0.0:10001" --cmd="go run ./src/main.go" 2>/dev/pts/13
+devtg3:
+	@templ generate --watch --proxy="http://0.0.0.0:10001" --proxyport="7332" --cmd="go run ./src/main.go" 2>/dev/pts/11
 
 # 3) tailwind to watch changes in views folder for html, templ, js
 devtw:

@@ -352,7 +352,7 @@ func main() {
 	// go gamesForLearningChannelsAndLogs()
 
 	server := &http.Server{
-		Addr: "0.0.0.0:10000",
+		Addr: "0.0.0.0:10001",
 		// Good practice: enforce timeouts for servers you create!
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,

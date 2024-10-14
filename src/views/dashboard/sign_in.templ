@@ -4,14 +4,15 @@ import (
   "net/http"
   "github.com/vladanan/prosto/src/views"
 
-	"github.com/vladanan/prosto/src/models"
-	"github.com/vladanan/prosto/src/views/cp"
+	// "github.com/vladanan/prosto/src/models"
+	// "github.com/vladanan/prosto/src/views/cp"
 )
 
-templ Sign_in(r *http.Request) {
+templ Sign_in(r *http.Request, form string) {
   @views.Layout(r) {
     <script src="static/htmx.min.js"></script>
     <script src="static/htmx_response-targets.js"></script>
-    @cp.Sign_in(r, models.SignInFormData{}, "")
+    @templ.Raw(form)
+    // @cp.Sign_in(r, models.SignInFormData{}, "")
   }
 }

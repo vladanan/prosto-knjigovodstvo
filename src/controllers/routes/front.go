@@ -8,6 +8,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"net/url"
 	"os"
 	"strings"
 
@@ -162,7 +163,7 @@ func Arrangements(w http.ResponseWriter, r *http.Request) {
 	cp.Arrangements().Render(r.Context(), w)
 }
 
-////**** USERS
+////**** USERS 123
 
 func Sign_up(w http.ResponseWriter, r *http.Request) {
 	if already_authenticated, _, _, err := getSesionData(r); err == nil && !already_authenticated {
@@ -345,7 +346,33 @@ func CheckUserName(w http.ResponseWriter, r *http.Request) {
 
 func Sign_in(w http.ResponseWriter, r *http.Request) {
 	if already_authenticated, _, _, err := getSesionData(r); err == nil && !already_authenticated {
-		dashboard.Sign_in(r).Render(r.Context(), w)
+		// dashboard.Sign_in(r).Render(r.Context(), w)
+
+		resp, err := http.Get("http://127.0.0.1:7331/sign_in_remote")
+		if err != nil {
+			// error if the request fails, such as if the requested URL is not found, or if the server is not reachable
+			http.Error(w, l(r, 8, err).Error(), http.StatusInternalServerError)
+			return
+		} else {
+			data, err := io.ReadAll(resp.Body)
+			// dec := json.NewDecoder(bytes.NewReader(data))
+			if err != nil {
+				http.Error(w, l(r, 8, err).Error(), http.StatusInternalServerError)
+				return
+			} else if resp.StatusCode == http.StatusOK {
+				// successful request should reeturn a 200 OK status, if not we should log and then exit with error
+				// log.Println("data sa be", string(data))
+				// w.Write(data)
+				dashboard.Sign_in(r, string(data)).Render(r.Context(), w)
+				defer resp.Body.Close()
+				return
+			} else {
+				log.Println("error sa be", string(data))
+				defer resp.Body.Close()
+				return
+			}
+		}
+
 	} else {
 		views.Index(r).Render(r.Context(), w)
 	}
@@ -362,49 +389,91 @@ func Sign_in_post(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	si := models.SignInFormData{
-		User_email1: r.FormValue("user_email1"),
-		Password1:   r.FormValue("password1"),
-		Confirm:     r.FormValue("confirm"),
-		Submit:      r.FormValue("submit"),
-		Wait:        r.FormValue("wait"),
-		Bk_:         r.FormValue("bk_"),
-		Fk_:         r.FormValue("fk_"),
-	}
-	// log.Print(si)
-	fp := formPack[models.SignInFormData]{
-		w:      w,
-		r:      r,
-		f:      si,
-		fTempl: cp.Sign_in,
-	}
+	v := url.Values{}
+	// sign_up
+	v.Set("user_email1", r.FormValue("user_email1"))
+	v.Set("password1", r.FormValue("password1"))
+	v.Set("confirm", r.FormValue("confirm"))
+	v.Set("submit", r.FormValue("submit"))
+	v.Set("wait", r.FormValue("wait"))
+	// sign_in
 
-	if err := vet.ValidateSignInData(r, si); err != nil {
-		formResp(fp, err)
+	v.Set("bk_", r.FormValue("bk_"))
+	v.Set("fk_", r.FormValue("fk_"))
+	resp, err := http.PostForm("http://127.0.0.1:7331/auth/sign_in_post", v)
+	if err != nil {
+		log.Print(err)
+		return
+	}
+	if resp.StatusCode != http.StatusFound {
+		session.Values["authenticated"] = false
+		session.Values["user_email"] = ""
 	} else {
-
-		user, err := models.AuthenticateUser(si.User_email1, si.Password1, r)
+		session.Values["authenticated"] = true
+		session.Values["user_email"] = r.FormValue("user_email1")
+		session.Values["name"] = "neki tip"
+		session.Values["mode"] = "user"
+		data, err := io.ReadAll(resp.Body)
+		// dec := json.NewDecoder(bytes.NewReader(data))
 		if err != nil {
-			formResp(fp, l(r, 4, err))
-			session.Values["authenticated"] = false
-			session.Values["user_email"] = ""
-			if err = session.Save(r, w); err != nil {
-				// http.Error(w, l(r, 4, err).Error(), http.StatusInternalServerError)
-				formResp(fp, l(r, 4, err))
-			}
+			// http.Error(w, l(r, 8, err).Error(), http.StatusInternalServerError)
+			log.Println("dashboard greska sa be", string(data))
+			w.Write(data)
+			defer resp.Body.Close()
+			return
 		} else {
-			session.Values["authenticated"] = true
-			session.Values["user_email"] = user.Email
-			session.Values["name"] = user.User_name
-			session.Values["mode"] = user.Mode
-			// Save it before we write to the response/return from the handler.
-			if err = session.Save(r, w); err != nil {
-				formResp(fp, l(r, 4, err))
-			}
-			w.WriteHeader(302) //da bi htmx u templ formu drugacije reagovao na dobijeni form i dobijeni dashboard
-			dashboard.Dashboard(r, user).Render(r.Context(), w)
+			// successful request should reeturn a 200 OK status, if not we should log and then exit with error
+			log.Println("dashboard sa be", string(data))
+			w.Write(data)
+			// dashboard.Sign_in(r, string(data)).Render(r.Context(), w)
+			defer resp.Body.Close()
+			return
 		}
 	}
+
+	// si := models.SignInFormData{
+	// 	User_email1: r.FormValue("user_email1"),
+	// 	Password1:   r.FormValue("password1"),
+	// 	Confirm:     r.FormValue("confirm"),
+	// 	Submit:      r.FormValue("submit"),
+	// 	Wait:        r.FormValue("wait"),
+	// 	Bk_:         r.FormValue("bk_"),
+	// 	Fk_:         r.FormValue("fk_"),
+	// }
+	// // log.Print(si)
+	// fp := formPack[models.SignInFormData]{
+	// 	w:      w,
+	// 	r:      r,
+	// 	f:      si,
+	// 	fTempl: cp.Sign_in,
+	// }
+
+	// if err := vet.ValidateSignInData(r, si); err != nil {
+	// 	formResp(fp, err)
+	// } else {
+
+	// 	user, err := models.AuthenticateUser(si.User_email1, si.Password1, r)
+	// 	if err != nil {
+	// 		formResp(fp, l(r, 4, err))
+	// 		session.Values["authenticated"] = false
+	// 		session.Values["user_email"] = ""
+	// 		if err = session.Save(r, w); err != nil {
+	// 			// http.Error(w, l(r, 4, err).Error(), http.StatusInternalServerError)
+	// 			formResp(fp, l(r, 4, err))
+	// 		}
+	// 	} else {
+	// 		session.Values["authenticated"] = true
+	// 		session.Values["user_email"] = user.Email
+	// 		session.Values["name"] = user.User_name
+	// 		session.Values["mode"] = user.Mode
+	// 		// Save it before we write to the response/return from the handler.
+	// 		if err = session.Save(r, w); err != nil {
+	// 			formResp(fp, l(r, 4, err))
+	// 		}
+	// 		w.WriteHeader(302) //da bi htmx u templ formu drugacije reagovao na dobijeni form i dobijeni dashboard
+	// 		dashboard.Dashboard(r, user).Render(r.Context(), w)
+	// 	}
+	// }
 
 }
 

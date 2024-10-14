@@ -54,7 +54,7 @@ func Layout(r *http.Request) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en-US\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><!-- <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1\" /> --><link rel=\"icon\" href=\"static/site/prosto.png\"><title>Vezbamo</title><link rel=\"stylesheet\" href=\"static/output.css\"><link rel=\"stylesheet\" href=\"static/swiper-bundle.ext.css\"><script src=\"static/swiper-bundle.ext.js\"></script></head><body id=\"body\" class=\"relative m-auto max-w-7xl top-2 h-screen dark:bg-black dark:text-white\"><div id=\"heading\" class=\"relative h-auto\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en-US\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><!-- <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1\" /> --><link rel=\"icon\" href=\"static/site/prosto.png\"><title>Prosto</title><link rel=\"stylesheet\" href=\"static/output.css\"><link rel=\"stylesheet\" href=\"static/swiper-bundle.ext.css\"><script src=\"static/swiper-bundle.ext.js\"></script></head><body id=\"body\" class=\"relative m-auto max-w-7xl top-2 h-screen dark:bg-black dark:text-white\"><div id=\"heading\" class=\"relative h-auto\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
