@@ -5,3 +5,4 @@ problem sto se user sa fe fakticki prijavi kao logovan i na be jer zahtev prolaz
 
 da fe u dev bude usmeren na lokalni be a u prod na render, to mora da zna i be jer ce u zavisnosti od toga da pravi linkove u mejlovima
 
+sve ovo se resava time da se pausal skroz osamostali (i dalji projekti iz njega kopiraju) a vezbamo da bude sajt za arhivu i programerski porfolio
