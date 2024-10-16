@@ -43,33 +43,33 @@ func Index(r *http.Request) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!-- Link Swiper's CSS --> <link rel=\"stylesheet\" href=\"static/swiper-bundle.min.css\"><div class=\"relative top-4\"><!-- Swiper --><div style=\"--swiper-navigation-color: #fff; --swiper-pagination-color: #fff\" class=\"swiper mySwiper lg:rounded-2xl lg:max-w-max\"><div class=\"parallax-bg\" data-swiper-parallax=\"-23%\"></div><div class=\"swiper-wrapper\"><!-- Pausal 123--><a href=\"/pausal\" class=\"swiper-slide cursor-alias\" style=\"background-image: url(static/site/startup-593341_1280.jpg);\"><div class=\"title\" data-swiper-parallax=\"-300\">Paušal</div><div class=\"subtitle rounded-md bg-gradient-to-r from-blue-800 via-blue-900 to-transparent\" data-swiper-parallax=\"-200\">Kompletna dokumentacija</div><div class=\"relative text text-sm lg:text-lg\" data-swiper-parallax=\"-100\"><p class=\"relative rounded-md p-2 text-md text-black font-bold bg-gradient-to-r from-white via-transparent to-transparent\">Alat za automatsku obradu faktura, KPO <span class=\"text-green-900\">i parametara testa samostalnosti</span></p><i class=\"relative px-2 text-md text-red-700 bg-gradient-to-r from-transparent to-transparent via-white lg:top-16 top-24\">usluga je dostupna samo</i><br><i class=\"relative px-2 text-md text-red-700 bg-gradient-to-r from-transparent to-transparent via-white lg:top-16 top-24\">registrovanim korisnicima</i></div></a><!-- User portal --><a href=\"/user_portal\" class=\"swiper-slide cursor-alias\" style=\"background-image: url(static/site/cat-5331883_1280.jpg);\"><div class=\"title px-2 w-fit rounded-md bg-gradient-to-tr from-amber-950 via-amber-800 to-transparent\" data-swiper-parallax=\"-300\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!-- Link Swiper's CSS --> <link rel=\"stylesheet\" href=\"static/swiper-bundle.min.css\"><div class=\"relative top-4\"><!-- Swiper --><div style=\"--swiper-navigation-color: #fff; --swiper-pagination-color: #fff\" class=\"swiper mySwiper lg:rounded-2xl lg:max-w-max\"><div class=\"parallax-bg\" data-swiper-parallax=\"-23%\"></div><div class=\"swiper-wrapper\"><!-- Pausal 123--><a href=\"/pausal\" class=\"swiper-slide cursor-alias\" style=\"background-image: url(static/site/startup-593341_1280.jpg);\"><div class=\"title\" data-swiper-parallax=\"-300\">Paušal</div><div class=\"subtitle rounded-md bg-gradient-to-r from-blue-800 via-blue-900 to-transparent\" data-swiper-parallax=\"-200\">Kompletna dokumentacija</div><div class=\"relative text text-sm lg:text-lg\" data-swiper-parallax=\"-100\"><p class=\"relative rounded-md p-2 text-md text-black font-bold bg-gradient-to-r from-white via-transparent to-transparent\">Alat za automatsku obradu faktura, KPO <span class=\"text-green-900\">i parametara testa samostalnosti</span></p><i class=\"relative px-2 text-md text-red-700 bg-gradient-to-r from-transparent to-transparent via-white lg:top-16 top-24\">usluga je dostupna samo</i><br><i class=\"relative px-2 text-md text-red-700 bg-gradient-to-r from-transparent to-transparent via-white lg:top-16 top-24\">registrovanim korisnicima</i></div></a><!-- User portal --><a href=\"/user_portal\" class=\"swiper-slide cursor-alias\" style=\"background-image: url(static/site/call-center-8022155_1280.jpg);\"><div class=\"title px-2 w-fit rounded-md bg-gradient-to-tr from-sky-950 via-sky-800 to-transparent\" data-swiper-parallax=\"-300\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(t("Index_UP_title"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 41, Col: 157}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 41, Col: 153}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"subtitle w-fit mt-2 rounded-md bg-gradient-to-bl from-amber-900 via-transparent to-transparent\" data-swiper-parallax=\"-200\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"subtitle w-fit mt-2 rounded-md bg-gradient-to-bl from-sky-900 via-transparent to-transparent\" data-swiper-parallax=\"-200\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(t("Index_UP_subtitle"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 43, Col: 165}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 43, Col: 163}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"text text-sm lg:text-lg rounded-md bg-gradient-to-br from-amber-900 via-transparent to-transparent\" data-swiper-parallax=\"-100\"><p>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"text text-sm lg:text-lg rounded-md bg-gradient-to-br from-sky-900 via-transparent to-transparent\" data-swiper-parallax=\"-100\"><p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

@@ -1,0 +1,7 @@
+problem sto be salje formove na svom jeziku a ne na jeziku fe
+plus sto puca i18n na be
+
+problem sto se user sa fe fakticki prijavi kao logovan i na be jer zahtev prolazi kroz be sing_in_post
+
+da fe u dev bude usmeren na lokalni be a u prod na render, to mora da zna i be jer ce u zavisnosti od toga da pravi linkove u mejlovima
+

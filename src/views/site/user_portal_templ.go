@@ -90,7 +90,7 @@ func UserPortal(r *http.Request, notes []models.Note) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <div class=\"m-5 text-slate-500\"><p class=\"text-xl\">Najčešće postavljana pitanja</p><br><br><p>Za sva pitanja pišite na: y.emailbox-vezbamo@yahoo.com    </p><p></p></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <div class=\"m-5 text-slate-500\"><p class=\"text-xl\">Najčešće postavljana pitanja</p><br><br><p>Za sva pitanja pišite na: y.emailbox-vezbamo@yahoo.com    </p><p></p><br><div class=\"md:max-w-full rounded-2xl shadow-lg\">Izvori za fotografije na sajtu:<ul><li class=\"mx-5 list-disc\">Image by <a href=\"https://pixabay.com/users/startupstockphotos-690514/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=593341\">StartupStockPhotos</a> from <a href=\"https://pixabay.com/photos/startup-start-up-people-593341/\">Pixabay</a></li><li class=\"mx-5 list-disc\">Image by <a href=\"https://pixabay.com/users/thedigitalartist-202249/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=8022155\">Pete Linforth</a> from <a href=\"https://pixabay.com/illustrations/call-center-customer-service-woman-8022155/\">Pixabay</a></li></ul></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

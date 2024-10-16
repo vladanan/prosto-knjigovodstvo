@@ -424,6 +424,7 @@ func Sign_in_post(w http.ResponseWriter, r *http.Request) {
 		} else {
 			// successful request should reeturn a 200 OK status, if not we should log and then exit with error
 			log.Println("dashboard sa be", string(data))
+			w.WriteHeader(302) //da bi htmx u templ formu drugacije reagovao na dobijeni form i dobijeni dashboard
 			w.Write(data)
 			// dashboard.Sign_in(r, string(data)).Render(r.Context(), w)
 			defer resp.Body.Close()
