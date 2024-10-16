@@ -14,5 +14,5 @@ echo $OPEN$DATE$CLOSE >> fake.templ
 
 # npx esbuild ../src/react/*.jsx --outdir=../assets/assignments/ --minify --bundle --platform=node --global-name=bundle
 npx esbuild ../src/ext/site/*.* --outdir=../assets/ --minify
-npx esbuild ../src/ext/react/*.* --outdir=../assets/assignments/ --minify --bundle --global-name=bundle
+# npx esbuild ../src/ext/react/*.* --outdir=../assets/assignments/ --minify --bundle --global-name=bundle
 cd ..

@@ -11,11 +11,12 @@ import templruntime "github.com/a-h/templ/runtime"
 import (
 	"github.com/vladanan/prosto/src/views"
 	"net/http"
-	// "github.com/vladanan/prosto/src/models"
-	// "github.com/vladanan/prosto/src/views/cp"
+
+	"github.com/vladanan/prosto/src/models"
+	"github.com/vladanan/prosto/src/views/cp"
 )
 
-func Sign_in(r *http.Request, form string) templ.Component {
+func Sign_in(r *http.Request) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -45,15 +46,11 @@ func Sign_in(r *http.Request, form string) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script src=\"static/htmx.min.js\"></script> <script src=\"static/htmx_response-targets.js\"></script> ")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script src=\"static/htmx.min.js\"></script> <script src=\"static/htmx_response-targets.js\"></script>  ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templ.Raw(form).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" ")
+			templ_7745c5c3_Err = cp.Sign_in(r, models.SignInFormData{}, "").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

@@ -22,13 +22,13 @@ func getDBConn(r *http.Request) (*pgx.Conn, error) {
 
 	// un-komentuje se jedna od dve funkcije koja se hoće i menja se tip konekcije u return definiciji
 
-	// return getDBConnFromDirectLocalOrRemotePool(r) //pgx.Conn
+	return getDBConnFromDirectLocalOrRemotePool(r) //pgx.Conn
 
-	if r == nil {
-		fmt.Println("")
-	}
+	// if r == nil {
+	// 	fmt.Println("")
+	// }
 
-	return nil, nil
+	// return nil, nil
 
 	// return getLocalPoolDBConnFromRequestContext(r) //pgxpool.Conn
 
