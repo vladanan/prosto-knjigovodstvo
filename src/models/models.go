@@ -49,8 +49,8 @@ func getDBConnFromDirectLocalOrRemotePool(r *http.Request) (*pgx.Conn, error) {
 
 	// log.Println("db get conn from local db or from supa, production:", os.Getenv("PRODUCTION"))
 	if os.Getenv("PRODUCTION") == "FALSE" {
-		conn, err := pgx.Connect(ctx, os.Getenv("FEDORA_CONNECTION_STRING"))
-		// conn, err := pgx.Connect(ctx, os.Getenv("SUPABASE_CONNECTION_STRING"))
+		//conn, err := pgx.Connect(ctx, os.Getenv("FEDORA_CONNECTION_STRING"))
+		conn, err := pgx.Connect(ctx, os.Getenv("SUPABASE_CONNECTION_STRING"))
 		if err != nil {
 			return nil, l(r, 8, err)
 		}

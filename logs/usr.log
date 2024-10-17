@@ -1,2 +1,4 @@
+2024/10/17 13:04:31 front.go:530:  securecookie: hash key is not set  /auth/auto_login_user
+2024/10/17 13:00:38 front.go:530:  securecookie: hash key is not set  /auth/auto_login_user
 2024/10/10 11:25:32 front.go:668:  API erorr: 406, Email_or_password_wrong  /sign_in
 2024/10/09 20:59:56 front.go:1268:  web: /a

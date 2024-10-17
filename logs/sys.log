@@ -1,3 +1,9 @@
+2024/10/17 13:04:30 front.go:526:  failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)  /auth/auto_login_user
+2024/10/17 13:04:30 v_db_auth.go:361:  failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)  /auth/auto_login_user
+2024/10/17 13:04:30 models.go:61:  failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)  /auth/auto_login_user
+2024/10/17 13:00:37 front.go:526:  failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)  /auth/auto_login_user
+2024/10/17 13:00:37 v_db_auth.go:361:  failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)  /auth/auto_login_user
+2024/10/17 13:00:37 models.go:61:  failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)  /auth/auto_login_user
 2024/10/16 13:12:39 front.go:354:  Get "http://127.0.0.1:7331/sign_in_remote": dial tcp 127.0.0.1:7331: connect: connection refused  /sign_in
 2024/10/10 11:25:00 v_db_crud.go:170:  ERROR: syntax error at or near "FROM777" (SQLSTATE 42601)  /t
 2024/10/09 20:53:50 i18n.go:89:  message "Password0" not found in language "sr-Latn"  /auth/change_password

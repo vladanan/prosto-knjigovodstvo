@@ -1,7 +1,47 @@
 [
 	{
-		"Date":"2024/10/10","Time":"11:25:00","File":"v.go:170:",
+		"Date":"2024/10/17","Time":"13:04:30","File":"front.go:526:",
+		"Error":"failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/17","Time":"13:04:30","File":"v_db_auth.go:361:",
+		"Error":"failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/17","Time":"13:04:30","File":"models.go:61:",
+		"Error":"failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/17","Time":"13:00:37","File":"front.go:526:",
+		"Error":"failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/17","Time":"13:00:37","File":"v_db_auth.go:361:",
+		"Error":"failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/17","Time":"13:00:37","File":"models.go:61:",
+		"Error":"failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/16","Time":"13:12:39","File":"front.go:354:",
+		"Error":"Get \"http://127.0.0.1:7331/sign_in_remote\": dial tcp 127.0.0.1:7331: connect: connection refused",
+		"Path":"/sign_in"
+	},
+	{
+		"Date":"2024/10/10","Time":"11:25:00","File":"v_db_crud.go:170:",
 		"Error":"ERROR: syntax error at or near \"FROM777\" (SQLSTATE 42601)",
-		"Path":"/api/t"
+		"Path":"/t"
+	},
+	{
+		"Date":"2024/10/09","Time":"20:53:50","File":"i18n.go:89:",
+		"Error":"message \"Password0\" not found in language \"sr-Latn\"",
+		"Path":"/auth/change_password"
 	}
 ]

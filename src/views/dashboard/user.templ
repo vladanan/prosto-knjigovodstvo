@@ -2,7 +2,6 @@ package dashboard
 
 import (
 	"fmt"
-
 	"github.com/vladanan/prosto/src/models"
 	"net/http"
 	"time"
@@ -10,14 +9,11 @@ import (
 
 templ User(r *http.Request, user models.User) {
 	// mora da se stavi i ovde zbog bagovanja oko static/path/flood zastite... 1234
-	<img src="static/site/prosto.png" hidden>
-	
+	<img src="static/site/prosto.png" hidden/>
 	<p class="m-5 text-sm">{ t("Welcome") }</p>
 	if user.Email == "y.emailbox-proba@yahoo.com" {
-		<p class="m-5 text-sm">{t("Demo_notice")}</p>
+		<p class="m-5 text-sm">{ t("Demo_notice") }</p>
 	}
-	 
-
 	// <div class="m-5 flex flex-col text-md">
 	// 	<div class="flex flex-row gap-2 font-bold ">
 	// 		<div class="">Podaci o korisniku</div>
@@ -40,55 +36,54 @@ templ User(r *http.Request, user models.User) {
 	// 		<a href="auth/change_mail">izmena imena</a>
 	// 	</div>
 	// </div>
-
 	<table class="m-5 text-sm">
 		<tr class="text-left text-md underline">
-			<th>{t("Udata")}</th>
-			<th class="text-sky-800 dark:text-sky-400">{t("Ustatus")}</th>
-			<th>{t("Uaction")}</th>
+			<th>{ t("Udata") }</th>
+			<th class="text-sky-800 dark:text-sky-400">{ t("Ustatus") }</th>
+			<th>{ t("Uaction") }</th>
 		</tr>
 		<tr class="">
-			<td>{t("Registered_at")}</td>
-			<td class="pr-2 text-sky-800 dark:text-sky-400">{ user.Created_at_time.Format(time.DateTime)}</td>
+			<td>{ t("Registered_at") }</td>
+			<td class="pr-2 text-sky-800 dark:text-sky-400">{ user.Created_at_time.Format(time.DateTime) }</td>
 			if user.Email == "y.emailbox-proba@yahoo.com" {
-				<td class="text-gray-500">{t("Delete_account")}</td>
+				<td class="text-gray-500">{ t("Delete_account") }</td>
 			} else {
-				<td class="text-red-500"><a href="/auth/delete_user">{t("Delete_account")}</a></td>
+				<td class="text-red-500"><a href="/auth/delete_user">{ t("Delete_account") }</a></td>
 			}
 		</tr>
 		<tr>
-			<td>{t("Uemail")}</td>
+			<td>{ t("Uemail") }</td>
 			<td class="pr-2 text-sky-800 dark:text-sky-400">{ user.Email }</td>
 			if user.Email == "y.emailbox-proba@yahoo.com" {
-				<td class="text-gray-500">{t("Uchange")}</td>
+				<td class="text-gray-500">{ t("Uchange") }</td>
 			} else {
-				<td><a href="/auth//change_email">{t("Uchange")}</a></td>
+				<td><a href="/auth//change_email">{ t("Uchange") }</a></td>
 			}
 		</tr>
 		<tr class="">
-			<td>{t("Uname")}</td>
+			<td>{ t("Uname") }</td>
 			<td class="text-sky-800 dark:text-sky-400">{ user.User_name }</td>
 			if user.Email == "y.emailbox-proba@yahoo.com" {
-				<td class="text-gray-500">{t("Uchange")}</td>
+				<td class="text-gray-500">{ t("Uchange") }</td>
 			} else {
-				<td><a href="/auth//change_name">{t("Uchange")}</a></td>
+				<td><a href="/auth//change_name">{ t("Uchange") }</a></td>
 			}
 		</tr>
 		<tr class="">
-			<td>{t("Upass")}</td>
+			<td>{ t("Upass") }</td>
 			<td class="text-sky-800 dark:text-sky-400">***</td>
 			if user.Email == "y.emailbox-proba@yahoo.com" {
-				<td class="text-gray-500">{t("Uchange")}</td>
+				<td class="text-gray-500">{ t("Uchange") }</td>
 			} else {
-				<td><a href="/auth//change_password">{t("Uchange")}</a></td>
+				<td><a href="/auth//change_password">{ t("Uchange") }</a></td>
 			}
 		</tr>
 		<tr>
-			<td class="pr-2">{t("Utype")}</td>
+			<td class="pr-2">{ t("Utype") }</td>
 			<td class="text-sky-800 dark:text-sky-400">{ fmt.Sprintf("%t", user.Basic) }, { fmt.Sprintf("%t", user.Js) }, { fmt.Sprintf("%t", user.C) }</td>
 		</tr>
 		<tr>
-			<td>{t("Ulevel")}</td>
+			<td>{ t("Ulevel") }</td>
 			<td class="text-sky-800 dark:text-sky-400">{ user.Level }</td>
 		</tr>
 		// <tr>
@@ -122,9 +117,7 @@ templ User(r *http.Request, user models.User) {
 			</tr>
 		}
 	</table>
-
-	// if user.Email != "y.emailbox-proba@yahoo.com" {
-	// 	<a  class="m-5 text-xl text-green-700" href="/dokumentacija">Izrada primera dokumentacije</a>
-	// }
-
+	if user.Email != "y.emailbox-proba@yahoo.com" {
+		<a class="m-5 text-xl text-green-700" href="/faktura">Izrada fakuture</a>
+	}
 }

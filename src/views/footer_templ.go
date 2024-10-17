@@ -26,7 +26,7 @@ func Footer(envProd string) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"relative top-10 left-2 text-blue-300 text-xs text-left\">Prosto: 1.0.0-alpha.1.2</p><p class=\"relative top-10 left-2 text-blue-400 text-xs text-left\">Copyright &copy; Vladan Anđelković 2024.</p><a href=\"auth/auto_login_admin\" class=\"absolute top-10 right-2 text-blue-500 text-xs text-left\">AUTO admin login</a> <a href=\"auth/auto_login_user\" class=\"absolute top-14 right-2 text-red-500 text-xs text-left\">AUTO user login</a> <a href=\"auth/auto_login_demo\" class=\"absolute text-blue-600 top-20 right-2 text-xs\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"relative top-10 left-2 text-blue-300 text-xs text-left\">Prosto: 1.0.0-alpha.1.3</p><p class=\"relative top-10 left-2 text-blue-400 text-xs text-left\">Copyright &copy; Vladan Anđelković 2024.</p><a href=\"auth/auto_login_admin\" class=\"absolute top-10 right-2 text-blue-500 text-xs text-left\">AUTO admin login</a> <a href=\"auth/auto_login_user\" class=\"absolute top-14 right-2 text-red-500 text-xs text-left\">AUTO user login</a> <a href=\"auth/auto_login_demo\" class=\"absolute text-blue-600 top-20 right-2 text-xs\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
