@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-templ User(r *http.Request, user models.User) {
+templ User(r *http.Request, user models.User, data models.UserData) {
 	// mora da se stavi i ovde zbog bagovanja oko static/path/flood zastite... 1234
 	<img src="static/site/prosto.png" hidden/>
 	<p class="m-5 text-sm">{ t("Welcome") }</p>
@@ -78,28 +78,29 @@ templ User(r *http.Request, user models.User) {
 				<td><a href="/auth//change_password">{ t("Uchange") }</a></td>
 			}
 		</tr>
-		<tr>
-			<td class="pr-2">{ t("Utype") }</td>
-			<td class="text-sky-800 dark:text-sky-400">{ fmt.Sprintf("%t", user.Basic) }, { fmt.Sprintf("%t", user.Js) }, { fmt.Sprintf("%t", user.C) }</td>
-		</tr>
-		<tr>
-			<td>{ t("Ulevel") }</td>
-			<td class="text-sky-800 dark:text-sky-400">{ user.Level }</td>
-		</tr>
 		// <tr>
-		// 	<td>pay from</td>
+		// 	<td class="pr-2">{ t("Utype") }</td>
+		// 	<td class="text-sky-800 dark:text-sky-400">{ fmt.Sprintf("%t", user.Basic) }, { fmt.Sprintf("%t", user.Js) }, { fmt.Sprintf("%t", user.C) }</td>
+		// </tr>
+		// <tr>
+		// 	<td>{ t("Ulevel") }</td>
+		// 	<td class="text-sky-800 dark:text-sky-400">{ user.Level }</td>
+		// </tr>
+		<br>
+		// <tr>
+		// 	<td>Payment from</td>
 		// 	<td>{ user.Payment_date.String() }</td>
 		// </tr>
 		// <tr>
-		// 	<td>pay credit</td>
+		// 	<td>Payment credit</td>
 		// 	<td>{ string(user.Payment_amount) }</td>
 		// </tr>
 		// <tr>
-		// 	<td>pay type</td>
+		// 	<td>Payment currency</td>
 		// 	<td>{ user.Payment_currency }</td>
 		// </tr>
 		// <tr>
-		// 	<td>pay until</td>
+		// 	<td>Payment expire</td>
 		// 	<td>{ user.Payment_expire.String() }</td>
 		// </tr>
 		if user.Mode == "admin" {
@@ -116,8 +117,49 @@ templ User(r *http.Request, user models.User) {
 				<td>{ user.Req_ip }</td>
 			</tr>
 		}
+		<tr class="text-yellow-500">
+			<td>PIB</td>
+			<td>{ fmt.Sprint(data.Firma.PIB) }</td>
+		</tr>
+		<tr class="text-yellow-500">
+			<td>Obveznik</td>
+			<td>{ data.Firma.Obveznik }</td>
+		</tr>
+		<tr class="text-yellow-500">
+			<td>Firma radnje</td>
+			<td>{ data.Firma.FirmaRadnje }</td>
+		</tr>
+		<tr class="text-yellow-500">
+			<td>Sedište</td>
+			<td>{ data.Firma.Sediste }</td>
+		</tr>
+		<tr class="text-yellow-500">
+			<td>Šifra poreskog obveznika</td>
+			<td>{ data.Firma.SifraPoreskogObveznika }</td>
+		</tr>
+		<tr class="text-yellow-500">
+			<td>Šifra delatnosti</td>
+			<td>{ data.Firma.SifraDelatnosti }</td>
+		</tr>
 	</table>
-	if user.Email != "y.emailbox-proba@yahoo.com" {
-		<a class="m-5 text-xl text-green-700" href="/faktura">Izrada fakuture</a>
-	}
+	<div class="m-5 text-sm">
+		// <a class="text-green-700" href="/nova_faktura">Izrada fakture</a> ttt
+		// <br>
+		<p class="text-slate-600">Izrada fakture</p>
+		<a class="text-green-700" href="/fakture">Fakture</a>
+		<br>
+		<a class="text-green-700" href="/kpo">KPO</a>
+		<br>
+		<a class="text-green-700" href="/zurnal">Žurnal</a>
+		<br>
+		<a class="text-green-700" href="/klijenti">Klijenti</a>
+		<br>
+		<a class="text-green-700" href="/artikli">Arikli i usluge</a>
+		<br>
+		// <a class="text-blue-700" href="/parametri">Parametri testa samostalnosti</a>
+		// <br>
+		<p class="text-slate-600">Parametri testa samostalnosti</p>
+		// <a class="text-violet-700" href="/obavestenja">Podešavanje obaveštenja</a>
+		<p class="text-slate-600">Podešavanje obaveštenja</p>
+	</div>
 }

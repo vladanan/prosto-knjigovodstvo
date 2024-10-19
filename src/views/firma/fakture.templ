@@ -1,0 +1,74 @@
+package firma
+
+import (
+  "net/http"
+  "github.com/vladanan/prosto/src/views"
+  "github.com/vladanan/prosto/src/models"
+  "fmt"
+  "time"
+  "encoding/json"
+  "log"
+)
+
+func toFakture(podaci string) []models.Faktura {
+  var d []models.Faktura
+	err := json.Unmarshal([]byte(podaci), &d)
+	if err != nil {
+		log.Printf("json greska: %v", err)
+	}
+  return d
+}
+
+func getIznos(f models.Faktura) int {
+  var iznos int
+  for j := 0; j < len(f.Stavke); j++ {
+    iznos = iznos + (f.Stavke[j].Kol * f.Stavke[j].Cena) 
+  }
+  return iznos
+}
+
+func setS(id string) string {
+  return "stavke-" + id
+}
+
+templ Fakture (r *http.Request, data models.UserData) {
+  @views.Layout(r) {
+    <div class="m-5 text-sm">
+      <p class="m-5 px-2">Poslednja izmena { data.Updated_at.Format(time.DateTime) }</p>
+      <p>Fakture</p>
+        <ul class="">
+        for _, faktura := range toFakture(data.Fakture) {
+          
+          <li id={faktura.Id} onclick="unhideFaktura(event)" class="m-5 cursor-pointer px-2 border-slate-500 border text-sm rounded-m">
+            { faktura.Id }. { faktura.Datum.Format(time.DateOnly) }, { faktura.Klijent }, iznos: { fmt.Sprint(getIznos(faktura)) }
+          </li>
+          
+          <div state="hide" id={setS(faktura.Id)} hidden class="m-5 px-2 border-blue-600 border text-sm rounded-m">
+           for _, stavka := range faktura.Stavke {
+              <li class="m-5 cursor-pointer px-2 text-sm rounded-m">
+                opis: { stavka.Opis }, količina: { fmt.Sprint(stavka.Kol) }, cena: { fmt.Sprint(stavka.Cena) }
+              </li>
+            }
+          </div>
+
+        }
+      </ul>
+    </div>
+    
+    <script>
+      function unhideFaktura(e) {
+        // console.log("stavke-" + e.target.id)
+        span = document.getElementById("stavke-" + e.target.id)
+        state = span.getAttribute("state")
+        if (state == "hide") {
+          console.log("set to visible")
+          span.setAttribute("state", "show")
+          span.hidden = false;
+        } else {
+          span.setAttribute("state", "hide")
+          span.hidden = true;
+        }
+      }
+    </script>
+  }
+}

@@ -322,6 +322,7 @@ func main() {
 
 	routes.RouterSite(r)
 	routes.RouterUsers(r)
+	routes.RouterFirma(r)
 
 	apirouter := r.PathPrefix("/api").Subrouter()
 	authrouter := r.PathPrefix("/auth").Subrouter()
@@ -352,7 +353,7 @@ func main() {
 	// go gamesForLearningChannelsAndLogs()
 
 	server := &http.Server{
-		Addr: "0.0.0.0:10001",
+		Addr: "0.0.0.0:10000",
 		// Good practice: enforce timeouts for servers you create!
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,

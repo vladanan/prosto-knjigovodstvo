@@ -49,8 +49,8 @@ func getDBConnFromDirectLocalOrRemotePool(r *http.Request) (*pgx.Conn, error) {
 
 	// log.Println("db get conn from local db or from supa, production:", os.Getenv("PRODUCTION"))
 	if os.Getenv("PRODUCTION") == "FALSE" {
-		//conn, err := pgx.Connect(ctx, os.Getenv("FEDORA_CONNECTION_STRING"))
-		conn, err := pgx.Connect(ctx, os.Getenv("SUPABASE_CONNECTION_STRING"))
+		conn, err := pgx.Connect(ctx, os.Getenv("FEDORA_CONNECTION_STRING"))
+		// conn, err := pgx.Connect(ctx, os.Getenv("SUPABASE_CONNECTION_STRING"))
 		if err != nil {
 			return nil, l(r, 8, err)
 		}
@@ -204,6 +204,68 @@ func GetEnvDbSettings(r *http.Request) (Settings, error) {
 	s.Bad_sign_in_time_limit = bad_sign_in_time_limit
 
 	return s, nil
+}
+
+type UserData struct {
+	Ud_id      int       `db:"ud_id"`
+	U_email    string    `db:"u_email"`
+	Klijenti   string    `db:"klijenti"`
+	Artikli    string    `db:"artikli"`
+	Fakture    string    `db:"fakture"`
+	Kpo        string    `db:"kpo"`
+	Zurnal     string    `db:"zurnal"`
+	Firma      Firma     `db:"firma"`
+	Created_at time.Time `db:"created_at"`
+	Updated_at time.Time `db:"updated_at"`
+}
+
+type Firma struct {
+	PIB                    int    `json:"pib"`
+	Obveznik               string `json:"obveznik"`
+	FirmaRadnje            string `json:"firmaRadnje"`
+	Sediste                string `json:"sediste"`
+	SifraPoreskogObveznika string `json:"sifra_poreskog_pbveznika"`
+	SifraDelatnosti        string `json:"sifra_delatnosti"`
+}
+
+type Faktura struct {
+	Id      string    `json:"id"`
+	Datum   time.Time `json:"datum"`
+	Klijent string    `json:"klijent"`
+	Stavke  []Stavka  `json:"stavke"`
+}
+
+type Stavka struct {
+	Opis string `json:"opis"`
+	Kol  int    `json:"kol"`
+	Cena int    `json:"cena"`
+}
+
+type Klijent struct {
+	Naziv   string `json:"naziv"`
+	Adresa  string `json:"adresa"`
+	Telefon string `json:"telefon"`
+	Email   string `json:"email"`
+}
+
+type Artikl struct {
+	Naziv string `json:"naziv"`
+	Tip   string `json:"tip"`
+	Cena  int    `json:"cena"`
+}
+
+type Kpo struct {
+	Rb        int       `json:"rb"`
+	Datum     time.Time `json:"datum"`
+	Opis      string    `json:"opis"`
+	Proizvodi int       `json:"proizvodi"`
+	Usluge    int       `json:"usluge"`
+}
+
+type Zurnal struct {
+	Datum        time.Time `json:"datum"`
+	KlijentNaziv string    `json:"klijent_naziv"`
+	Opis         string    `json:"opis"`
 }
 
 type Billing struct {

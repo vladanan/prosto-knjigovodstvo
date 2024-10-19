@@ -1,9 +1,35 @@
+2024/10/19 21:32:30 front.go:1085:  API erorr: 500, Internal_server_error_1  /auth/auto_login_user
+2024/10/19 21:32:30 v_db_crud.go:226:  can't scan into dest[9]: json: cannot unmarshal string into Go struct field Firma.pib of type int  /api/v/data/mail/vladan_zasve@yahoo.com
+2024/10/19 21:31:17 front.go:1085:  API erorr: 500, Internal_server_error_1  /auth/auto_login_user
+2024/10/19 21:31:17 v_db_crud.go:226:  can't scan into dest[9]: json: cannot unmarshal string into Go struct field Firma.pib of type int  /api/v/data/mail/vladan_zasve@yahoo.com
+2024/10/19 21:30:47 front.go:1085:  API erorr: 500, Internal_server_error_1  /auth/auto_login_user
+2024/10/19 21:30:47 v_db_crud.go:226:  can't scan into dest[9]: json: cannot unmarshal string into Go struct field Firma.pib of type int  /api/v/data/mail/vladan_zasve@yahoo.com
+2024/10/19 21:28:55 front.go:1085:  API erorr: 500, Internal_server_error_1  /auth/auto_login_user
+2024/10/19 21:28:55 v_db_crud.go:226:  can't scan into dest[9]: json: cannot unmarshal string into Go struct field Firma.pib of type int  /api/v/data/mail/vladan_zasve@yahoo.com
+2024/10/19 18:11:24 front.go:1111:  API erorr: 500, Internal_server_error_1  /fakture
+2024/10/19 18:11:24 v_db_crud.go:226:  struct doesn't have corresponding row field firma  /api/v/data/mail/vladan_zasve@yahoo.com
+2024/10/19 18:06:02 front.go:1111:  API erorr: 500, Internal_server_error_1  /fakture
+2024/10/19 18:06:02 v_db_crud.go:226:  struct doesn't have corresponding row field firma  /api/v/data/mail/vladan_zasve@yahoo.com
+2024/10/19 16:20:33 front.go:1108:  API erorr: 500, Internal_server_error_1  /fakture
+2024/10/19 16:20:33 v_db_crud.go:226:  can't scan into dest[8]: cannot scan NULL into *time.Time  /api/v/data/mail/vladan_zasve@yahoo.com
+2024/10/19 16:17:59 front.go:1108:  API erorr: 500, Internal_server_error_1  /fakture
+2024/10/19 16:17:59 v_db_crud.go:242:  malformed table name  /api/v/data/mail/vladan_zasve@yahoo.com
+2024/10/19 15:31:47 front.go:1074:  Get "http://127.0.0.1:7331/api/v/krsnc_usrs/mail/vladan_zasve@yahoo.com": dial tcp 127.0.0.1:7331: connect: connection refused  /dashboard
+2024/10/19 15:31:47 front.go:99:  Get "http://127.0.0.1:7331/api/v/krsnc_usrs/mail/vladan_zasve@yahoo.com": dial tcp 127.0.0.1:7331: connect: connection refused  /dashboard
+2024/10/19 14:05:39 front.go:526:  failed to connect to `host=127.0.0.1 user=postgres database=postgres`: dial error (dial tcp 127.0.0.1:5432: operation was canceled)  /auth/auto_login_user
+2024/10/19 14:05:39 v_db_auth.go:361:  failed to connect to `host=127.0.0.1 user=postgres database=postgres`: dial error (dial tcp 127.0.0.1:5432: operation was canceled)  /auth/auto_login_user
+2024/10/19 14:05:39 models.go:55:  failed to connect to `host=127.0.0.1 user=postgres database=postgres`: dial error (dial tcp 127.0.0.1:5432: operation was canceled)  /auth/auto_login_user
+2024/10/19 14:05:02 front.go:526:  failed to connect to `host=aws-0-us-east-1.pooler.supabase.com user=postgres.lcwabgjninqhisxitrzy database=postgres`: dial error (timeout: context deadline exceeded)  /auth/auto_login_user
+2024/10/19 14:05:02 v_db_auth.go:361:  failed to connect to `host=aws-0-us-east-1.pooler.supabase.com user=postgres.lcwabgjninqhisxitrzy database=postgres`: dial error (timeout: context deadline exceeded)  /auth/auto_login_user
+2024/10/19 14:05:02 models.go:55:  failed to connect to `host=aws-0-us-east-1.pooler.supabase.com user=postgres.lcwabgjninqhisxitrzy database=postgres`: dial error (timeout: context deadline exceeded)  /auth/auto_login_user
 2024/10/17 13:04:30 front.go:526:  failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)  /auth/auto_login_user
 2024/10/17 13:04:30 v_db_auth.go:361:  failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)  /auth/auto_login_user
 2024/10/17 13:04:30 models.go:61:  failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)  /auth/auto_login_user
 2024/10/17 13:00:37 front.go:526:  failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)  /auth/auto_login_user
 2024/10/17 13:00:37 v_db_auth.go:361:  failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)  /auth/auto_login_user
 2024/10/17 13:00:37 models.go:61:  failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)  /auth/auto_login_user
+2024/10/19 13:52:44 front.go:147:  Get "http://127.0.0.1:7331/api/v/note": dial tcp 127.0.0.1:7331: connect: connection refused  /user_portal
+2024/10/19 13:52:44 front.go:99:  Get "http://127.0.0.1:7331/api/v/note": dial tcp 127.0.0.1:7331: connect: connection refused  /user_portal
 2024/10/16 13:12:39 front.go:354:  Get "http://127.0.0.1:7331/sign_in_remote": dial tcp 127.0.0.1:7331: connect: connection refused  /sign_in
 2024/10/10 11:25:00 v_db_crud.go:170:  ERROR: syntax error at or near "FROM777" (SQLSTATE 42601)  /t
 2024/10/09 20:53:50 i18n.go:89:  message "Password0" not found in language "sr-Latn"  /auth/change_password

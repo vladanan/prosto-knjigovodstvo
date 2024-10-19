@@ -1,5 +1,125 @@
 [
 	{
+		"Date":"2024/10/19","Time":"21:32:30","File":"front.go:1085:",
+		"Error":"API erorr: 500, Internal_server_error_1",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/19","Time":"21:32:30","File":"v_db_crud.go:226:",
+		"Error":"can't scan into dest[9]: json: cannot unmarshal string into Go struct field Firma.pib of type int",
+		"Path":"/api/v/data/mail/vladan_zasve@yahoo.com"
+	},
+	{
+		"Date":"2024/10/19","Time":"21:31:17","File":"front.go:1085:",
+		"Error":"API erorr: 500, Internal_server_error_1",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/19","Time":"21:31:17","File":"v_db_crud.go:226:",
+		"Error":"can't scan into dest[9]: json: cannot unmarshal string into Go struct field Firma.pib of type int",
+		"Path":"/api/v/data/mail/vladan_zasve@yahoo.com"
+	},
+	{
+		"Date":"2024/10/19","Time":"21:30:47","File":"front.go:1085:",
+		"Error":"API erorr: 500, Internal_server_error_1",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/19","Time":"21:30:47","File":"v_db_crud.go:226:",
+		"Error":"can't scan into dest[9]: json: cannot unmarshal string into Go struct field Firma.pib of type int",
+		"Path":"/api/v/data/mail/vladan_zasve@yahoo.com"
+	},
+	{
+		"Date":"2024/10/19","Time":"21:28:55","File":"front.go:1085:",
+		"Error":"API erorr: 500, Internal_server_error_1",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/19","Time":"21:28:55","File":"v_db_crud.go:226:",
+		"Error":"can't scan into dest[9]: json: cannot unmarshal string into Go struct field Firma.pib of type int",
+		"Path":"/api/v/data/mail/vladan_zasve@yahoo.com"
+	},
+	{
+		"Date":"2024/10/19","Time":"18:11:24","File":"front.go:1111:",
+		"Error":"API erorr: 500, Internal_server_error_1",
+		"Path":"/fakture"
+	},
+	{
+		"Date":"2024/10/19","Time":"18:11:24","File":"v_db_crud.go:226:",
+		"Error":"struct doesn't have corresponding row field firma",
+		"Path":"/api/v/data/mail/vladan_zasve@yahoo.com"
+	},
+	{
+		"Date":"2024/10/19","Time":"18:06:02","File":"front.go:1111:",
+		"Error":"API erorr: 500, Internal_server_error_1",
+		"Path":"/fakture"
+	},
+	{
+		"Date":"2024/10/19","Time":"18:06:02","File":"v_db_crud.go:226:",
+		"Error":"struct doesn't have corresponding row field firma",
+		"Path":"/api/v/data/mail/vladan_zasve@yahoo.com"
+	},
+	{
+		"Date":"2024/10/19","Time":"16:20:33","File":"front.go:1108:",
+		"Error":"API erorr: 500, Internal_server_error_1",
+		"Path":"/fakture"
+	},
+	{
+		"Date":"2024/10/19","Time":"16:20:33","File":"v_db_crud.go:226:",
+		"Error":"can't scan into dest[8]: cannot scan NULL into *time.Time",
+		"Path":"/api/v/data/mail/vladan_zasve@yahoo.com"
+	},
+	{
+		"Date":"2024/10/19","Time":"16:17:59","File":"front.go:1108:",
+		"Error":"API erorr: 500, Internal_server_error_1",
+		"Path":"/fakture"
+	},
+	{
+		"Date":"2024/10/19","Time":"16:17:59","File":"v_db_crud.go:242:",
+		"Error":"malformed table name",
+		"Path":"/api/v/data/mail/vladan_zasve@yahoo.com"
+	},
+	{
+		"Date":"2024/10/19","Time":"15:31:47","File":"front.go:1074:",
+		"Error":"Get \"http://127.0.0.1:7331/api/v/krsnc_usrs/mail/vladan_zasve@yahoo.com\": dial tcp 127.0.0.1:7331: connect: connection refused",
+		"Path":"/dashboard"
+	},
+	{
+		"Date":"2024/10/19","Time":"15:31:47","File":"front.go:99:",
+		"Error":"Get \"http://127.0.0.1:7331/api/v/krsnc_usrs/mail/vladan_zasve@yahoo.com\": dial tcp 127.0.0.1:7331: connect: connection refused",
+		"Path":"/dashboard"
+	},
+	{
+		"Date":"2024/10/19","Time":"14:05:39","File":"front.go:526:",
+		"Error":"failed to connect to `host=127.0.0.1 user=postgres database=postgres`: dial error (dial tcp 127.0.0.1:5432: operation was canceled)",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/19","Time":"14:05:39","File":"v_db_auth.go:361:",
+		"Error":"failed to connect to `host=127.0.0.1 user=postgres database=postgres`: dial error (dial tcp 127.0.0.1:5432: operation was canceled)",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/19","Time":"14:05:39","File":"models.go:55:",
+		"Error":"failed to connect to `host=127.0.0.1 user=postgres database=postgres`: dial error (dial tcp 127.0.0.1:5432: operation was canceled)",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/19","Time":"14:05:02","File":"front.go:526:",
+		"Error":"failed to connect to `host=aws-0-us-east-1.pooler.supabase.com user=postgres.lcwabgjninqhisxitrzy database=postgres`: dial error (timeout: context deadline exceeded)",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/19","Time":"14:05:02","File":"v_db_auth.go:361:",
+		"Error":"failed to connect to `host=aws-0-us-east-1.pooler.supabase.com user=postgres.lcwabgjninqhisxitrzy database=postgres`: dial error (timeout: context deadline exceeded)",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/19","Time":"14:05:02","File":"models.go:55:",
+		"Error":"failed to connect to `host=aws-0-us-east-1.pooler.supabase.com user=postgres.lcwabgjninqhisxitrzy database=postgres`: dial error (timeout: context deadline exceeded)",
+		"Path":"/auth/auto_login_user"
+	},
+	{
 		"Date":"2024/10/17","Time":"13:04:30","File":"front.go:526:",
 		"Error":"failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)",
 		"Path":"/auth/auto_login_user"
@@ -28,6 +148,16 @@
 		"Date":"2024/10/17","Time":"13:00:37","File":"models.go:61:",
 		"Error":"failed to connect to `host=/tmp user=vladan database=`: dial error (dial unix /tmp/.s.PGSQL.5432: connect: no such file or directory)",
 		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/19","Time":"13:52:44","File":"front.go:147:",
+		"Error":"Get \"http://127.0.0.1:7331/api/v/note\": dial tcp 127.0.0.1:7331: connect: connection refused",
+		"Path":"/user_portal"
+	},
+	{
+		"Date":"2024/10/19","Time":"13:52:44","File":"front.go:99:",
+		"Error":"Get \"http://127.0.0.1:7331/api/v/note\": dial tcp 127.0.0.1:7331: connect: connection refused",
+		"Path":"/user_portal"
 	},
 	{
 		"Date":"2024/10/16","Time":"13:12:39","File":"front.go:354:",

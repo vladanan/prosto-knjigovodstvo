@@ -1,0 +1,37 @@
+package firma
+
+import (
+  "net/http"
+  "github.com/vladanan/prosto/src/views"
+  "github.com/vladanan/prosto/src/models"
+  "time"
+  "encoding/json"
+  "log"
+  "fmt"
+)
+
+func toArtikli(podaci string) []models.Artikl {
+  var d []models.Artikl
+	err := json.Unmarshal([]byte(podaci), &d)
+	if err != nil {
+		log.Printf("json greska: %v", err)
+	}
+  return d
+}
+
+templ Artikli (r *http.Request, data models.UserData) {
+  @views.Layout(r) {
+    <div class="m-5 text-sm">
+      <p class="m-5 px-2">Poslednja izmena { data.Updated_at.Format(time.DateTime) }</p>
+      <p>Artikli</p>
+        <ul class="">
+        for _, artikl := range toArtikli(data.Artikli) {
+          <li class="m-5 px-2 border-slate-500 border text-sm rounded-m">
+            { artikl.Naziv }, { artikl.Tip }, { fmt.Sprint(artikl.Cena) }
+          </li>
+        }
+      </ul>
+    </div>
+
+  }
+}

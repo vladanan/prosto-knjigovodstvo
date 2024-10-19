@@ -23,6 +23,7 @@ import (
 	"github.com/vladanan/prosto/src/views"
 	"github.com/vladanan/prosto/src/views/cp"
 	"github.com/vladanan/prosto/src/views/dashboard"
+	"github.com/vladanan/prosto/src/views/firma"
 	"github.com/vladanan/prosto/src/views/site"
 )
 
@@ -41,6 +42,14 @@ func RouterUsers(r *mux.Router) {
 	r.HandleFunc("/sign_out", Sign_out)
 	r.HandleFunc("/forgotten_password", ForgottenPassword)
 	r.HandleFunc("/dashboard", Dashboard)
+}
+
+func RouterFirma(r *mux.Router) {
+	r.HandleFunc("/fakture", Fakture)
+	r.HandleFunc("/kpo", Kpo)
+	r.HandleFunc("/zurnal", Zurnal)
+	r.HandleFunc("/klijenti", Klijenti)
+	r.HandleFunc("/artikli", Artikli)
 }
 
 func RouterI18n(r *mux.Router) {
@@ -71,7 +80,7 @@ func ServeStatic(router *mux.Router, staticDirectory string) {
 }
 
 func apiCallGet[
-	T models.Test | models.User | models.Note | models.Settings](
+	T models.Test | models.User | models.Note | models.Settings | models.UserData](
 	table, field, record string, r *http.Request) ([]T, error) {
 
 	// log.Println("api call get:", table, field, record)
@@ -143,11 +152,11 @@ func Pausal(w http.ResponseWriter, r *http.Request) {
 }
 
 func UserPortal(w http.ResponseWriter, r *http.Request) {
-	if notes, err := apiCallGet[models.Note]("note", "", "", r); err != nil {
-		smtu(w, r, l(r, 7, err))
-	} else {
-		site.UserPortal(r, notes).Render(r.Context(), w)
-	}
+	// if notes, err := apiCallGet[models.Note]("note", "", "", r); err != nil {
+	// 	smtu(w, r, l(r, 7, err))
+	// } else {
+	site.UserPortal(r, []models.Note{}).Render(r.Context(), w)
+	// }
 }
 
 func Privacy(w http.ResponseWriter, r *http.Request) {
@@ -471,7 +480,8 @@ func Sign_in_post(w http.ResponseWriter, r *http.Request) {
 				formResp(fp, l(r, 4, err))
 			}
 			w.WriteHeader(302) //da bi htmx u templ formu drugacije reagovao na dobijeni form i dobijeni dashboard
-			dashboard.Dashboard(r, user).Render(r.Context(), w)
+			// dashboard.Dashboard(r, user).Render(r.Context(), w)
+			Dashboard(w, r)
 		}
 	}
 
@@ -506,7 +516,8 @@ func AutoLoginDemo(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, l(r, 4, err).Error(), http.StatusInternalServerError)
 		}
 		log.Println("Sign_in_post: autentikacija JE PROŠLA")
-		dashboard.Dashboard(r, user).Render(r.Context(), w)
+		// dashboard.Dashboard(r, user).Render(r.Context(), w)
+		Dashboard(w, r)
 	}
 }
 
@@ -539,7 +550,8 @@ func AutoLoginUser(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, l(r, 4, err).Error(), http.StatusInternalServerError)
 		}
 		log.Println("Sign_in_post: autentikacija JE PROŠLA")
-		dashboard.Dashboard(r, user).Render(r.Context(), w)
+		// dashboard.Dashboard(r, user).Render(r.Context(), w)
+		Dashboard(w, r)
 	}
 }
 
@@ -572,7 +584,8 @@ func AutoLoginAdmin(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, l(r, 4, err).Error(), http.StatusInternalServerError)
 		}
 		log.Println("Sign_in_post: autentikacija JE PROŠLA")
-		dashboard.Dashboard(r, user).Render(r.Context(), w)
+		// dashboard.Dashboard(r, user).Render(r.Context(), w)
+		Dashboard(w, r)
 	}
 }
 
@@ -1072,8 +1085,10 @@ func Dashboard(w http.ResponseWriter, r *http.Request) {
 		users, err := apiCallGet[models.User]("krsnc_usrs", "mail", user_email, r)
 		if err != nil {
 			smtu(w, r, l(r, 7, err))
+		} else if data, err := apiCallGet[models.UserData]("data", "mail", user_email, r); err != nil {
+			smtu(w, r, l(r, 7, err))
 		} else {
-			dashboard.Dashboard(r, users[0]).Render(r.Context(), w)
+			dashboard.Dashboard(r, users[0], data[0]).Render(r.Context(), w)
 		}
 	} else {
 		smtu(w, r, "UnWelcome")
@@ -1094,6 +1109,68 @@ func Sign_out(w http.ResponseWriter, r *http.Request) {
 		l(r, 8, err)
 	}
 	views.Index(r).Render(r.Context(), w)
+}
+
+////**** FIRMA
+
+func Fakture(w http.ResponseWriter, r *http.Request) {
+	if already_authenticated, email, _, err := getSesionData(r); err == nil && !already_authenticated {
+		views.Index(r).Render(r.Context(), w)
+	} else {
+		if data, err := apiCallGet[models.UserData]("data", "mail", email, r); err != nil {
+			smtu(w, r, l(r, 7, err))
+		} else {
+			firma.Fakture(r, data[0]).Render(r.Context(), w)
+		}
+	}
+}
+
+func Kpo(w http.ResponseWriter, r *http.Request) {
+	if already_authenticated, email, _, err := getSesionData(r); err == nil && !already_authenticated {
+		views.Index(r).Render(r.Context(), w)
+	} else {
+		if data, err := apiCallGet[models.UserData]("data", "mail", email, r); err != nil {
+			smtu(w, r, l(r, 7, err))
+		} else {
+			firma.Kpo(r, data[0]).Render(r.Context(), w)
+		}
+	}
+}
+
+func Zurnal(w http.ResponseWriter, r *http.Request) {
+	if already_authenticated, email, _, err := getSesionData(r); err == nil && !already_authenticated {
+		views.Index(r).Render(r.Context(), w)
+	} else {
+		if data, err := apiCallGet[models.UserData]("data", "mail", email, r); err != nil {
+			smtu(w, r, l(r, 7, err))
+		} else {
+			firma.Zurnal(r, data[0]).Render(r.Context(), w)
+		}
+	}
+}
+
+func Klijenti(w http.ResponseWriter, r *http.Request) {
+	if already_authenticated, email, _, err := getSesionData(r); err == nil && !already_authenticated {
+		views.Index(r).Render(r.Context(), w)
+	} else {
+		if data, err := apiCallGet[models.UserData]("data", "mail", email, r); err != nil {
+			smtu(w, r, l(r, 7, err))
+		} else {
+			firma.Klijenti(r, data[0]).Render(r.Context(), w)
+		}
+	}
+}
+
+func Artikli(w http.ResponseWriter, r *http.Request) {
+	if already_authenticated, email, _, err := getSesionData(r); err == nil && !already_authenticated {
+		views.Index(r).Render(r.Context(), w)
+	} else {
+		if data, err := apiCallGet[models.UserData]("data", "mail", email, r); err != nil {
+			smtu(w, r, l(r, 7, err))
+		} else {
+			firma.Artikli(r, data[0]).Render(r.Context(), w)
+		}
+	}
 }
 
 ////**** i18n

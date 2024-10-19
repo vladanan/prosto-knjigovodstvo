@@ -1,0 +1,234 @@
+{
+  "proba":
+    [
+      {
+        "naziv": "bombone",
+        "tip": "proizvod",
+        "cena": 15
+      },
+      {
+        "naziv": "cips",
+        "tip": "proizvod",
+        "cena": 20
+      },
+      {
+        "naziv": "banana",
+        "tip": "proizvod",
+        "cena": 30
+      },
+      {
+        "naziv": "paprika",
+        "tip": "proizvod",
+        "cena": 40
+      },
+      {
+        "naziv": "vocni sok",
+        "tip": "proizvod",
+        "cena": 50
+      }
+    ],
+  "yahoo":
+    [
+      {
+        "naziv": "merenje otpada",
+        "tip": "usluga",
+        "cena": 15
+      },
+      {
+        "naziv": "varenje šipke",
+        "tip": "usluga",
+        "cena": 20
+      },
+      {
+        "naziv": "izrada resetke",
+        "tip": "usluga",
+        "cena": 30
+      },
+      {
+        "naziv": "prevoz i montaza kontejnera",
+        "tip": "usluga",
+        "cena": 40
+      },
+      {
+        "naziv": "postavljanje metalne konstrukcije",
+        "tip": "usluga",
+        "cena": 50
+      }
+    ],
+  "admin":
+    [
+      {
+        "naziv": "novi form i tabela u bazi klijenta",
+        "tip": "usluga",
+        "cena": 15
+      },
+      {
+        "naziv": "ispravke ui/ux na sajtu",
+        "tip": "usluga",
+        "cena": 20
+      },
+      {
+        "naziv": "externi bekap baze klijenta",
+        "tip": "usluga",
+        "cena": 30
+      },
+      {
+        "naziv": "izrada wp web sajta",
+        "tip": "usluga",
+        "cena": 40
+      },
+      {
+        "naziv": "konsultacije",
+        "tip": "usluga",
+        "cena": 50
+      }
+    ],
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    "fakture":
+      [
+        {
+          "id": "111",
+          "datum": "2024-10-19T15:16:52Z",
+          "klijent": "Infoexpress",
+          "stavke": [
+            {
+              "opis": "nesto",
+              "kol": 12,
+              "cena": 123
+            },
+            {
+              "opis": "prva dva",
+              "kol": 132,
+              "cena": 1236
+            },
+            {
+              "opis": "prva tri",
+              "kol": 12,
+              "cena": 123
+            }
+          ],
+          "iznos": 150
+        },
+        {
+          "id": "222",
+          "datum": "2024-10-20T17:16:52Z",
+          "klijent": "Vezbamo",
+          "stavke": [
+            {
+              "opis": "druga",
+              "kol": 2,
+              "cena": 23
+            },
+            {
+              "opis": "druga dva",
+              "kol": 232,
+              "cena": 236
+            },
+            {
+              "opis": "drugao tri",
+              "kol": 212,
+              "cena": 2123
+            }
+          ],
+          "iznos": 250
+        },
+        {
+          "id": "333",
+          "datum": "2024-10-19T15:16:52Z",
+          "klijent": "Dev corp",
+          "stavke": [
+            {
+              "opis": "treca",
+              "kol": 32,
+              "cena": 323
+            },
+            {
+              "opis": "treca dva",
+              "kol": 32,
+              "cena": 3236
+            },
+            {
+              "opis": "treca tri",
+              "kol": 312,
+              "cena": 3123
+            }
+          ],
+          "iznos": 350
+        }
+        
+      ],
+
+
+
+
+  "kpo":
+  [
+    {
+      "rb": 1,
+      "datum": "2024-04-25T11:04:00Z",
+      "opis": "nesto",
+      "proizvodi": 2300,
+      "usluge": 2553,
+      "svega": 5000
+    },
+    {
+      "rb": 2,
+      "datum": "2024-04-15T11:07:00Z",
+      "opis": "neke bombone nesto",
+      "proizvodi": 300,
+      "usluge": 0,
+      "svega": 400
+    },
+    {
+      "rb": 3,
+      "datum": "2024-04-14T11:07:00Z",
+      "opis": "nesto sedamnaestso",
+      "proizvodi": 0,
+      "usluge": 2553,
+      "svega": 2600
+    }
+  ],
+
+
+  "firma":
+  [
+    {
+      "pib":3523562562,
+      "obveznik":"Pera Peric",
+      "firmaRadnje":"Pera Peric",
+      "sediste":"Jagodina",
+      "sifra_poreskog_pbveznika":"2341",
+      "sifra_delatnosti":"212"
+    },
+    {
+      "pib":2222222222,
+      "obveznik":"Mika Obradovic",
+      "firmaRadnje":"Mika Obradovic",
+      "sediste":"Beograd",
+      "sifra_poreskog_pbveznika":"2221",
+      "sifra_delatnosti":"2222"
+    },
+    {
+      "pib":33333333,
+      "obveznik":"Janko Jaknovic",
+      "firmaRadnje":"Janko Jaknovic",
+      "sediste":"Paracin",
+      "sifra_poreskog_pbveznika":"3331",
+      "sifra_delatnosti":"3333"
+    }
+  ]
+}

@@ -8,7 +8,7 @@ import (
 	"github.com/vladanan/prosto/src/views/cp"
 	"github.com/vladanan/prosto/src/models"
 	"github.com/vladanan/prosto/src/controllers/i18n"
-	
+	"github.com/vladanan/prosto/src/views/dashboard"
 )
 
 func signedin(r *http.Request) string {
@@ -41,17 +41,18 @@ func getMail(r *http.Request) string {
 
 templ Pausal(r *http.Request) {
   @views.Layout(r) {
-    if signedin(r) == "true" && getMail(r) != "y.emailbox-proba@yahoo.com" {
-        <div class="m-5 text-sm">
-          <p class="text-lg font-bold">Formulari za pausal su u izradi....</p>
-          <br>
-          <p class="text-blue-700">Izrada fakture</p>
-          <p class="text-blue-700">Pregled KPO</p>
-          <p class="text-blue-700">Zurnal</p>
-          <p class="text-green-700">Parametri testa samostalnosti</p>
-          <p class="text-blue-700">Podešavanje obavestenja</p>
-          <p class="text-violet-700"><a href="/dashboard" >Podešavanja korisničkog naloga</a></p>
-        </div>
+    if signedin(r) == "true" {
+        // <div class="m-5 text-sm">
+        //   <p class="text-lg font-bold">Formulari za pausal su u izradi....</p>
+        //   <br>
+        //   <p class="text-blue-700">Izrada fakture</p>
+        //   <p class="text-blue-700">Pregled KPO</p>
+        //   <p class="text-blue-700">Zurnal</p>
+        //   <p class="text-green-700">Parametri testa samostalnosti</p>
+        //   <p class="text-blue-700">Podešavanje obavestenja</p>
+        //   <p class="text-violet-700"><a href="/dashboard" >Podešavanja korisničkog naloga</a></p>
+        // </div>
+      @dashboard.Dashboard(r, models.User{}, models.UserData{})
     } else {
       @cp.Sign_in(r, models.SignInFormData{}, "")
      }

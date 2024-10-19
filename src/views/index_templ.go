@@ -43,14 +43,14 @@ func Index(r *http.Request) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!-- Link Swiper's CSS --> <link rel=\"stylesheet\" href=\"static/swiper-bundle.min.css\"><div class=\"relative top-4\"><!-- Swiper --><div style=\"--swiper-navigation-color: #fff; --swiper-pagination-color: #fff\" class=\"swiper mySwiper lg:rounded-2xl lg:max-w-max\"><div class=\"parallax-bg\" data-swiper-parallax=\"-23%\"></div><div class=\"swiper-wrapper\"><!-- Pausal 123--><a href=\"/pausal\" class=\"swiper-slide cursor-alias\" style=\"background-image: url(static/site/startup-593341_1280.jpg);\"><div class=\"title\" data-swiper-parallax=\"-300\">Paušal</div><div class=\"subtitle rounded-md bg-gradient-to-r from-blue-800 via-blue-900 to-transparent\" data-swiper-parallax=\"-200\">Kompletna dokumentacija</div><div class=\"relative text text-sm lg:text-lg\" data-swiper-parallax=\"-100\"><p class=\"relative rounded-md p-2 text-md text-black font-bold bg-gradient-to-r from-white via-transparent to-transparent\">Alat za automatsku obradu faktura, KPO <span class=\"text-green-900\">i parametara testa samostalnosti</span></p><i class=\"relative px-2 text-md text-red-700 bg-gradient-to-r from-transparent to-transparent via-white lg:top-16 top-24\">usluga je dostupna samo</i><br><i class=\"relative px-2 text-md text-red-700 bg-gradient-to-r from-transparent to-transparent via-white lg:top-16 top-24\">registrovanim korisnicima</i></div></a><!-- User portal --><a href=\"/user_portal\" class=\"swiper-slide cursor-alias\" style=\"background-image: url(static/site/call-center-8022155_1280.jpg);\"><div class=\"title px-2 w-fit rounded-md bg-gradient-to-tr from-sky-950 via-sky-800 to-transparent\" data-swiper-parallax=\"-300\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!-- Link Swiper's CSS --> <link rel=\"stylesheet\" href=\"static/swiper-bundle.min.css\"><div class=\"relative top-4\"><!-- Swiper --><div style=\"--swiper-navigation-color: #fff; --swiper-pagination-color: #fff\" class=\"swiper mySwiper lg:rounded-2xl lg:max-w-max\"><div class=\"parallax-bg\" data-swiper-parallax=\"-23%\"></div><div class=\"swiper-wrapper\"><!-- Pausal 123--><div class=\"swiper-slide cursor-alias\" style=\"background-image: url(static/site/startup-593341_1280.jpg);\"><div class=\"title\" data-swiper-parallax=\"-300\">Paušal</div><div class=\"subtitle rounded-md bg-gradient-to-r from-blue-800 via-blue-900 to-transparent\" data-swiper-parallax=\"-200\">Kompletna dokumentacija</div><div class=\"relative text text-sm lg:text-lg\" data-swiper-parallax=\"-100\"><p class=\"relative rounded-md p-2 text-md text-black font-bold bg-gradient-to-r from-white via-transparent to-transparent\">Alat za automatsku obradu faktura, KPO <span class=\"text-green-900\">i parametara testa samostalnosti</span></p><i class=\"relative px-2 text-md text-red-700 bg-gradient-to-r from-transparent to-transparent via-white lg:top-16 top-24\">usluga je dostupna samo</i><br><i class=\"relative px-2 text-md text-red-700 bg-gradient-to-r from-transparent to-transparent via-white lg:top-16 top-24\">registrovanim korisnicima</i></div></div><!-- User portal --><a href=\"/user_portal\" class=\"swiper-slide cursor-alias\" style=\"background-image: url(static/site/call-center-8022155_1280.jpg);\"><div class=\"title px-2 w-fit rounded-md bg-gradient-to-tr from-sky-950 via-sky-800 to-transparent\" data-swiper-parallax=\"-300\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(t("Index_UP_title"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 41, Col: 153}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 42, Col: 153}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -63,7 +63,7 @@ func Index(r *http.Request) templ.Component {
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(t("Index_UP_subtitle"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 43, Col: 163}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 44, Col: 163}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -76,7 +76,7 @@ func Index(r *http.Request) templ.Component {
 			var templ_7745c5c3_Var5 string
 			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(t("Index_UP_text"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 46, Col: 29}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 47, Col: 29}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 			if templ_7745c5c3_Err != nil {
@@ -89,7 +89,7 @@ func Index(r *http.Request) templ.Component {
 			var templ_7745c5c3_Var6 string
 			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(t("Index_L_title"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 55, Col: 72}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 56, Col: 72}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 			if templ_7745c5c3_Err != nil {
@@ -102,7 +102,7 @@ func Index(r *http.Request) templ.Component {
 			var templ_7745c5c3_Var7 string
 			templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(t("Index_L_subtitle"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 57, Col: 78}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 58, Col: 78}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 			if templ_7745c5c3_Err != nil {
@@ -115,7 +115,7 @@ func Index(r *http.Request) templ.Component {
 			var templ_7745c5c3_Var8 string
 			templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(t("Index_UP_title"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 60, Col: 50}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 61, Col: 50}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 			if templ_7745c5c3_Err != nil {
@@ -128,7 +128,7 @@ func Index(r *http.Request) templ.Component {
 			var templ_7745c5c3_Var9 string
 			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(t("Index_L_text8"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 62, Col: 45}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 63, Col: 45}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 			if templ_7745c5c3_Err != nil {
@@ -141,7 +141,7 @@ func Index(r *http.Request) templ.Component {
 			var templ_7745c5c3_Var10 string
 			templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(t("Index_L_text9"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 64, Col: 43}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/index.templ`, Line: 65, Col: 43}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 			if templ_7745c5c3_Err != nil {

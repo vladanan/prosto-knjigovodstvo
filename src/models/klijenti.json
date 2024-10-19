@@ -1,0 +1,27 @@
+[
+  {
+    "naziv": "Infoexpress",
+    "adresa": "Bla bla 10",
+    "telefon": "0659789685",
+    "email": "info@neki.kom"
+  },
+  {
+    "naziv": "Vezbamo",
+    "adresa": "Trte Mrte 12",
+    "telefon": "064532523352",
+    "email": "vezbnamo@guglmejl.neki.kom"
+  },
+  {
+    "naziv": "Dev corp",
+    "adresa": "Neka ulica 110",
+    "telefon": "06511111111",
+    "email": "devcorp@devcorpt.kom"
+  },
+  {
+    "naziv": "Flow ninja",
+    "adresa": "Neki grad, 345500, Neka ulica 310",
+    "telefon": "06533333333",
+    "email": "ninja.flow@sajt.ninja.com"
+  }
+]
+

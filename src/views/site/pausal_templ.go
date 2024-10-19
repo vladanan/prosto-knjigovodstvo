@@ -14,6 +14,7 @@ import (
 	"github.com/vladanan/prosto/src/models"
 	"github.com/vladanan/prosto/src/views"
 	"github.com/vladanan/prosto/src/views/cp"
+	"github.com/vladanan/prosto/src/views/dashboard"
 	"log"
 	"net/http"
 )
@@ -76,8 +77,12 @@ func Pausal(r *http.Request) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			if signedin(r) == "true" && getMail(r) != "y.emailbox-proba@yahoo.com" {
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"m-5 text-sm\"><p class=\"text-lg font-bold\">Formulari za pausal su u izradi....</p><br><p class=\"text-blue-700\">Izrada fakture</p><p class=\"text-blue-700\">Pregled KPO</p><p class=\"text-blue-700\">Zurnal</p><p class=\"text-green-700\">Parametri testa samostalnosti</p><p class=\"text-blue-700\">Podešavanje obavestenja</p><p class=\"text-violet-700\"><a href=\"/dashboard\">Podešavanja korisničkog naloga</a></p></div>")
+			if signedin(r) == "true" {
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("          ")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				templ_7745c5c3_Err = dashboard.Dashboard(r, models.User{}, models.UserData{}).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}

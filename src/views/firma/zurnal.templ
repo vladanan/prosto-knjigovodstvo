@@ -1,0 +1,36 @@
+package firma
+
+import (
+  "net/http"
+  "github.com/vladanan/prosto/src/views"
+  "github.com/vladanan/prosto/src/models"
+  "time"
+  "encoding/json"
+  "log"
+)
+
+func toZurnal(podaci string) []models.Zurnal {
+  var d []models.Zurnal
+	err := json.Unmarshal([]byte(podaci), &d)
+	if err != nil {
+		log.Printf("json greska: %v", err)
+	}
+  return d
+}
+
+templ Zurnal (r *http.Request, data models.UserData) {
+  @views.Layout(r) {
+    <div class="m-5 text-sm">
+      <p class="m-5 px-2">Poslednja izmena { data.Updated_at.Format(time.DateTime) }</p>
+      <p>Zurnal</p>
+        <ul class="">
+        for _, zurnal := range toZurnal(data.Zurnal) {
+          <li class="m-5 px-2 border-slate-500 border text-sm rounded-m">
+            { zurnal.Datum.Format(time.DateOnly) }, { zurnal.KlijentNaziv }, { zurnal.Opis }
+          </li>
+        }
+      </ul>
+    </div>
+
+  }
+}

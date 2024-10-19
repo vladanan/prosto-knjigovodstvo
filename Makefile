@@ -23,7 +23,7 @@ devtg3:
 	@templ generate --watch --proxy="http://0.0.0.0:10001" --proxyport="7332" --cmd="go run ./src/main.go" 2>/dev/pts/11
 
 templ:
-	@templ generate --watch --proxy="http://0.0.0.0:10001" --proxyport="7332" --cmd="go run ./src/main.go" 2>/dev/pts/$(t)
+	@templ generate --watch --proxy="http://0.0.0.0:10000" --proxyport="7331" --cmd="go run ./src/main.go" 2>/dev/pts/$(t)
 
 # 3) tailwind to watch changes in views folder for html, templ, js
 devtw:
