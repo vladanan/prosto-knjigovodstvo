@@ -1,6 +1,7 @@
 package vet
 
 import (
+	"log"
 	"net/http"
 	"strconv"
 
@@ -11,6 +12,8 @@ import (
 func ValidateURLKeys(
 	tableApi, fieldApi, recordApi string) (
 	tableDb, fieldDb string, recordDb any, err error) {
+
+	log.Println("ValidateURLKeys tableapi, fieldapi, record api:", tableApi, fieldApi, recordApi)
 
 	if fieldApi == "id" && recordApi != "" {
 		var err error
@@ -26,19 +29,24 @@ func ValidateURLKeys(
 		}
 		recordDb = recordApi
 	}
+	log.Println("ValidateURLKeys recordD:", recordDb)
 
 	for a := range models.ApiToDb {
-		// fmt.Println("deo od map:", a)
+		log.Println("deo od map:", a)
 		if a == tableApi {
 			tableDb = models.ApiToDb[a].Table
 			switch fieldApi {
 			case "id":
 				fieldDb = models.ApiToDb[a].Id
 			case "mail":
+				log.Println("mejl field upis")
 				fieldDb = models.ApiToDb[a].Mail
 			case "":
+				log.Println("field prazan")
 				fieldDb = ""
+				return "", "", nil, clr.NewAPIError(http.StatusNotAcceptable, "Malformed_field_name")
 			default:
+				log.Println("field neispravan")
 				return "", "", nil, clr.NewAPIError(http.StatusNotAcceptable, "Malformed_field_name")
 			}
 
