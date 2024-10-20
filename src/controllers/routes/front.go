@@ -1085,10 +1085,8 @@ func Dashboard(w http.ResponseWriter, r *http.Request) {
 	} else if already_authenticated {
 		users, err := apiCallGet[models.User]("krsnc_usrs", "mail", user_email, r)
 		if err != nil {
-			log.Println("nakon user api")
 			smtu(w, r, l(r, 7, err))
 		} else if data, err := apiCallGet[models.UserData]("data", "mail", user_email, r); err != nil {
-			log.Println("nakon user data api")
 			smtu(w, r, l(r, 7, err))
 		} else {
 			dashboard.Dashboard(r, users[0], data[0]).Render(r.Context(), w)

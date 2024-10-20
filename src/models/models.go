@@ -44,7 +44,7 @@ func getDBConnFromDirectLocalOrRemotePool(r *http.Request) (*pgx.Conn, error) {
 
 	// zahtevi za supa sa dev treba oko 1100-1200ms ali se izvrsavaju i sa ogranicenjem na 1000 sto znaci da ne ide sve na sql nego nesto i na sever i browser, padaju kada je ogranicenje na 900ms, stavio sam za svaki slucaj 1200
 	// stavljeno 2200 jer su sa malog acera pucali zahtevi zbog sporosti kao i zbog sporosti odgovora sa supabase
-	ctx, cancel := context.WithTimeout(r.Context(), 5000*time.Millisecond)
+	ctx, cancel := context.WithTimeout(r.Context(), 2500*time.Millisecond)
 	defer cancel()
 
 	// log.Println("db get conn from local db or from supa, production:", os.Getenv("PRODUCTION"))
