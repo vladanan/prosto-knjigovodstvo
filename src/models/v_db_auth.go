@@ -284,7 +284,7 @@ func AddUser(form SignUpFormData, r *http.Request) error {
 		if os.Getenv("PRODUCTION") == "FALSE" {
 			urlDomainForEmail = "http://127.0.0.1:7331/auth/vmk/" + keyForVerifyLink + "?user_email=" + form.User_email1 //"vladan_zasve@yahoo.com"
 		} else {
-			urlDomainForEmail = "https://vezbamo.onrender.com/auth/vmk/" + keyForVerifyLink + "?user_email=" + form.User_email1
+			urlDomainForEmail = "https://prosto-knjigovodstvo.onrender.com/auth/vmk/" + keyForVerifyLink + "?user_email=" + form.User_email1
 		}
 
 		email := utils.MailRegister{
@@ -498,7 +498,7 @@ func ReplaceForgottenPassword(email, userName, newPassword, newPasswordKey strin
 		if os.Getenv("PRODUCTION") == "FALSE" {
 			urlDomainForSignIn = "http://127.0.0.1:7331/sign_in"
 		} else {
-			urlDomainForSignIn = "https://vezbamo.onrender.com/sign_in"
+			urlDomainForSignIn = "https://prosto-knjigovodstvo.onrender.com/sign_in"
 		}
 
 		email := utils.MailFPSendNewPassword{
@@ -589,7 +589,7 @@ func ChangeEmail(email, newEmail, userName string, r *http.Request) error {
 		if os.Getenv("PRODUCTION") == "FALSE" {
 			urlDomainForEmail = "http://127.0.0.1:7331/auth/vmk/" + keyForVerifyLink + "?user_email=" + newEmail
 		} else {
-			urlDomainForEmail = "https://vezbamo.onrender.com/auth/vmk/" + keyForVerifyLink + "?user_email=" + newEmail
+			urlDomainForEmail = "https://prosto-knjigovodstvo.onrender.com/auth/vmk/" + keyForVerifyLink + "?user_email=" + newEmail
 		}
 
 		verifyEmail := utils.MailRegister{

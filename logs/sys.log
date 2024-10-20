@@ -1,3 +1,6 @@
+2024/10/20 19:22:49 front.go:1091:  API erorr: 406, Malformed_data_type  /auth/auto_login_user
+2024/10/20 19:20:30 front.go:1088:  Get "http://127.0.0.1:7331/api/v/krsnc_usrs/mail/vladan_zasve@yahoo.com": dial tcp 127.0.0.1:7331: connect: connection refused  /auth/auto_login_user
+2024/10/20 19:20:30 front.go:108:  Get "http://127.0.0.1:7331/api/v/krsnc_usrs/mail/vladan_zasve@yahoo.com": dial tcp 127.0.0.1:7331: connect: connection refused  /auth/auto_login_user
 2024/10/19 21:32:30 front.go:1085:  API erorr: 500, Internal_server_error_1  /auth/auto_login_user
 2024/10/19 21:32:30 v_db_crud.go:226:  can't scan into dest[9]: json: cannot unmarshal string into Go struct field Firma.pib of type int  /api/v/data/mail/vladan_zasve@yahoo.com
 2024/10/19 21:31:17 front.go:1085:  API erorr: 500, Internal_server_error_1  /auth/auto_login_user

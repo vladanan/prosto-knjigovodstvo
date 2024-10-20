@@ -1,5 +1,20 @@
 [
 	{
+		"Date":"2024/10/20","Time":"19:22:49","File":"front.go:1091:",
+		"Error":"API erorr: 406, Malformed_data_type",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/20","Time":"19:20:30","File":"front.go:1088:",
+		"Error":"Get \"http://127.0.0.1:7331/api/v/krsnc_usrs/mail/vladan_zasve@yahoo.com\": dial tcp 127.0.0.1:7331: connect: connection refused",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/20","Time":"19:20:30","File":"front.go:108:",
+		"Error":"Get \"http://127.0.0.1:7331/api/v/krsnc_usrs/mail/vladan_zasve@yahoo.com\": dial tcp 127.0.0.1:7331: connect: connection refused",
+		"Path":"/auth/auto_login_user"
+	},
+	{
 		"Date":"2024/10/19","Time":"21:32:30","File":"front.go:1085:",
 		"Error":"API erorr: 500, Internal_server_error_1",
 		"Path":"/auth/auto_login_user"

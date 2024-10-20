@@ -98,8 +98,9 @@ func apiCallGet[
 	var url string
 	if os.Getenv("PRODUCTION") == "FALSE" {
 		url = "http://127.0.0.1:7331/api/v" + table + field + record
+		// url = "http://127.0.0.1:10000/api/v" + table + field + record
 	} else {
-		url = "https://vezbamo.onrender.com/api/v" + table + field + record
+		url = "https://prosto-knjigovodstvo.onrender.com/api/v" + table + field + record
 	}
 
 	resp, err := http.Get(url)
@@ -275,7 +276,7 @@ func Sign_up_post(w http.ResponseWriter, r *http.Request) {
 	// if os.Getenv("PRODUCTION") == "FALSE" {
 	// 	apiUrl = "http://127.0.0.1:7331/api/v/krsnc_usrs"
 	// } else {
-	// 	apiUrl = "https://vezbamo.onrender.com/api/v/krsnc_usrs"
+	// 	apiUrl = "https://prosto-knjigovodstvo.onrender.com/api/v/krsnc_usrs"
 	// }
 	// // api post poziv i kroz error wraper dobija se apiError ili system err i na to se salje odgovarajuci sign up form
 	// resp, err := http.PostForm(apiUrl, r.Form)
@@ -631,7 +632,7 @@ func ForgottenPasswordSendMail(w http.ResponseWriter, r *http.Request) {
 			if os.Getenv("PRODUCTION") == "FALSE" {
 				url = "http://127.0.0.1:7331/auth/fp/" + urlKey + "?fpm=" + msgKey
 			} else {
-				url = "https://vezbamo.onrender.com/auth/fp/" + urlKey + "?fpm=" + msgKey
+				url = "https://prosto-knjigovodstvo.onrender.com/auth/fp/" + urlKey + "?fpm=" + msgKey
 			}
 			// salje se mejl 123
 			email := utils.MailForgottenPasswordRequest{
@@ -719,7 +720,7 @@ func DeleteUserSendMail(w http.ResponseWriter, r *http.Request) {
 			if os.Getenv("PRODUCTION") == "FALSE" {
 				url = "http://127.0.0.1:7331/auth/du/" + urlKey + "?dum=" + msgKey
 			} else {
-				url = "https://vezbamo.onrender.com/auth/du/" + urlKey + "?dum=" + msgKey
+				url = "https://prosto-knjigovodstvo.onrender.com/auth/du/" + urlKey + "?dum=" + msgKey
 			}
 			email := utils.DeleteUserRequest{
 				R:        r,
@@ -818,7 +819,7 @@ func ChangeEmailSendMail(w http.ResponseWriter, r *http.Request) {
 				if os.Getenv("PRODUCTION") == "FALSE" {
 					url = "http://127.0.0.1:7331/auth/cm/" + urlKey + "?cmm=" + msgKey
 				} else {
-					url = "https://vezbamo.onrender.com/auth/cm/" + urlKey + "?cmm=" + msgKey
+					url = "https://prosto-knjigovodstvo.onrender.com/auth/cm/" + urlKey + "?cmm=" + msgKey
 				}
 				email := utils.ChangeEmailRequest{
 					R:        r,
@@ -919,7 +920,7 @@ func ChangeNameSendMail(w http.ResponseWriter, r *http.Request) {
 				if os.Getenv("PRODUCTION") == "FALSE" {
 					url = "http://127.0.0.1:7331/auth/cn/" + urlKey + "?cnm=" + msgKey
 				} else {
-					url = "https://vezbamo.onrender.com/auth/cn/" + urlKey + "?cnm=" + msgKey
+					url = "https://prosto-knjigovodstvo.onrender.com/auth/cn/" + urlKey + "?cnm=" + msgKey
 				}
 				email := utils.ChangeNameRequest{
 					R:           r,
@@ -1021,7 +1022,7 @@ func ChangePasswordSendMail(w http.ResponseWriter, r *http.Request) {
 				if os.Getenv("PRODUCTION") == "FALSE" {
 					url = "http://127.0.0.1:7331/auth/cp/" + urlKey + "?cpm=" + msgKey
 				} else {
-					url = "https://vezbamo.onrender.com/auth/cp/" + urlKey + "?cpm=" + msgKey
+					url = "https://prosto-knjigovodstvo.onrender.com/auth/cp/" + urlKey + "?cpm=" + msgKey
 				}
 				email := utils.ChangePasswordRequest{
 					R:        r,
