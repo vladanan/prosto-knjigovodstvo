@@ -22,7 +22,7 @@ func toFakture(podaci string) []models.Faktura1 {
 func getIznos(f models.Faktura1) int {
   var iznos int
   for j := 0; j < len(f.Stavke); j++ {
-    iznos = iznos + (f.Stavke[j].Kol * f.Stavke[j].Cena) 
+    iznos = iznos + (f.Stavke[j].Kom * 555) //f.Stavke[j].Cena) 
   }
   return iznos
 }
@@ -46,7 +46,7 @@ templ Fakture (r *http.Request, data models.UserData1) {
           <div state="hide" id={setS(faktura.Id)} hidden class="m-5 px-2 border-blue-600 border text-sm rounded-m">
            for _, stavka := range faktura.Stavke {
               <li class="m-5 cursor-pointer px-2 text-sm rounded-m">
-                opis: { stavka.Opis }, količina: { fmt.Sprint(stavka.Kol) }, cena: { fmt.Sprint(stavka.Cena) }
+                opis: staviti naziv iz artikla, količina: { fmt.Sprint(stavka.Kom) }, cena: { fmt.Sprint(stavka.Kom) } ubaciti cenu iz artikla
               </li>
             }
           </div>

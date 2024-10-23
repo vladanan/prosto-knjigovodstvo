@@ -11,6 +11,12 @@ sve ovo se resava time da se pausal skroz osamostali (i dalji projekti iz njega 
 user_data: user id, bjson: klijenti (naziv, adresa, telefon, email), artikli (naziv, cena), zurnal (datum, klijent id, opis), created_at, updated_at
 
 
+
+req_ip u user tabeli je prazan kada se frenki registrovao, proveriti sta se desava
+
+ocistiti tragove vezabmo u mejlovima i na svim ostalim mestima i staviti prosto-knjigovodstvo
+
+
 FORMS:
 podaci o firmi (pib, maticni itd.)
 faktura

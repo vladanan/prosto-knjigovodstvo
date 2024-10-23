@@ -30,7 +30,7 @@ func toFakture(podaci string) []models.Faktura1 {
 func getIznos(f models.Faktura1) int {
 	var iznos int
 	for j := 0; j < len(f.Stavke); j++ {
-		iznos = iznos + (f.Stavke[j].Kol * f.Stavke[j].Cena)
+		iznos = iznos + (f.Stavke[j].Kom * 555) //f.Stavke[j].Cena)
 	}
 	return iznos
 }
@@ -170,29 +170,16 @@ func Fakture(r *http.Request, data models.UserData1) templ.Component {
 					return templ_7745c5c3_Err
 				}
 				for _, stavka := range faktura.Stavke {
-					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<li class=\"m-5 cursor-pointer px-2 text-sm rounded-m\">opis: ")
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<li class=\"m-5 cursor-pointer px-2 text-sm rounded-m\">opis: staviti naziv iz artikla, količina: ")
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
 					var templ_7745c5c3_Var10 string
-					templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(stavka.Opis)
+					templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprint(stavka.Kom))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/firma/fakture.templ`, Line: 49, Col: 35}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/firma/fakture.templ`, Line: 49, Col: 83}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
-					if templ_7745c5c3_Err != nil {
-						return templ_7745c5c3_Err
-					}
-					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(", količina: ")
-					if templ_7745c5c3_Err != nil {
-						return templ_7745c5c3_Err
-					}
-					var templ_7745c5c3_Var11 string
-					templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprint(stavka.Kol))
-					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/firma/fakture.templ`, Line: 49, Col: 74}
-					}
-					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
@@ -200,16 +187,16 @@ func Fakture(r *http.Request, data models.UserData1) templ.Component {
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
-					var templ_7745c5c3_Var12 string
-					templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprint(stavka.Cena))
+					var templ_7745c5c3_Var11 string
+					templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprint(stavka.Kom))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/firma/fakture.templ`, Line: 49, Col: 109}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/firma/fakture.templ`, Line: 49, Col: 117}
 					}
-					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
-					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</li>")
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" ubaciti cenu iz artikla</li>")
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
