@@ -18,8 +18,8 @@ import (
 	"time"
 )
 
-func toFakture(podaci string) []models.Faktura {
-	var d []models.Faktura
+func toFakture(podaci string) []models.Faktura1 {
+	var d []models.Faktura1
 	err := json.Unmarshal([]byte(podaci), &d)
 	if err != nil {
 		log.Printf("json greska: %v", err)
@@ -27,7 +27,7 @@ func toFakture(podaci string) []models.Faktura {
 	return d
 }
 
-func getIznos(f models.Faktura) int {
+func getIznos(f models.Faktura1) int {
 	var iznos int
 	for j := 0; j < len(f.Stavke); j++ {
 		iznos = iznos + (f.Stavke[j].Kol * f.Stavke[j].Cena)
@@ -39,7 +39,7 @@ func setS(id string) string {
 	return "stavke-" + id
 }
 
-func Fakture(r *http.Request, data models.UserData) templ.Component {
+func Fakture(r *http.Request, data models.UserData1) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)

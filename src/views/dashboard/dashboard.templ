@@ -26,7 +26,7 @@ func signedin(r *http.Request) string {
 	return fmt.Sprint(auth)
 }
 
-templ Dashboard(r *http.Request, user models.User, data models.UserData) {
+templ Dashboard(r *http.Request, user models.User, data models.UserData1) {
 
   @views.Layout(r) {
 

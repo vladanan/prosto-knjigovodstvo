@@ -18,7 +18,7 @@ func toZurnal(podaci string) []models.Zurnal {
   return d
 }
 
-templ Zurnal (r *http.Request, data models.UserData) {
+templ Zurnal (r *http.Request, data models.UserData1) {
   @views.Layout(r) {
     <div class="m-5 text-sm">
       <p class="m-5 px-2">Poslednja izmena { data.Updated_at.Format(time.DateTime) }</p>

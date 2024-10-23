@@ -17,8 +17,8 @@ import (
 	"time"
 )
 
-func toKlijenti(podaci string) []models.Klijent {
-	var d []models.Klijent
+func toKlijenti(podaci string) []models.Klijent1 {
+	var d []models.Klijent1
 	err := json.Unmarshal([]byte(podaci), &d)
 	if err != nil {
 		log.Printf("json greska: %v", err)
@@ -26,7 +26,7 @@ func toKlijenti(podaci string) []models.Klijent {
 	return d
 }
 
-func Klijenti(r *http.Request, data models.UserData) templ.Component {
+func Klijenti(r *http.Request, data models.UserData1) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)

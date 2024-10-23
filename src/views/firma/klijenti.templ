@@ -9,8 +9,8 @@ import (
   "log"
 )
 
-func toKlijenti(podaci string) []models.Klijent {
-  var d []models.Klijent
+func toKlijenti(podaci string) []models.Klijent1 {
+  var d []models.Klijent1
 	err := json.Unmarshal([]byte(podaci), &d)
 	if err != nil {
 		log.Printf("json greska: %v", err)
@@ -18,7 +18,7 @@ func toKlijenti(podaci string) []models.Klijent {
   return d
 }
 
-templ Klijenti (r *http.Request, data models.UserData) {
+templ Klijenti (r *http.Request, data models.UserData1) {
   @views.Layout(r) {
     <div class="m-5 text-sm">
       <p class="m-5 px-2">Poslednja izmena { data.Updated_at.Format(time.DateTime) }</p>

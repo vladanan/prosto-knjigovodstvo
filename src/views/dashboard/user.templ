@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-templ User(r *http.Request, user models.User, data models.UserData) {
+templ User(r *http.Request, user models.User, data models.UserData1) {
 	// mora da se stavi i ovde zbog bagovanja oko static/path/flood zastite... 1234
 	<img src="static/site/prosto.png" hidden/>
 	<p class="m-5 text-sm">{ t("Welcome") }</p>

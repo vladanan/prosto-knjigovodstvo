@@ -80,7 +80,7 @@ func ServeStatic(router *mux.Router, staticDirectory string) {
 }
 
 func apiCallGet[
-	T models.Test | models.User | models.Note | models.Settings | models.UserData](
+	T models.Test | models.User | models.Note | models.Settings | models.UserData1](
 	table, field, record string, r *http.Request) ([]T, error) {
 
 	// log.Println("api call get:", table, field, record)
@@ -175,7 +175,7 @@ func Arrangements(w http.ResponseWriter, r *http.Request) {
 ////**** USERS 123
 
 func Sign_up(w http.ResponseWriter, r *http.Request) {
-	if already_authenticated, _, _, err := getSesionData(r); err == nil && !already_authenticated {
+	if already_authenticated, _, _, _, err := getSesionData(r); err == nil && !already_authenticated {
 		dashboard.Sign_up(r).Render(r.Context(), w)
 	} else {
 		views.Index(r).Render(r.Context(), w)
@@ -197,12 +197,12 @@ func smtu(w http.ResponseWriter, r *http.Request, message any) {
 	dashboard.MessageForUser(r, errorMsg).Render(r.Context(), w)
 }
 
-func getSesionData(r *http.Request) (bool, string, string, error) {
+func getSesionData(r *http.Request) (bool, string, string, int, error) {
 
 	key := i18n.SessionKey("session")
 	session, err := i18n.GetSessionFromContext(r.Context(), key)
 	if err != nil {
-		return false, "", "", l(r, 8, err)
+		return false, "", "", 0, l(r, 8, err)
 	}
 
 	var alreadyAuthenticated bool
@@ -220,13 +220,18 @@ func getSesionData(r *http.Request) (bool, string, string, error) {
 	nameMap := session.Values["name"]
 	name := ""
 	if nameMap == nil {
-		// fmt.Println("nema mail:", session.Values["user_email"])
 	} else {
-		// fmt.Println("ima mail:", session.Values["user_email"])
 		name = nameMap.(string)
 	}
 
-	return alreadyAuthenticated, email, name, nil
+	idMap := session.Values["uid"]
+	uid := 0
+	if idMap == nil {
+	} else {
+		uid = idMap.(int)
+	}
+
+	return alreadyAuthenticated, email, name, uid, nil
 }
 
 // Genericki form Pack za response forms
@@ -354,7 +359,7 @@ func CheckUserName(w http.ResponseWriter, r *http.Request) {
 }
 
 func Sign_in(w http.ResponseWriter, r *http.Request) {
-	if already_authenticated, _, _, err := getSesionData(r); err == nil && !already_authenticated {
+	if already_authenticated, _, _, _, err := getSesionData(r); err == nil && !already_authenticated {
 		dashboard.Sign_in(r).Render(r.Context(), w)
 
 		// resp, err := http.Get("http://127.0.0.1:7331/sign_in_remote")
@@ -476,6 +481,7 @@ func Sign_in_post(w http.ResponseWriter, r *http.Request) {
 			session.Values["user_email"] = user.Email
 			session.Values["name"] = user.User_name
 			session.Values["mode"] = user.Mode
+			session.Values["uid"] = user.U_id
 			// Save it before we write to the response/return from the handler.
 			if err = session.Save(r, w); err != nil {
 				formResp(fp, l(r, 4, err))
@@ -512,6 +518,7 @@ func AutoLoginDemo(w http.ResponseWriter, r *http.Request) {
 		session.Values["user_email"] = user.Email
 		session.Values["name"] = user.User_name
 		session.Values["mode"] = user.Mode
+		session.Values["uid"] = user.U_id
 		// Save it before we write to the response/return from the handler.
 		if err = session.Save(r, w); err != nil {
 			http.Error(w, l(r, 4, err).Error(), http.StatusInternalServerError)
@@ -546,6 +553,7 @@ func AutoLoginUser(w http.ResponseWriter, r *http.Request) {
 		session.Values["user_email"] = user.Email
 		session.Values["name"] = user.User_name
 		session.Values["mode"] = user.Mode
+		session.Values["uid"] = user.U_id
 		// Save it before we write to the response/return from the handler.
 		if err = session.Save(r, w); err != nil {
 			http.Error(w, l(r, 4, err).Error(), http.StatusInternalServerError)
@@ -580,6 +588,7 @@ func AutoLoginAdmin(w http.ResponseWriter, r *http.Request) {
 		session.Values["user_email"] = user.Email
 		session.Values["name"] = user.User_name
 		session.Values["mode"] = user.Mode
+		session.Values["uid"] = user.U_id
 		// Save it before we write to the response/return from the handler.
 		if err = session.Save(r, w); err != nil {
 			http.Error(w, l(r, 4, err).Error(), http.StatusInternalServerError)
@@ -591,7 +600,7 @@ func AutoLoginAdmin(w http.ResponseWriter, r *http.Request) {
 }
 
 func ForgottenPassword(w http.ResponseWriter, r *http.Request) {
-	if already_authenticated, _, _, err := getSesionData(r); err == nil && !already_authenticated {
+	if already_authenticated, _, _, _, err := getSesionData(r); err == nil && !already_authenticated {
 		dashboard.Forgotten_password(r).Render(r.Context(), w)
 	} else {
 		views.Index(r).Render(r.Context(), w)
@@ -681,7 +690,7 @@ func CheckLinkFromEmailFP(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeleteUser(w http.ResponseWriter, r *http.Request) {
-	if already_authenticated, _, _, err := getSesionData(r); err == nil && !already_authenticated {
+	if already_authenticated, _, _, _, err := getSesionData(r); err == nil && !already_authenticated {
 		views.Index(r).Render(r.Context(), w)
 	} else {
 		dashboard.Delete_user(r).Render(r.Context(), w)
@@ -776,7 +785,7 @@ func CheckLinkFromEmailDU(w http.ResponseWriter, r *http.Request) {
 }
 
 func ChangeEmail(w http.ResponseWriter, r *http.Request) {
-	if already_authenticated, _, _, err := getSesionData(r); err == nil && !already_authenticated {
+	if already_authenticated, _, _, _, err := getSesionData(r); err == nil && !already_authenticated {
 		views.Index(r).Render(r.Context(), w)
 	} else {
 		dashboard.Change_email(r).Render(r.Context(), w)
@@ -878,7 +887,7 @@ func CheckLinkFromEmailCM(w http.ResponseWriter, r *http.Request) {
 }
 
 func ChangeName(w http.ResponseWriter, r *http.Request) {
-	if already_authenticated, _, _, err := getSesionData(r); err == nil && !already_authenticated {
+	if already_authenticated, _, _, _, err := getSesionData(r); err == nil && !already_authenticated {
 		views.Index(r).Render(r.Context(), w)
 	} else {
 		dashboard.Change_name(r).Render(r.Context(), w)
@@ -979,7 +988,7 @@ func CheckLinkFromEmailCN(w http.ResponseWriter, r *http.Request) {
 }
 
 func ChangePassword(w http.ResponseWriter, r *http.Request) {
-	if already_authenticated, _, _, err := getSesionData(r); err == nil && !already_authenticated {
+	if already_authenticated, _, _, _, err := getSesionData(r); err == nil && !already_authenticated {
 		views.Index(r).Render(r.Context(), w)
 	} else {
 		dashboard.Change_password(r).Render(r.Context(), w)
@@ -1080,13 +1089,13 @@ func CheckLinkFromEmailCP(w http.ResponseWriter, r *http.Request) {
 }
 
 func Dashboard(w http.ResponseWriter, r *http.Request) {
-	if already_authenticated, user_email, _, err := getSesionData(r); err != nil {
+	if already_authenticated, user_email, _, _, err := getSesionData(r); err != nil {
 		http.Error(w, l(r, 8, err).Error(), http.StatusInternalServerError)
 	} else if already_authenticated {
 		users, err := apiCallGet[models.User]("krsnc_usrs", "mail", user_email, r)
 		if err != nil {
 			smtu(w, r, l(r, 7, err))
-		} else if data, err := apiCallGet[models.UserData]("data", "mail", user_email, r); err != nil {
+		} else if data, err := apiCallGet[models.UserData1]("data", "mail", user_email, r); err != nil {
 			smtu(w, r, l(r, 7, err))
 		} else {
 			dashboard.Dashboard(r, users[0], data[0]).Render(r.Context(), w)
@@ -1115,10 +1124,10 @@ func Sign_out(w http.ResponseWriter, r *http.Request) {
 ////**** FIRMA
 
 func Fakture(w http.ResponseWriter, r *http.Request) {
-	if already_authenticated, email, _, err := getSesionData(r); err == nil && !already_authenticated {
+	if already_authenticated, email, _, _, err := getSesionData(r); err == nil && !already_authenticated {
 		views.Index(r).Render(r.Context(), w)
 	} else {
-		if data, err := apiCallGet[models.UserData]("data", "mail", email, r); err != nil {
+		if data, err := apiCallGet[models.UserData1]("data", "mail", email, r); err != nil {
 			smtu(w, r, l(r, 7, err))
 		} else {
 			firma.Fakture(r, data[0]).Render(r.Context(), w)
@@ -1127,10 +1136,10 @@ func Fakture(w http.ResponseWriter, r *http.Request) {
 }
 
 func Kpo(w http.ResponseWriter, r *http.Request) {
-	if already_authenticated, email, _, err := getSesionData(r); err == nil && !already_authenticated {
+	if already_authenticated, email, _, _, err := getSesionData(r); err == nil && !already_authenticated {
 		views.Index(r).Render(r.Context(), w)
 	} else {
-		if data, err := apiCallGet[models.UserData]("data", "mail", email, r); err != nil {
+		if data, err := apiCallGet[models.UserData1]("data", "mail", email, r); err != nil {
 			smtu(w, r, l(r, 7, err))
 		} else {
 			firma.Kpo(r, data[0]).Render(r.Context(), w)
@@ -1139,10 +1148,10 @@ func Kpo(w http.ResponseWriter, r *http.Request) {
 }
 
 func Zurnal(w http.ResponseWriter, r *http.Request) {
-	if already_authenticated, email, _, err := getSesionData(r); err == nil && !already_authenticated {
+	if already_authenticated, email, _, _, err := getSesionData(r); err == nil && !already_authenticated {
 		views.Index(r).Render(r.Context(), w)
 	} else {
-		if data, err := apiCallGet[models.UserData]("data", "mail", email, r); err != nil {
+		if data, err := apiCallGet[models.UserData1]("data", "mail", email, r); err != nil {
 			smtu(w, r, l(r, 7, err))
 		} else {
 			firma.Zurnal(r, data[0]).Render(r.Context(), w)
@@ -1151,10 +1160,10 @@ func Zurnal(w http.ResponseWriter, r *http.Request) {
 }
 
 func Klijenti(w http.ResponseWriter, r *http.Request) {
-	if already_authenticated, email, _, err := getSesionData(r); err == nil && !already_authenticated {
+	if already_authenticated, email, _, _, err := getSesionData(r); err == nil && !already_authenticated {
 		views.Index(r).Render(r.Context(), w)
 	} else {
-		if data, err := apiCallGet[models.UserData]("data", "mail", email, r); err != nil {
+		if data, err := apiCallGet[models.UserData1]("data", "mail", email, r); err != nil {
 			smtu(w, r, l(r, 7, err))
 		} else {
 			firma.Klijenti(r, data[0]).Render(r.Context(), w)
@@ -1163,10 +1172,10 @@ func Klijenti(w http.ResponseWriter, r *http.Request) {
 }
 
 func Artikli(w http.ResponseWriter, r *http.Request) {
-	if already_authenticated, email, _, err := getSesionData(r); err == nil && !already_authenticated {
+	if already_authenticated, email, _, _, err := getSesionData(r); err == nil && !already_authenticated {
 		views.Index(r).Render(r.Context(), w)
 	} else {
-		if data, err := apiCallGet[models.UserData]("data", "mail", email, r); err != nil {
+		if data, err := apiCallGet[models.UserData1]("data", "mail", email, r); err != nil {
 			smtu(w, r, l(r, 7, err))
 		} else {
 			firma.Artikli(r, data[0]).Render(r.Context(), w)

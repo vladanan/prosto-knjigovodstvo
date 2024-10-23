@@ -7,10 +7,14 @@ da fe u dev bude usmeren na lokalni be a u prod na render, to mora da zna i be j
 
 sve ovo se resava time da se pausal skroz osamostali (i dalji projekti iz njega kopiraju) a vezbamo da bude sajt za arhivu i programerski porfolio
 
-FORMS:
-faktura: kupci, dobavljaci, artkli/usluge, zurnal
-zurnal
-kpo
 
 user_data: user id, bjson: klijenti (naziv, adresa, telefon, email), artikli (naziv, cena), zurnal (datum, klijent id, opis), created_at, updated_at
 
+
+FORMS:
+podaci o firmi (pib, maticni itd.)
+faktura
+klijenti
+artkli
+kpo
+zurnal

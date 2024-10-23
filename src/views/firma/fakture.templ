@@ -10,8 +10,8 @@ import (
   "log"
 )
 
-func toFakture(podaci string) []models.Faktura {
-  var d []models.Faktura
+func toFakture(podaci string) []models.Faktura1 {
+  var d []models.Faktura1
 	err := json.Unmarshal([]byte(podaci), &d)
 	if err != nil {
 		log.Printf("json greska: %v", err)
@@ -19,7 +19,7 @@ func toFakture(podaci string) []models.Faktura {
   return d
 }
 
-func getIznos(f models.Faktura) int {
+func getIznos(f models.Faktura1) int {
   var iznos int
   for j := 0; j < len(f.Stavke); j++ {
     iznos = iznos + (f.Stavke[j].Kol * f.Stavke[j].Cena) 
@@ -31,7 +31,7 @@ func setS(id string) string {
   return "stavke-" + id
 }
 
-templ Fakture (r *http.Request, data models.UserData) {
+templ Fakture (r *http.Request, data models.UserData1) {
   @views.Layout(r) {
     <div class="m-5 text-sm">
       <p class="m-5 px-2">Poslednja izmena { data.Updated_at.Format(time.DateTime) }</p>
