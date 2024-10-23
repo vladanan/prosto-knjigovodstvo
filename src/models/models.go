@@ -207,52 +207,38 @@ func GetEnvDbSettings(r *http.Request) (Settings, error) {
 }
 
 type UserData struct {
-	Ud_id      int          `db:"ud_id"`
-	U_id       int          `db:"u_id"`
-	U_email    string       `db:"u_email"`
-	Settings   UserSettings `db:"settings"`
-	Details    UserDetails  `db:"details"`
-	Created_at time.Time    `db:"created_at"`
-	Updated_at time.Time    `db:"updated_at"`
+	Ud_id                  int          `db:"ud_id"`
+	U_id                   int          `db:"u_id"`
+	U_email                string       `db:"u_email"`
+	Obveznik               string       `db:"obveznik"`
+	Sediste                string       `db:"sediste"`
+	SifraPoreskogObveznika string       `db:"sifra_poreskog_pbveznika"`
+	SifraDelatnosti        string       `db:"sifra_delatnosti"`
+	Firma                  Firma        `db:"firma"`
+	Settings               UserSettings `db:"settings"`
+	Created_at             time.Time    `db:"created_at"`
+	Updated_at             time.Time    `db:"updated_at"`
 }
-
 type UserSettings struct {
 	LogoPath string `json:"logo_path"`
 }
 
-type UserDetails struct {
-	Obveznik               string  `json:"obveznik"`
-	Sediste                string  `json:"sediste"`
-	SifraPoreskogObveznika string  `json:"sifra_poreskog_pbveznika"`
-	SifraDelatnosti        string  `json:"sifra_delatnosti"`
-	Firma                  Firma   `json:"firma"`
-	Kontakt                Kontakt `json:"kontakt"`
-}
-
 type Firma struct {
-	NazivFirmaRadnje string `json:"naziv_firma_radnje"`
-	PIB              int    `json:"pib"`
-	MB               int    `json:"mb"`
-	Tr               string `json:"tr"`
-}
-
-type Kontakt struct {
-	Adresa  string `json:"adresa"`
-	Fiksni  string `json:"fiksni"`
-	Mobilni string `json:"mobilni"`
-	Email   string `json:"email"`
-	Link    string `json:"link"`
-}
-
-type Klijent struct {
-	K_id    int     `db:"k_id"`
-	U_id    int     `db:"u_id"`
-	Firma   Firma   `db:"firma"`
-	Kontakt Kontakt `db:"kontakt"`
+	Fi_id            int    `db:"fi_id"`
+	U_id             int    `db:"u_id"`
+	NazivFirmaRadnje string `db:"naziv_firma_radnje"`
+	PIB              int    `db:"pib"`
+	MB               int    `db:"mb"`
+	Tr               string `db:"tr"`
+	Adresa           string `db:"adresa"`
+	Fiksni           string `db:"fiksni"`
+	Mobilni          string `db:"mobilni"`
+	Email            string `db:"email"`
+	Link             string `db:"link"`
 }
 
 type Faktura struct {
-	F_id       int           `db:"f_id"`
+	Fa_id      int           `db:"fa_id"`
 	U_id       int           `db:"u_id"`
 	Podaci     PodaciFakture `db:"podaci_fakture"`
 	Created_at time.Time     `db:"created_at"`
@@ -260,31 +246,30 @@ type Faktura struct {
 }
 
 type PodaciFakture struct {
-	User          UserDetails `json:"user"`
-	Klijent       Klijent     `json:"klijent"`
-	DatumRacuna   time.Time   `json:"datum_racuna"`
-	MestoRacuna   string      `json:"mesto_racuna"`
-	DatumPrometa  time.Time   `json:"datum_prometa"`
-	MestoPrometa  string      `json:"mesto_prometa"`
-	Oznaka        string      `json:"oznaka"`
-	Valuta        time.Time   `json:"valuta"`
-	Stavke        []Stavka    `db:"stavke"`
-	Specifikacija string      `json:"specifikacija"`
-	Porez         string      `json:"porez"`
-	Instrukcije   string      `json:"instrukcije"`
+	User          Firma     `json:"user"`
+	Klijent       Firma     `json:"klijent"`
+	DatumRacuna   time.Time `json:"datum_racuna"`
+	MestoRacuna   string    `json:"mesto_racuna"`
+	DatumPrometa  time.Time `json:"datum_prometa"`
+	MestoPrometa  string    `json:"mesto_prometa"`
+	Oznaka        string    `json:"oznaka"`
+	Valuta        time.Time `json:"valuta"`
+	Stavke        []Stavka  `json:"stavke"`
+	Specifikacija string    `json:"specifikacija"`
+	Porez         string    `json:"porez"`
+	Instrukcije   string    `json:"instrukcije"`
 }
 
 type Stavka struct {
-	Rb    int    `json:"rb"`
-	Sifra int    `json:"sifra"` //artikl id
-	Opis  string `json:"opis"`
-	Kol   int    `json:"kol"`
-	Cena  int    `json:"cena"`
+	Rb     int    `json:"rb"`
+	Artikl Artikl `json:"artikl"`
+	Kom    int    `json:"kom"`
 }
 
 type Artikl struct {
 	A_id  int    `db:"a_id"`
 	U_id  int    `db:"u_id"`
+	Sifra int    `db:"sifra"`
 	Naziv string `db:"naziv"`
 	Tip   string `db:"tip"`
 	Cena  int    `db:"cena"`
@@ -303,11 +288,12 @@ type Kpo struct {
 type Zurnal struct {
 	Z_id         int       `db:"z_id"`
 	U_id         int       `db:"u_id"`
-	Datum        time.Time `json:"datum"`
-	KlijentNaziv string    `json:"klijent_naziv"`
-	Opis         string    `json:"opis"`
+	Datum        time.Time `db:"datum"`
+	KlijentNaziv string    `db:"klijent_naziv"`
+	Opis         string    `db:"opis"`
 }
 
+// ///////////////////////////////////////////////////////////
 type UserData1 struct {
 	Ud_id      int       `db:"ud_id"`
 	U_email    string    `db:"u_email"`
