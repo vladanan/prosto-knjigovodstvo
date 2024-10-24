@@ -1,5 +1,25 @@
 [
 	{
+		"Date":"2024/10/24","Time":"09:07:34","File":"front.go:1099:",
+		"Error":"API erorr: 500, Internal_server_error_1",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/24","Time":"09:07:34","File":"v_db_crud.go:226:",
+		"Error":"cannot find field sifra_poreskog_obveznika in returned row",
+		"Path":"/api/v/data/mail/vladan_zasve@yahoo.com"
+	},
+	{
+		"Date":"2024/10/24","Time":"08:49:45","File":"front.go:1099:",
+		"Error":"API erorr: 500, Internal_server_error_1",
+		"Path":"/auth/auto_login_user"
+	},
+	{
+		"Date":"2024/10/24","Time":"08:49:45","File":"v_db_crud.go:226:",
+		"Error":"cannot find field klijenti in returned row",
+		"Path":"/api/v/data/mail/vladan_zasve@yahoo.com"
+	},
+	{
 		"Date":"2024/10/20","Time":"19:22:49","File":"front.go:1091:",
 		"Error":"API erorr: 406, Malformed_data_type",
 		"Path":"/auth/auto_login_user"

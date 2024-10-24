@@ -18,17 +18,17 @@ func toZurnal(podaci string) []models.Zurnal {
   return d
 }
 
-templ Zurnal (r *http.Request, data models.UserData1) {
+templ Zurnal (r *http.Request, data models.UserData) {
   @views.Layout(r) {
     <div class="m-5 text-sm">
       <p class="m-5 px-2">Poslednja izmena { data.Updated_at.Format(time.DateTime) }</p>
       <p>Zurnal</p>
         <ul class="">
-        for _, zurnal := range toZurnal(data.Zurnal) {
-          <li class="m-5 px-2 border-slate-500 border text-sm rounded-m">
-            { zurnal.Datum.Format(time.DateOnly) }, { zurnal.KlijentNaziv }, { zurnal.Opis }
-          </li>
-        }
+        // for _, zurnal := range toZurnal(data.Zurnal) {
+        //   <li class="m-5 px-2 border-slate-500 border text-sm rounded-m">
+        //     { zurnal.Datum.Format(time.DateOnly) }, { zurnal.KlijentNaziv }, { zurnal.Opis }
+        //   </li>
+        // }
       </ul>
     </div>
 

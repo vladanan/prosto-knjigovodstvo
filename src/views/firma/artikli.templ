@@ -7,7 +7,7 @@ import (
   "time"
   "encoding/json"
   "log"
-  "fmt"
+  // "fmt"
 )
 
 func toArtikli(podaci string) []models.Artikl {
@@ -19,17 +19,17 @@ func toArtikli(podaci string) []models.Artikl {
   return d
 }
 
-templ Artikli (r *http.Request, data models.UserData1) {
+templ Artikli (r *http.Request, data models.UserData) {
   @views.Layout(r) {
     <div class="m-5 text-sm">
       <p class="m-5 px-2">Poslednja izmena { data.Updated_at.Format(time.DateTime) }</p>
       <p>Artikli</p>
         <ul class="">
-        for _, artikl := range toArtikli(data.Artikli) {
-          <li class="m-5 px-2 border-slate-500 border text-sm rounded-m">
-            { artikl.Naziv }, { artikl.Tip }, { fmt.Sprint(artikl.Cena) }
-          </li>
-        }
+        // for _, artikl := range toArtikli(data.Artikli) {
+        //   <li class="m-5 px-2 border-slate-500 border text-sm rounded-m">
+        //     { artikl.Naziv }, { artikl.Tip }, { fmt.Sprint(artikl.Cena) }
+        //   </li>
+        // }
       </ul>
     </div>
 

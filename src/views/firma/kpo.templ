@@ -4,7 +4,7 @@ import (
   "net/http"
   "github.com/vladanan/prosto/src/views"
   "github.com/vladanan/prosto/src/models"
-  "fmt"
+  // "fmt"
   "time"
   "encoding/json"
   "log"
@@ -19,17 +19,17 @@ func toKpo(podaci string) []models.Kpo {
   return d
 }
 
-templ Kpo (r *http.Request, data models.UserData1) {
+templ Kpo (r *http.Request, data models.UserData) {
   @views.Layout(r) {
     <div class="m-5 text-sm">
       <p class="m-5 px-2">Poslednja izmena { data.Updated_at.Format(time.DateTime) }</p>
       <p>KPO evidencija</p>
         <ul class="">
-        for _, kpo := range toKpo(data.Kpo) {
-          <li class="m-5 px-2 border-slate-500 border text-sm rounded-m">
-            { fmt.Sprint(kpo.Rb) }. { kpo.Datum.Format(time.DateOnly) }, { kpo.Opis }, proizvodi: { fmt.Sprint(kpo.Proizvodi) }, usluge: { fmt.Sprint(kpo.Usluge) }, svega: { fmt.Sprint(kpo.Proizvodi + kpo.Usluge) }
-          </li>
-        }
+        // for _, kpo := range toKpo(data.Kpo) {
+        //   <li class="m-5 px-2 border-slate-500 border text-sm rounded-m">
+        //     { fmt.Sprint(kpo.Rb) }. { kpo.Datum.Format(time.DateOnly) }, { kpo.Opis }, proizvodi: { fmt.Sprint(kpo.Proizvodi) }, usluge: { fmt.Sprint(kpo.Usluge) }, svega: { fmt.Sprint(kpo.Proizvodi + kpo.Usluge) }
+        //   </li>
+        // }
       </ul>
     </div>
 

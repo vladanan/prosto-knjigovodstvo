@@ -52,7 +52,7 @@ templ Pausal(r *http.Request) {
         //   <p class="text-blue-700">Podešavanje obavestenja</p>
         //   <p class="text-violet-700"><a href="/dashboard" >Podešavanja korisničkog naloga</a></p>
         // </div>
-      @dashboard.Dashboard(r, models.User{}, models.UserData1{})
+      @dashboard.Dashboard(r, models.User{}, models.UserData{})
     } else {
       @cp.Sign_in(r, models.SignInFormData{}, "")
      }

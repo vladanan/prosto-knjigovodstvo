@@ -207,20 +207,20 @@ func GetEnvDbSettings(r *http.Request) (Settings, error) {
 }
 
 type UserData struct {
-	Ud_id                  int          `db:"ud_id"`
-	U_id                   int          `db:"u_id"`
-	U_email                string       `db:"u_email"`
-	Obveznik               string       `db:"obveznik"`
-	Sediste                string       `db:"sediste"`
-	SifraPoreskogObveznika string       `db:"sifra_poreskog_pbveznika"`
-	SifraDelatnosti        string       `db:"sifra_delatnosti"`
-	Firma                  Firma        `db:"firma"`
-	Settings               UserSettings `db:"settings"`
-	Created_at             time.Time    `db:"created_at"`
-	Updated_at             time.Time    `db:"updated_at"`
+	Ud_id           int          `db:"ud_id"`
+	U_id            int          `db:"u_id"`
+	U_email         string       `db:"u_email"`
+	Obveznik        string       `db:"obveznik"`
+	Sediste         string       `db:"sediste"`
+	SifraDelatnosti string       `db:"sifra_delatnosti"`
+	Firma           Firma        `db:"firma"`
+	Settings        UserSettings `db:"settings"`
+	Created_at      time.Time    `db:"created_at"`
+	Updated_at      time.Time    `db:"updated_at"`
 }
 type UserSettings struct {
-	LogoPath string `json:"logo_path"`
+	Obavestenja string `json:"obavestenja"`
+	Memorandum  string `json:"memorandum"`
 }
 
 type Firma struct {

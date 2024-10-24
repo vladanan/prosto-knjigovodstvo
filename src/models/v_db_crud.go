@@ -221,12 +221,12 @@ func (db DB) Get(table string, field string, record any, r *http.Request) (any, 
 		}
 
 	case "user_data":
-		pgxData, err = pgx.CollectRows(rows, pgx.RowToStructByName[UserData1])
+		pgxData, err = pgx.CollectRows(rows, pgx.RowToStructByName[UserData])
 		if err != nil {
 			return nil, l(r, 8, err)
 		}
 		if fmt.Sprint(pgxData) == "[]" {
-			pgxData = []UserData1{{}}
+			pgxData = []UserData{{}}
 		}
 
 	case "g_user_blog":

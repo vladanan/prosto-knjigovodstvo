@@ -7,8 +7,8 @@ import (
 	"time"
 )
 
-templ User(r *http.Request, user models.User, data models.UserData1) {
-	// mora da se stavi i ovde zbog bagovanja oko static/path/flood zastite... 1234
+templ User(r *http.Request, user models.User, data models.UserData) {
+	// mora da se stavi i ovde zbog bagovanja oko static/path/flood zastite...
 	<img src="static/site/prosto.png" hidden/>
 	<p class="m-5 text-sm">{ t("Welcome") }</p>
 	if user.Email == "y.emailbox-proba@yahoo.com" {
@@ -86,7 +86,6 @@ templ User(r *http.Request, user models.User, data models.UserData1) {
 		// 	<td>{ t("Ulevel") }</td>
 		// 	<td class="text-sky-800 dark:text-sky-400">{ user.Level }</td>
 		// </tr>
-		<br>
 		// <tr>
 		// 	<td>Payment from</td>
 		// 	<td>{ user.Payment_date.String() }</td>
@@ -118,32 +117,58 @@ templ User(r *http.Request, user models.User, data models.UserData1) {
 			</tr>
 		}
 		<tr class="text-yellow-500">
-			<td>PIB</td>
-			<td>{ fmt.Sprint(data.Firma.PIB) }</td>
+			<td>&nbsp;</td>
 		</tr>
 		<tr class="text-yellow-500">
 			<td>Obveznik</td>
-			<td>{ data.Firma.Obveznik }</td>
-		</tr>
-		<tr class="text-yellow-500">
-			<td>Firma radnje</td>
-			<td>{ data.Firma.FirmaRadnje }</td>
+			<td>{ data.Obveznik }</td>
 		</tr>
 		<tr class="text-yellow-500">
 			<td>Sedište</td>
-			<td>{ data.Firma.Sediste }</td>
-		</tr>
-		<tr class="text-yellow-500">
-			<td>Šifra poreskog obveznika</td>
-			<td>{ data.Firma.SifraPoreskogObveznika }</td>
+			<td>{ data.Sediste }</td>
 		</tr>
 		<tr class="text-yellow-500">
 			<td>Šifra delatnosti</td>
-			<td>{ data.Firma.SifraDelatnosti }</td>
+			<td>{ data.SifraDelatnosti }</td>
+		</tr>
+		<tr class="text-yellow-500">
+			<td>&nbsp;</td>
+		</tr>
+		<tr class="text-yellow-600">
+			<td>Firma radnje</td>
+			<td>{ data.Firma.NazivFirmaRadnje }</td>
+		</tr>
+		<tr class="text-yellow-600">
+			<td>PIB</td>
+			<td>{ fmt.Sprint(data.Firma.PIB) }</td>
+		</tr>
+		<tr class="text-yellow-600">
+			<td>MB</td>
+			<td>{ fmt.Sprint(data.Firma.MB) }</td>
+		</tr>
+		<tr class="text-yellow-600">
+			<td>Tekući račun</td>
+			<td>{ fmt.Sprint(data.Firma.Tr) }</td>
+		</tr>
+		<tr class="text-yellow-600">
+			<td>Adresa</td>
+			<td>{ fmt.Sprint(data.Firma.Adresa) }</td>
+		</tr>
+		<tr class="text-yellow-600">
+			<td>Fiksni</td>
+			<td>{ fmt.Sprint(data.Firma.Fiksni) }</td>
+		</tr>
+		<tr class="text-yellow-600">
+			<td>Mobilni</td>
+			<td>{ fmt.Sprint(data.Firma.Mobilni) }</td>
+		</tr>
+		<tr class="text-yellow-600">
+			<td>Link</td>
+			<td>{ fmt.Sprint(data.Firma.Link) }</td>
 		</tr>
 	</table>
 	<div class="m-5 text-sm">
-		// <a class="text-green-700" href="/nova_faktura">Izrada fakture</a> ttt
+		// <a class="text-green-700" href="/nova_faktura">Izrada fakture</a> tt
 		// <br>
 		<p class="text-slate-600">Izrada fakture</p>
 		<a class="text-green-700" href="/fakture">Fakture</a>
@@ -156,10 +181,10 @@ templ User(r *http.Request, user models.User, data models.UserData1) {
 		<br>
 		<a class="text-green-700" href="/artikli">Arikli i usluge</a>
 		<br>
+		// <a class="text-violet-700" href="/podesavanja">Podešavanja</a>
+		<p class="text-slate-600">Podešavanja</p>
 		// <a class="text-blue-700" href="/parametri">Parametri testa samostalnosti</a>
 		// <br>
 		<p class="text-slate-600">Parametri testa samostalnosti</p>
-		// <a class="text-violet-700" href="/obavestenja">Podešavanje obaveštenja</a>
-		<p class="text-slate-600">Podešavanje obaveštenja</p>
 	</div>
 }

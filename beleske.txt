@@ -10,9 +10,27 @@ sve ovo se resava time da se pausal skroz osamostali (i dalji projekti iz njega 
 
 user_data: user id, bjson: klijenti (naziv, adresa, telefon, email), artikli (naziv, cena), zurnal (datum, klijent id, opis), created_at, updated_at
 
+CREATE TABLE user_data(
+    ud_id SERIAL NOT NULL,
+    u_id bigint NOT NULL DEFAULT '0'::bigint,
+    u_email text NOT NULL DEFAULT ''::text,
+    obveznik text NOT NULL DEFAULT ''::text,
+    sediste text NOT NULL DEFAULT ''::text,
+    sifra_delatnosti text NOT NULL DEFAULT ''::text,
+    firma jsonb NOT NULL DEFAULT '{}'::jsonb,
+    settings jsonb NOT NULL DEFAULT '{}'::jsonb,
+    created_at timestamp with time zone NOT NULL DEFAULT now(),
+    updated_at timestamp with time zone NOT NULL DEFAULT now(),
+    PRIMARY KEY(ud_id)
+);
 
+problem sa = u gmail (testirati resenje i u yahoo i hotmail)
+
+user nakon registracije sam popunjava i cuva podatke za user data a zatim i za firmu
+kada upisuje firmu za id firme se stavlja 0 a za email njegov email
 
 req_ip u user tabeli je prazan kada se frenki registrovao, proveriti sta se desava
+isto je mozda i sa last sign in headers
 
 ocistiti tragove vezabmo u mejlovima i na svim ostalim mestima i staviti prosto-knjigovodstvo
 
@@ -24,3 +42,5 @@ klijenti
 artkli
 kpo
 zurnal
+
+kada korisnik obrise nalog da li se brisu i svi podaci?

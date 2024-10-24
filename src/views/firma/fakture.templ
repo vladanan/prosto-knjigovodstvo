@@ -4,7 +4,7 @@ import (
   "net/http"
   "github.com/vladanan/prosto/src/views"
   "github.com/vladanan/prosto/src/models"
-  "fmt"
+  // "fmt"
   "time"
   "encoding/json"
   "log"
@@ -31,27 +31,27 @@ func setS(id string) string {
   return "stavke-" + id
 }
 
-templ Fakture (r *http.Request, data models.UserData1) {
+templ Fakture (r *http.Request, data models.UserData) {
   @views.Layout(r) {
     <div class="m-5 text-sm">
       <p class="m-5 px-2">Poslednja izmena { data.Updated_at.Format(time.DateTime) }</p>
       <p>Fakture</p>
         <ul class="">
-        for _, faktura := range toFakture(data.Fakture) {
+        // for _, faktura := range toFakture(data.Fakture) {
           
-          <li id={faktura.Id} onclick="unhideFaktura(event)" class="m-5 cursor-pointer px-2 border-slate-500 border text-sm rounded-m">
-            { faktura.Id }. { faktura.Datum.Format(time.DateOnly) }, { faktura.Klijent }, iznos: { fmt.Sprint(getIznos(faktura)) }
-          </li>
+        //   <li id={faktura.Id} onclick="unhideFaktura(event)" class="m-5 cursor-pointer px-2 border-slate-500 border text-sm rounded-m">
+        //     { faktura.Id }. { faktura.Datum.Format(time.DateOnly) }, { faktura.Klijent }, iznos: { fmt.Sprint(getIznos(faktura)) }
+        //   </li>
           
-          <div state="hide" id={setS(faktura.Id)} hidden class="m-5 px-2 border-blue-600 border text-sm rounded-m">
-           for _, stavka := range faktura.Stavke {
-              <li class="m-5 cursor-pointer px-2 text-sm rounded-m">
-                opis: staviti naziv iz artikla, količina: { fmt.Sprint(stavka.Kom) }, cena: { fmt.Sprint(stavka.Kom) } ubaciti cenu iz artikla
-              </li>
-            }
-          </div>
+        //   <div state="hide" id={setS(faktura.Id)} hidden class="m-5 px-2 border-blue-600 border text-sm rounded-m">
+        //    for _, stavka := range faktura.Stavke {
+        //       <li class="m-5 cursor-pointer px-2 text-sm rounded-m">
+        //         opis: staviti naziv iz artikla, količina: { fmt.Sprint(stavka.Kom) }, cena: { fmt.Sprint(stavka.Kom) } ubaciti cenu iz artikla
+        //       </li>
+        //     }
+        //   </div>
 
-        }
+        // }
       </ul>
     </div>
     
