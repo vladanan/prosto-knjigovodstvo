@@ -322,7 +322,8 @@ func main() {
 
 	routes.RouterSite(r)
 	routes.RouterUsers(r)
-	routes.RouterFirma(r)
+	routes.RouterPausalDashboard(r)
+	routes.RouterPausalForms(r)
 
 	apirouter := r.PathPrefix("/api").Subrouter()
 	authrouter := r.PathPrefix("/auth").Subrouter()

@@ -1,5 +1,20 @@
 [
 	{
+		"Date":"2024/10/24","Time":"18:43:52","File":"front.go:1107:",
+		"Error":"API erorr: 406, Malformed_id",
+		"Path":"/pausal/change_user_data_firma"
+	},
+	{
+		"Date":"2024/10/24","Time":"16:21:36","File":"front.go:580:",
+		"Error":"timeout: context already done: context canceled",
+		"Path":"/auth/auto_login_admin"
+	},
+	{
+		"Date":"2024/10/24","Time":"16:21:36","File":"v_db_auth.go:426:",
+		"Error":"timeout: context already done: context canceled",
+		"Path":"/auth/auto_login_admin"
+	},
+	{
 		"Date":"2024/10/24","Time":"09:07:34","File":"front.go:1099:",
 		"Error":"API erorr: 500, Internal_server_error_1",
 		"Path":"/auth/auto_login_user"

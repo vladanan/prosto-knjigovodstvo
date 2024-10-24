@@ -74,6 +74,11 @@ func RouterAuth(s *mux.Router) {
 
 }
 
+func RouterPausalForms(s *mux.Router) {
+	s.HandleFunc("/pausal/change_user_data_firma", ChangeUserDataFirma)
+	s.HandleFunc("/pausal/change_user_data_firma_post", ChangeUserDataFirmaPost)
+}
+
 func GetLocationsForAngularFE(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("\nget locations", r.URL)
 	dat, err := os.ReadFile("src/models/locations.json")

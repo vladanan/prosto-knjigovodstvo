@@ -237,6 +237,15 @@ type Firma struct {
 	Link             string `db:"link"`
 }
 
+type ChangeUserDataFirma struct {
+	UserData UserData
+	Confirm  string
+	Submit   string
+	Wait     string
+	Bk_      string
+	Fk_      string
+}
+
 type Faktura struct {
 	Fa_id      int           `db:"fa_id"`
 	U_id       int           `db:"u_id"`
@@ -294,38 +303,6 @@ type Zurnal struct {
 }
 
 // ///////////////////////////////////////////////////////////
-type UserData1 struct {
-	Ud_id      int       `db:"ud_id"`
-	U_email    string    `db:"u_email"`
-	Klijenti   string    `db:"klijenti"`
-	Artikli    string    `db:"artikli"`
-	Fakture    string    `db:"fakture"`
-	Kpo        string    `db:"kpo"`
-	Zurnal     string    `db:"zurnal"`
-	Firma      Firma1    `db:"firma"`
-	Created_at time.Time `db:"created_at"`
-	Updated_at time.Time `db:"updated_at"`
-}
-type Firma1 struct {
-	PIB                    int    `json:"pib"`
-	Obveznik               string `json:"obveznik"`
-	FirmaRadnje            string `json:"firmaRadnje"`
-	Sediste                string `json:"sediste"`
-	SifraPoreskogObveznika string `json:"sifra_poreskog_pbveznika"`
-	SifraDelatnosti        string `json:"sifra_delatnosti"`
-}
-type Faktura1 struct {
-	Id      string    `json:"id"`
-	Datum   time.Time `json:"datum"`
-	Klijent string    `json:"klijent"`
-	Stavke  []Stavka  `json:"stavke"`
-}
-type Klijent1 struct {
-	Naziv   string `json:"naziv"`
-	Adresa  string `json:"adresa"`
-	Telefon string `json:"telefon"`
-	Email   string `json:"email"`
-}
 
 type Billing struct {
 	Id                 int32     `db:"id"`

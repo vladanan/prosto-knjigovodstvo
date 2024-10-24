@@ -15,7 +15,7 @@ import (
 
 // napraviti tabelu koja prikazuje neaktivne korisnike tako što proverava last_log_in polje i omogućava da se oni automatski obrišu pogotovo ako je last_sign_in isti kao created_at jer će to polje automatski da se upisuje tako da se razlikuju nalozi koji su napravljeni samo radi bombardovanja lažnim nalozima
 
-// notes 123
+// notes 123456
 func Admin(r *http.Request, user models.User) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context

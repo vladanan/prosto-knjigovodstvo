@@ -1,3 +1,6 @@
+2024/10/24 18:43:52 front.go:1107:  API erorr: 406, Malformed_id  /pausal/change_user_data_firma
+2024/10/24 16:21:36 front.go:580:  timeout: context already done: context canceled  /auth/auto_login_admin
+2024/10/24 16:21:36 v_db_auth.go:426:  timeout: context already done: context canceled  /auth/auto_login_admin
 2024/10/24 09:07:34 front.go:1099:  API erorr: 500, Internal_server_error_1  /auth/auto_login_user
 2024/10/24 09:07:34 v_db_crud.go:226:  cannot find field sifra_poreskog_obveznika in returned row  /api/v/data/mail/vladan_zasve@yahoo.com
 2024/10/24 08:49:45 front.go:1099:  API erorr: 500, Internal_server_error_1  /auth/auto_login_user

@@ -1,10 +1,12 @@
 package models
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/jackc/pgx/v5"
 	"github.com/vladanan/prosto/src/controllers/clr"
@@ -29,7 +31,7 @@ var ApiToDb = map[string]Tim{
 	},
 	"data": {
 		Table: "user_data",
-		Id:    "ud_id",
+		Id:    "u_id",
 		Mail:  "u_email",
 	},
 	"note": {
@@ -264,6 +266,49 @@ func (db DB) PutOne(table string, field string, record any, recordData any, r *h
 	defer freeConn(conn, r)
 
 	switch data := recordData.(type) {
+
+	case UserData:
+
+		firma := Firma{
+			Fi_id:            0,
+			U_id:             data.U_id,
+			NazivFirmaRadnje: data.Firma.NazivFirmaRadnje,
+			PIB:              data.Firma.PIB,
+			MB:               data.Firma.MB,
+			Tr:               data.Firma.Tr,
+			Adresa:           data.Firma.Adresa,
+			Fiksni:           data.Firma.Fiksni,
+			Mobilni:          data.Firma.Mobilni,
+			Email:            data.Firma.Email,
+			Link:             data.Firma.Link,
+		}
+		bytearray_firma, err := json.Marshal(firma)
+		if err != nil {
+			return "", l(r, 8, err)
+		}
+
+		commandTag, err := conn.Exec(r.Context(), `UPDATE `+table+` SET
+			obveznik=$1,
+			sediste=$2,
+			sifra_delatnosti=$3,
+			firma=$4,
+			updated_at=$5
+			WHERE `+field+`=$6;`,
+			data.Obveznik,
+			data.Sediste,
+			data.SifraDelatnosti,
+			string(bytearray_firma),
+			time.Now(),
+			record,
+		)
+		if err != nil {
+			return "", l(r, 8, err)
+		}
+		if commandTag.String() != "UPDATE 1" {
+			return "", l(r, 0, clr.NewAPIError(http.StatusBadRequest, "Insert-update-delete_operation_failed"))
+		} else {
+			return getReturnData(data), nil
+		}
 
 	case Test:
 		// za update napraviti kod koji na osnovu poslatih polja za izmenu i već postojećih napravi skroz novi upis za isti id tako da se izbegnu kompleksni (string contactenation) query i kompleksan kod JER SE NE ZNA UNAPRED KOJA POLJA ĆE KORISNIK DA MENJA A KOJA NE

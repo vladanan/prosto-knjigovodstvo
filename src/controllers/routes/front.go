@@ -9,6 +9,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 
 	"github.com/a-h/templ"
@@ -23,7 +24,7 @@ import (
 	"github.com/vladanan/prosto/src/views"
 	"github.com/vladanan/prosto/src/views/cp"
 	"github.com/vladanan/prosto/src/views/dashboard"
-	"github.com/vladanan/prosto/src/views/firma"
+	"github.com/vladanan/prosto/src/views/pausal"
 	"github.com/vladanan/prosto/src/views/site"
 )
 
@@ -44,7 +45,7 @@ func RouterUsers(r *mux.Router) {
 	r.HandleFunc("/dashboard", Dashboard)
 }
 
-func RouterFirma(r *mux.Router) {
+func RouterPausalDashboard(r *mux.Router) {
 	r.HandleFunc("/fakture", Fakture)
 	r.HandleFunc("/kpo", Kpo)
 	r.HandleFunc("/zurnal", Zurnal)
@@ -63,14 +64,15 @@ func RouterI18n(r *mux.Router) {
 // https://stackoverflow.com/questions/15834278/serving-static-content-with-a-root-url-with-the-gorilla-toolkits
 func ServeStatic(router *mux.Router, staticDirectory string) {
 	staticPaths := map[string]string{
-		"/":    "" + staticDirectory,
-		"vmk":  "/auth/vmk" + staticDirectory,
-		"fp":   "/auth/fp" + staticDirectory,
-		"du":   "/auth/du" + staticDirectory,
-		"cm":   "/auth/cm" + staticDirectory,
-		"cn":   "/auth/cn" + staticDirectory,
-		"cp":   "/auth/cp" + staticDirectory,
-		"auth": "/auth" + staticDirectory,
+		"/":      "" + staticDirectory,
+		"vmk":    "/auth/vmk" + staticDirectory,
+		"fp":     "/auth/fp" + staticDirectory,
+		"du":     "/auth/du" + staticDirectory,
+		"cm":     "/auth/cm" + staticDirectory,
+		"cn":     "/auth/cn" + staticDirectory,
+		"cp":     "/auth/cp" + staticDirectory,
+		"pausal": "/pausal" + staticDirectory,
+		"auth":   "/auth" + staticDirectory,
 		// "qapi": "/questions" + staticDirectory,
 	}
 	for _, pathValue := range staticPaths {
@@ -197,12 +199,12 @@ func smtu(w http.ResponseWriter, r *http.Request, message any) {
 	dashboard.MessageForUser(r, errorMsg).Render(r.Context(), w)
 }
 
-func getSesionData(r *http.Request) (bool, string, string, int, error) {
+func getSesionData(r *http.Request) (bool, string, string, string, error) {
 
 	key := i18n.SessionKey("session")
 	session, err := i18n.GetSessionFromContext(r.Context(), key)
 	if err != nil {
-		return false, "", "", 0, l(r, 8, err)
+		return false, "", "", "", l(r, 8, err)
 	}
 
 	var alreadyAuthenticated bool
@@ -231,11 +233,13 @@ func getSesionData(r *http.Request) (bool, string, string, int, error) {
 		uid = idMap.(int)
 	}
 
-	return alreadyAuthenticated, email, name, uid, nil
+	uids := strconv.Itoa(uid)
+
+	return alreadyAuthenticated, email, name, uids, nil
 }
 
 // Genericki form Pack za response forms
-type formPack[T models.SignUpFormData | models.SignInFormData | models.ForgottenPasswordData | models.ChangeEmailData | models.ChangeNameData | models.ChangePasswordData] struct {
+type formPack[T models.SignUpFormData | models.SignInFormData | models.ForgottenPasswordData | models.ChangeEmailData | models.ChangeNameData | models.ChangePasswordData | models.ChangeUserDataFirma] struct {
 	w      http.ResponseWriter
 	r      *http.Request
 	f      T
@@ -243,7 +247,7 @@ type formPack[T models.SignUpFormData | models.SignInFormData | models.Forgotten
 }
 
 // Genericka form Response func koja koristi form Pack i error
-func formResp[T models.SignUpFormData | models.SignInFormData | models.ForgottenPasswordData | models.ChangeEmailData | models.ChangeNameData | models.ChangePasswordData](fp formPack[T], err error) {
+func formResp[T models.SignUpFormData | models.SignInFormData | models.ForgottenPasswordData | models.ChangeEmailData | models.ChangeNameData | models.ChangePasswordData | models.ChangeUserDataFirma](fp formPack[T], err error) {
 	fp.fTempl(fp.r, fp.f, clr.CheckErr(err).Msg).Render(fp.r.Context(), fp.w)
 }
 
@@ -361,32 +365,6 @@ func CheckUserName(w http.ResponseWriter, r *http.Request) {
 func Sign_in(w http.ResponseWriter, r *http.Request) {
 	if already_authenticated, _, _, _, err := getSesionData(r); err == nil && !already_authenticated {
 		dashboard.Sign_in(r).Render(r.Context(), w)
-
-		// resp, err := http.Get("http://127.0.0.1:7331/sign_in_remote")
-		// if err != nil {
-		// 	// error if the request fails, such as if the requested URL is not found, or if the server is not reachable
-		// 	http.Error(w, l(r, 8, err).Error(), http.StatusInternalServerError)
-		// 	return
-		// } else {
-		// 	data, err := io.ReadAll(resp.Body)
-		// 	// dec := json.NewDecoder(bytes.NewReader(data))
-		// 	if err != nil {
-		// 		http.Error(w, l(r, 8, err).Error(), http.StatusInternalServerError)
-		// 		return
-		// 	} else if resp.StatusCode == http.StatusOK {
-		// 		// successful request should reeturn a 200 OK status, if not we should log and then exit with error
-		// 		// log.Println("data sa be", string(data))
-		// 		// w.Write(data)
-		// 		dashboard.Sign_in(r, string(data)).Render(r.Context(), w)
-		// 		defer resp.Body.Close()
-		// 		return
-		// 	} else {
-		// 		log.Println("error sa be", string(data))
-		// 		defer resp.Body.Close()
-		// 		return
-		// 	}
-		// }
-
 	} else {
 		views.Index(r).Render(r.Context(), w)
 	}
@@ -1121,7 +1099,113 @@ func Sign_out(w http.ResponseWriter, r *http.Request) {
 	views.Index(r).Render(r.Context(), w)
 }
 
-////**** FIRMA
+////**** PAUSAL
+
+func ChangeUserDataFirma(w http.ResponseWriter, r *http.Request) {
+	if already_authenticated, _, _, id, err := getSesionData(r); err == nil && !already_authenticated {
+		views.Index(r).Render(r.Context(), w)
+	} else {
+		if data, err := apiCallGet[models.UserData]("data", "id", id, r); err != nil {
+			smtu(w, r, l(r, 7, err))
+		} else {
+			cudf := models.ChangeUserDataFirma{
+				UserData: data[0],
+				Confirm:  "",
+				Submit:   "",
+				Wait:     "",
+				Bk_:      "",
+				Fk_:      "",
+			}
+			pausal.ChangeUserDataFirma(r, cudf).Render(r.Context(), w)
+		}
+	}
+}
+
+func ChangeUserDataFirmaPost(w http.ResponseWriter, r *http.Request) {
+	PIB, err := strconv.Atoi(r.FormValue("pib"))
+	if err != nil {
+		smtu(w, r, l(r, 7, err))
+	}
+	MB, err := strconv.Atoi(r.FormValue("mb"))
+	if err != nil {
+		smtu(w, r, l(r, 7, err))
+	}
+	fp := formPack[models.ChangeUserDataFirma]{
+		w: w,
+		r: r,
+		f: models.ChangeUserDataFirma{
+			UserData: models.UserData{
+				U_email:         r.FormValue("email"),
+				Obveznik:        r.FormValue("obveznik"),
+				Sediste:         r.FormValue("sediste"),
+				SifraDelatnosti: r.FormValue("sifra_delatnosti"),
+				Firma: models.Firma{
+					NazivFirmaRadnje: r.FormValue("naziv_firma_radnja"),
+					PIB:              PIB,
+					MB:               MB,
+					Tr:               r.FormValue("tr"),
+					Adresa:           r.FormValue("adresa"),
+					Fiksni:           r.FormValue("fiksni"),
+					Mobilni:          r.FormValue("mobilni"),
+					Email:            r.FormValue("email"),
+					Link:             r.FormValue("link"),
+				},
+			},
+			// Confirm:     r.FormValue("confirm"),
+			Submit: r.FormValue("submit"),
+			Wait:   r.FormValue("wait"),
+			Bk_:    r.FormValue("bk_"),
+			Fk_:    r.FormValue("fk_"),
+		},
+		fTempl: cp.Change_user_data_firma,
+	}
+
+	db := models.DB{}
+	if err := vet.ValidateEmailAddress(fp.f.UserData.U_email); err != nil {
+		formResp(fp, err)
+	} else if _, err := db.PutOne("user_data", "u_email", fp.f.UserData.U_email, fp.f.UserData, r); err != nil {
+		formResp(fp, err)
+	} else {
+		w.WriteHeader(302)
+		Dashboard(w, r)
+	}
+
+	// if _, err := vet.ValidateChangePasswordData(r, fp.f); err != nil {
+	// 	formResp(fp, err)
+	// } else {
+	// 	user, err := models.AuthenticateUser(fp.f.User_email1, fp.f.Password0, r)
+	// 	if err != nil {
+	// 		formResp(fp, err)
+	// 	} else {
+	// 		urlKey := utils.Get64UrlKey(fp.f.User_email1, 10)
+	// 		apiAdd := "change-passwordu" // 16byte
+	// 		key := utils.DateEncryptionKey(apiAdd)
+	// 		msg := fp.f.User_email1 + "||" + fp.f.Password0 + "||" + fp.f.Password1
+	// 		if msgKey, err := utils.MsgEncrypt(msg, apiAdd, key); err != nil {
+	// 			formResp(fp, l(r, 4, err))
+	// 		} else {
+	// 			var url string
+	// 			if os.Getenv("PRODUCTION") == "FALSE" {
+	// 				url = "http://127.0.0.1:7331/auth/cp/" + urlKey + "?cpm=" + msgKey
+	// 			} else {
+	// 				url = "https://prosto-knjigovodstvo.onrender.com/auth/cp/" + urlKey + "?cpm=" + msgKey
+	// 			}
+	// 			email := utils.ChangePasswordRequest{
+	// 				R:        r,
+	// 				Email:    fp.f.User_email1,
+	// 				UserName: user.User_name,
+	// 				Url:      url,
+	// 			}
+	// 			if err := utils.SendEmail(email); err != nil {
+	// 				formResp(fp, l(r, 4, err))
+	// 			} else {
+	// 				cp.MessageForUser(r, "CP_verify_sent").Render(r.Context(), w)
+	// 			}
+	// 		}
+	// 	}
+	// }
+
+}
 
 func Fakture(w http.ResponseWriter, r *http.Request) {
 	if already_authenticated, email, _, _, err := getSesionData(r); err == nil && !already_authenticated {
@@ -1130,7 +1214,7 @@ func Fakture(w http.ResponseWriter, r *http.Request) {
 		if data, err := apiCallGet[models.UserData]("data", "mail", email, r); err != nil {
 			smtu(w, r, l(r, 7, err))
 		} else {
-			firma.Fakture(r, data[0]).Render(r.Context(), w)
+			pausal.Fakture(r, data[0]).Render(r.Context(), w)
 		}
 	}
 }
@@ -1142,7 +1226,7 @@ func Kpo(w http.ResponseWriter, r *http.Request) {
 		if data, err := apiCallGet[models.UserData]("data", "mail", email, r); err != nil {
 			smtu(w, r, l(r, 7, err))
 		} else {
-			firma.Kpo(r, data[0]).Render(r.Context(), w)
+			pausal.Kpo(r, data[0]).Render(r.Context(), w)
 		}
 	}
 }
@@ -1154,7 +1238,7 @@ func Zurnal(w http.ResponseWriter, r *http.Request) {
 		if data, err := apiCallGet[models.UserData]("data", "mail", email, r); err != nil {
 			smtu(w, r, l(r, 7, err))
 		} else {
-			firma.Zurnal(r, data[0]).Render(r.Context(), w)
+			pausal.Zurnal(r, data[0]).Render(r.Context(), w)
 		}
 	}
 }
@@ -1166,7 +1250,7 @@ func Klijenti(w http.ResponseWriter, r *http.Request) {
 		if data, err := apiCallGet[models.UserData]("data", "mail", email, r); err != nil {
 			smtu(w, r, l(r, 7, err))
 		} else {
-			firma.Klijenti(r, data[0]).Render(r.Context(), w)
+			pausal.Klijenti(r, data[0]).Render(r.Context(), w)
 		}
 	}
 }
@@ -1178,7 +1262,7 @@ func Artikli(w http.ResponseWriter, r *http.Request) {
 		if data, err := apiCallGet[models.UserData]("data", "mail", email, r); err != nil {
 			smtu(w, r, l(r, 7, err))
 		} else {
-			firma.Artikli(r, data[0]).Render(r.Context(), w)
+			pausal.Artikli(r, data[0]).Render(r.Context(), w)
 		}
 	}
 }

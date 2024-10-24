@@ -1,16 +1,17 @@
-package firma
+package pausal
 
 import (
   "net/http"
   "github.com/vladanan/prosto/src/views"
   "github.com/vladanan/prosto/src/models"
+  // "fmt"
   "time"
   "encoding/json"
   "log"
 )
 
-func toZurnal(podaci string) []models.Zurnal {
-  var d []models.Zurnal
+func toKpo(podaci string) []models.Kpo {
+  var d []models.Kpo
 	err := json.Unmarshal([]byte(podaci), &d)
 	if err != nil {
 		log.Printf("json greska: %v", err)
@@ -18,15 +19,15 @@ func toZurnal(podaci string) []models.Zurnal {
   return d
 }
 
-templ Zurnal (r *http.Request, data models.UserData) {
+templ Kpo (r *http.Request, data models.UserData) {
   @views.Layout(r) {
     <div class="m-5 text-sm">
       <p class="m-5 px-2">Poslednja izmena { data.Updated_at.Format(time.DateTime) }</p>
-      <p>Zurnal</p>
+      <p>KPO evidencija</p>
         <ul class="">
-        // for _, zurnal := range toZurnal(data.Zurnal) {
+        // for _, kpo := range toKpo(data.Kpo) {
         //   <li class="m-5 px-2 border-slate-500 border text-sm rounded-m">
-        //     { zurnal.Datum.Format(time.DateOnly) }, { zurnal.KlijentNaziv }, { zurnal.Opis }
+        //     { fmt.Sprint(kpo.Rb) }. { kpo.Datum.Format(time.DateOnly) }, { kpo.Opis }, proizvodi: { fmt.Sprint(kpo.Proizvodi) }, usluge: { fmt.Sprint(kpo.Usluge) }, svega: { fmt.Sprint(kpo.Proizvodi + kpo.Usluge) }
         //   </li>
         // }
       </ul>

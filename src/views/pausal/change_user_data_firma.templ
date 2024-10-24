@@ -1,0 +1,17 @@
+package pausal
+
+import (
+  "net/http"
+  "github.com/vladanan/prosto/src/views"
+
+	"github.com/vladanan/prosto/src/models"
+	"github.com/vladanan/prosto/src/views/cp"
+)
+
+templ ChangeUserDataFirma(r *http.Request, data models.ChangeUserDataFirma) {
+  @views.Layout(r) {
+    <script src="static/htmx.min.js"></script>
+    <script src="static/htmx_response-targets.js"></script>
+    @cp.Change_user_data_firma(r, data, "")
+  }
+}

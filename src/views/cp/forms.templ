@@ -6,6 +6,7 @@ import (
 	"strings"
 	"github.com/vladanan/prosto/src/models"
 	"github.com/vladanan/prosto/src/controllers/utils"
+	"strconv"
 )
 
 var t = views.T
@@ -175,7 +176,7 @@ templ Change_name(r *http.Request, f models.ChangeNameData, errMessage string) {
   }
 }
 
-  templ Change_password(r *http.Request, f models.ChangePasswordData, errMessage string) {
+templ Change_password(r *http.Request, f models.ChangePasswordData, errMessage string) {
   @AuthForm() {
     <form id="change_password_form"
       hx-ext="response-targets"
@@ -193,6 +194,37 @@ templ Change_name(r *http.Request, f models.ChangeNameData, errMessage string) {
       @Confirm(t("Confirm_data_entered"))
       @SubmitGroup(t("Change_password"))
       @ErrorsHidden(ckErr(errMessage))
+    </form>
+  }
+}
+
+templ Change_user_data_firma(r *http.Request, udc models.ChangeUserDataFirma, errMessage string) {
+  @AuthForm() {
+    <form id="change_user_data_firma_form"
+      hx-ext="response-targets"
+      hx-get="/pausal/change_user_data_firma_post"
+      hx-trigger="submit"
+      hx-target="#change_user_data_firma_form"
+      hx-target-302="#body"
+      hx-swap="outerHTML"
+    >
+      <br>
+      @FormTitle("Promena podataka o firmi")
+      @PInput("Obveznik", "obveznik", udc.UserData.Obveznik, errMessage)
+      @PInput("Sedište", "sediste", udc.UserData.Sediste, errMessage)
+      @PInput("Šifra delatnosti", "sifra_delatnosti", udc.UserData.SifraDelatnosti, errMessage)
+      @PInput("Firma radnje", "naziv_firma_radnja", udc.UserData.Firma.NazivFirmaRadnje, errMessage)
+      @PInput("PIB", "pib", strconv.Itoa(udc.UserData.Firma.PIB), errMessage)
+      @PInput("MB", "mb", strconv.Itoa(udc.UserData.Firma.MB), errMessage)
+      @PInput("Tekući račun", "tr", udc.UserData.Firma.Tr, errMessage)
+      @PInput("Adresa", "adresa", udc.UserData.Firma.Adresa, errMessage)
+      @PInput("Fiksni", "fiksni", udc.UserData.Firma.Fiksni, errMessage)
+      @PInput("Mobilni", "mobilni", udc.UserData.Firma.Mobilni, errMessage)
+      @PInput("Link", "link", udc.UserData.Firma.Link, errMessage)
+      // @Confirm(t("Confirm_data_entered"))
+      @SubmitGroup("Promeni podatke")
+      @ErrorsHidden(ckErr(errMessage))
+      <input required="true" value={udc.UserData.U_email} hidden id="email" name="email" class="text-xs w-28 text-black" />
     </form>
   }
 }

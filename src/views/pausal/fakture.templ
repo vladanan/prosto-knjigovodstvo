@@ -1,4 +1,4 @@
-package firma
+package pausal
 
 import (
   "net/http"
@@ -10,8 +10,8 @@ import (
   "log"
 )
 
-func toFakture(podaci string) []models.Faktura1 {
-  var d []models.Faktura1
+func toFakture(podaci string) []models.Faktura {
+  var d []models.Faktura
 	err := json.Unmarshal([]byte(podaci), &d)
 	if err != nil {
 		log.Printf("json greska: %v", err)
@@ -19,10 +19,10 @@ func toFakture(podaci string) []models.Faktura1 {
   return d
 }
 
-func getIznos(f models.Faktura1) int {
+func getIznos(f models.Faktura) int {
   var iznos int
-  for j := 0; j < len(f.Stavke); j++ {
-    iznos = iznos + (f.Stavke[j].Kom * 555) //f.Stavke[j].Cena) 
+  for j := 0; j < len(f.Podaci.Stavke); j++ {
+    iznos = iznos + (f.Podaci.Stavke[j].Kom * 555) //f.Stavke[j].Cena) 
   }
   return iznos
 }

@@ -43,13 +43,14 @@ templ User(r *http.Request, user models.User, data models.UserData) {
 			<th>{ t("Uaction") }</th>
 		</tr>
 		<tr class="">
-			<td>{ t("Registered_at") }</td>
+			<td class="pr-2">{ t("Registered_at") }</td>
 			<td class="pr-2 text-sky-800 dark:text-sky-400">{ user.Created_at_time.Format(time.DateTime) }</td>
 			if user.Email == "y.emailbox-proba@yahoo.com" {
 				<td class="text-gray-500">{ t("Delete_account") }</td>
 			} else {
 				<td class="text-red-500"><a href="/auth/delete_user">{ t("Delete_account") }</a></td>
 			}
+			// <td class="pr-2 text-sky-800 dark:text-sky-400">{ fmt.Sprint(user.U_id) }</td>
 		</tr>
 		<tr>
 			<td>{ t("Uemail") }</td>
@@ -62,7 +63,7 @@ templ User(r *http.Request, user models.User, data models.UserData) {
 		</tr>
 		<tr class="">
 			<td>{ t("Uname") }</td>
-			<td class="text-sky-800 dark:text-sky-400">{ user.User_name }</td>
+			<td class="pr-2 text-sky-800 dark:text-sky-400">{ user.User_name }</td>
 			if user.Email == "y.emailbox-proba@yahoo.com" {
 				<td class="text-gray-500">{ t("Uchange") }</td>
 			} else {
@@ -71,7 +72,7 @@ templ User(r *http.Request, user models.User, data models.UserData) {
 		</tr>
 		<tr class="">
 			<td>{ t("Upass") }</td>
-			<td class="text-sky-800 dark:text-sky-400">***</td>
+			<td class="pr-2 text-sky-800 dark:text-sky-400">***</td>
 			if user.Email == "y.emailbox-proba@yahoo.com" {
 				<td class="text-gray-500">{ t("Uchange") }</td>
 			} else {
@@ -103,68 +104,65 @@ templ User(r *http.Request, user models.User, data models.UserData) {
 		// 	<td>{ user.Payment_expire.String() }</td>
 		// </tr>
 		if user.Mode == "admin" {
-			<tr class="text-yellow-500">
+			<tr>
 				<td>user_mode</td>
 				<td>{ user.Mode }</td>
 			</tr>
-			<tr class="text-yellow-500">
+			<tr>
 				<td>Last_sign_in_time</td>
 				<td>{ user.Last_sign_in_time.String() }</td>
 			</tr>
-			<tr class="text-yellow-500">
+			<tr>
 				<td>IP</td>
 				<td>{ user.Req_ip }</td>
 			</tr>
 		}
-		<tr class="text-yellow-500">
-			<td>&nbsp;</td>
-		</tr>
-		<tr class="text-yellow-500">
+	</table>
+	<table id="data-firma" class="m-5 text-sm">
+		<tr>
 			<td>Obveznik</td>
-			<td>{ data.Obveznik }</td>
+			<td class="text-yellow-800 dark:text-yellow-500">{ data.Obveznik }</td>
+			<td class="pl-2"><a href="/pausal/change_user_data_firma">{ t("Uchange") }</a></td>
 		</tr>
-		<tr class="text-yellow-500">
+		<tr>
 			<td>Sedište</td>
-			<td>{ data.Sediste }</td>
+			<td class="text-yellow-800 dark:text-yellow-500">{ data.Sediste }</td>
 		</tr>
-		<tr class="text-yellow-500">
-			<td>Šifra delatnosti</td>
-			<td>{ data.SifraDelatnosti }</td>
+		<tr>
+			<td class="pr-2">Šifra delatnosti</td>
+			<td class="text-yellow-800 dark:text-yellow-500">{ data.SifraDelatnosti }</td>
 		</tr>
-		<tr class="text-yellow-500">
-			<td>&nbsp;</td>
-		</tr>
-		<tr class="text-yellow-600">
+		<tr>
 			<td>Firma radnje</td>
-			<td>{ data.Firma.NazivFirmaRadnje }</td>
+			<td class="text-yellow-800 dark:text-yellow-500">{ data.Firma.NazivFirmaRadnje }</td>
 		</tr>
-		<tr class="text-yellow-600">
+		<tr>
 			<td>PIB</td>
-			<td>{ fmt.Sprint(data.Firma.PIB) }</td>
+			<td class="text-yellow-800 dark:text-yellow-500">{ fmt.Sprint(data.Firma.PIB) }</td>
 		</tr>
-		<tr class="text-yellow-600">
+		<tr>
 			<td>MB</td>
-			<td>{ fmt.Sprint(data.Firma.MB) }</td>
+			<td class="text-yellow-800 dark:text-yellow-500">{ fmt.Sprint(data.Firma.MB) }</td>
 		</tr>
-		<tr class="text-yellow-600">
+		<tr>
 			<td>Tekući račun</td>
-			<td>{ fmt.Sprint(data.Firma.Tr) }</td>
+			<td class="text-yellow-800 dark:text-yellow-500">{ fmt.Sprint(data.Firma.Tr) }</td>
 		</tr>
-		<tr class="text-yellow-600">
+		<tr>
 			<td>Adresa</td>
-			<td>{ fmt.Sprint(data.Firma.Adresa) }</td>
+			<td class="text-yellow-800 dark:text-yellow-500">{ fmt.Sprint(data.Firma.Adresa) }</td>
 		</tr>
-		<tr class="text-yellow-600">
+		<tr>
 			<td>Fiksni</td>
-			<td>{ fmt.Sprint(data.Firma.Fiksni) }</td>
+			<td class="text-yellow-800 dark:text-yellow-500">{ fmt.Sprint(data.Firma.Fiksni) }</td>
 		</tr>
-		<tr class="text-yellow-600">
+		<tr>
 			<td>Mobilni</td>
-			<td>{ fmt.Sprint(data.Firma.Mobilni) }</td>
+			<td class="text-yellow-800 dark:text-yellow-500">{ fmt.Sprint(data.Firma.Mobilni) }</td>
 		</tr>
-		<tr class="text-yellow-600">
+		<tr>
 			<td>Link</td>
-			<td>{ fmt.Sprint(data.Firma.Link) }</td>
+			<td class="text-yellow-800 dark:text-yellow-500">{ fmt.Sprint(data.Firma.Link) }</td>
 		</tr>
 	</table>
 	<div class="m-5 text-sm">

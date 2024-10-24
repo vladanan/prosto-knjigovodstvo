@@ -331,17 +331,16 @@ func VerifyEmail(key, email string, r *http.Request) error {
 	}
 
 	if len(pgxKey) > 0 {
-		_, err := conn.Exec(r.Context(), `UPDATE mi_users SET verified_email=$1 where verified_email=$2;`,
+		if _, err := conn.Exec(r.Context(), `UPDATE mi_users SET verified_email=$1 where verified_email=$2;`,
 			"verified",
 			pgxKey[0].Verified_email,
-		)
-		if err != nil {
+		); err != nil {
+			return l(r, 8, err)
+		} else if _, err = conn.Exec(r.Context(), `INSERT INTO user_data (u_id, u_email) VALUES ($1, $2);`, pgxKey[0].U_id, email); err != nil {
 			return l(r, 8, err)
 		} else {
-			// log.Printf("insert result: %v\n", commandTag)
 			return nil
 		}
-
 	} else {
 		return clr.NewAPIError(http.StatusNotAcceptable, "Email_link_not_verified")
 	}

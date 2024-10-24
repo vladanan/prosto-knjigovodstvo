@@ -157,6 +157,15 @@ templ SubmitGroup(label string) {
   </button>
 }
 
+templ PInput(label, idname, value, errMessage string) {
+  @P(label)
+  <input type="text" id={idname} name={idname} required
+    placeholder="" value={value}
+    class={ "input", templ.KV("border-[3px] border-red-400", hasError(errMessage, "pausal"))}
+  />
+}
+
+
 templ ErrorsHidden(label string) {
   <p id="error_messages" name="error_messages" class="text-sm w-64 font-bold text-red-700  dark:text-red-400 mt-2">{label}</p>
   
