@@ -159,7 +159,7 @@ templ SubmitGroup(label string) {
 
 templ PInput(label, idname, value, errMessage string) {
   @P(label)
-  <input type="text" id={idname} name={idname} required
+  <input type="text" id={idname} name={idname} required oninput="resetWait(event)"
     placeholder="" value={value}
     class={ "input", templ.KV("border-[3px] border-red-400", hasError(errMessage, "pausal"))}
   />

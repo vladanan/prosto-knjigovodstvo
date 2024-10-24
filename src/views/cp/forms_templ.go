@@ -751,47 +751,47 @@ func Change_user_data_firma(r *http.Request, udc models.ChangeUserDataFirma, err
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = PInput("Obveznik", "obveznik", udc.UserData.Obveznik, errMessage).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = PInput("Obveznik *", "obveznik", udc.UserData.Obveznik, errMessage).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = PInput("Sedište", "sediste", udc.UserData.Sediste, errMessage).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = PInput("Sedište *", "sediste", udc.UserData.Sediste, errMessage).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = PInput("Šifra delatnosti", "sifra_delatnosti", udc.UserData.SifraDelatnosti, errMessage).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = PInput("Šifra delatnosti *", "sifra_delatnosti", udc.UserData.SifraDelatnosti, errMessage).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = PInput("Firma radnje", "naziv_firma_radnja", udc.UserData.Firma.NazivFirmaRadnje, errMessage).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = PInput("Firma radnje *", "naziv_firma_radnja", udc.UserData.Firma.NazivFirmaRadnje, errMessage).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = PInput("PIB", "pib", strconv.Itoa(udc.UserData.Firma.PIB), errMessage).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = PInput("PIB *", "pib", strconv.Itoa(udc.UserData.Firma.PIB), errMessage).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = PInput("MB", "mb", strconv.Itoa(udc.UserData.Firma.MB), errMessage).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = PInput("MB *", "mb", strconv.Itoa(udc.UserData.Firma.MB), errMessage).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = PInput("Tekući račun", "tr", udc.UserData.Firma.Tr, errMessage).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = PInput("Tekući račun *", "tr", udc.UserData.Firma.Tr, errMessage).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = PInput("Adresa", "adresa", udc.UserData.Firma.Adresa, errMessage).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = PInput("Adresa *", "adresa", udc.UserData.Firma.Adresa, errMessage).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = PInput("Fiksni", "fiksni", udc.UserData.Firma.Fiksni, errMessage).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = PInput("Fiksni *", "fiksni", udc.UserData.Firma.Fiksni, errMessage).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = PInput("Mobilni", "mobilni", udc.UserData.Firma.Mobilni, errMessage).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = PInput("Mobilni *", "mobilni", udc.UserData.Firma.Mobilni, errMessage).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = PInput("Link", "link", udc.UserData.Firma.Link, errMessage).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = PInput("Link *", "link", udc.UserData.Firma.Link, errMessage).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
